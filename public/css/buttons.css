@@ -1,0 +1,150 @@
+:root{
+    --color1: #393939;
+    --color2: #ffffff;
+    --color3: #20344c;
+    --color4: #666666;
+}
+
+.testButton{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+}
+
+.divButtons{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    column-gap: 80px;
+    width: 100%;
+}
+
+.divChartsButtons{
+    display: flex;
+    justify-content:center;
+    column-gap: 12px;
+}
+
+.button1{
+    margin: auto;
+    margin-top: 5%;
+    color:var(--color2);
+    background-color: var(--color3);
+    font-size: 1rem;
+    border-radius: 20px;
+    width: 270px;
+    height: 40px;
+    text-align: center;
+    border: var(--color3) solid 1.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button2{
+    color:var(--color2);
+    background-color: var(--color3);
+    font-size: 0.9rem;
+    border-radius: 25px;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    border: var(--color3) solid 1.5px;
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hrefButton2{
+    display: flex;
+    column-gap: 3px;
+}
+
+.button3{
+    margin-top: 15px;
+    color:var(--color2);
+    background-color: var(--color3);
+    font-size: 0.9rem;
+    border-radius: 25px;
+    width: 110px;
+    padding: 5px 0px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: var(--color3) solid 1.5px;
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.button4{
+    background-color: var(--color1);
+    width: 200px;
+    height: 30px;
+    border: var(--color1) solid 1.5px;
+}
+
+.button1:hover,.button2:hover,.button3:hover{
+    background-color: var(--color4);
+    border: var(--color4) solis 1.5px;
+}
+
+.unabledButton{
+    color:rgb(197, 192, 192);
+    background-color: var(--color2);
+    border: var(--color2) solid 1.5px;
+    cursor: auto;
+}
+
+.unabledButton:hover{
+    color:rgb(197, 192, 192);
+    background-color: var(--color2);
+    border: var(--color2) solid 1.5px;
+    cursor: auto;
+}
+
+.unabledButton2{
+    color:white;
+    background-color: rgb(197, 192, 192);
+    border: rgb(197, 192, 192) solid 1.5px;
+    cursor: auto;
+}
+
+.unabledButton2:hover{
+    color:white;
+    background-color: rgb(197, 192, 192);
+    border: rgb(197, 192, 192) solid 1.5px;
+    cursor: auto;
+}
+
+
+@media (max-width:1140px){
+    .button3{
+        font-size: 0.7rem;
+        width: 90px;
+    }
+}
+
+@media (max-width:950px){
+    .divChartsButtons{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 10px;
+        margin-top: 15px;
+        
+    }
+    .button3{
+        margin-top: 0px;
+        padding: 3px 0px;
+        margin-bottom: 0px;
+    }
+}
+
+
+
+
+

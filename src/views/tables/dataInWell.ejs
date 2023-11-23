@@ -1,0 +1,74 @@
+<table>
+    
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="2">Temperatura en pozo</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Profundidad (m)</th>
+            <th class="thTitle2 thTitleWidth">Temperatura (°C)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.wellDataTemp.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('temp_depth_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('temp_depth_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'temp_depth_' + row.id %>" value="<%= locals.oldData ? oldData['temp_depth_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'temp_temperature_' + row.id %>" value="<%= locals.oldData ? oldData['temp_temperature_' + row.id] : null %>" autocomplete="off">
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+
+</table>
+
+<table>
+
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="3">Reflectancia vitrinita en pozo</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Profundidad (m)</th>
+            <% if (data.well.id == 1) { %>
+                <th class="thTitle2 thTitleWidth">Ro min (%)</th>
+                <th class="thTitle2 thTitleWidth">Ro max (%)</th>
+                <% } else { %>
+                    <th class="thTitle2 thTitleWidth">Ro (%)</th>
+            <% } %>
+            
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.wellDataRo.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_depth_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_depth_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_depth_' + row.id %>" value="<%= locals.oldData ? oldData['ro_depth_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <% if (data.well.id == 1) { %>
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_ro_min_' + row.id) ? 'isInvalid' : null %>">
+                        <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_min_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_ro_min_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_min_' + row.id] : null %>" autocomplete="off">
+                    </th>
+    
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_ro_max_' + row.id) ? 'isInvalid' : null %>">
+                        <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_max_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_ro_max_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_max_' + row.id] : null %>" autocomplete="off">
+                    </th>
+
+                    <% } else { %>
+                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_ro_' + row.id) ? 'isInvalid' : null %>">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_ro_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_' + row.id] : null %>" autocomplete="off">
+                        </th>
+                <% } %>
+
+                
+            </tr>
+        <% }) %>  
+    </tbody>
+    
+</table>

@@ -1,0 +1,27 @@
+<table>
+
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="2">HF</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Edad (ma)</th>
+            <th class="thTitle2 thTitleWidth">Valor (mW/m2)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.thermalCalibration.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('age_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'age_' + row.id %>" value="<%= locals.oldData ? oldData['age_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_' + row.id] : null %>" autocomplete="off">
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+    
+</table>

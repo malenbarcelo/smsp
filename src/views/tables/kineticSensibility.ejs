@@ -1,0 +1,61 @@
+<table>
+                            
+    <thead class="tableRow">
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleWidth">Capa</th>
+            <th class="thTitle maxWidth1">Clave de unidad</th>
+            <th class="thTitle">Cima (m)</th>
+            <th class="thTitle">Base (m)</th>
+            <th class="thTitle">Espesor (m)</th>
+            <th class="thTitle maxWidth1">Depo desde (Ma)</th>
+            <th class="thTitle maxWidth1">Depo hasta (Ma)</th>
+            <th class="thTitle">Litología</th>
+            <th class="thTitle thTitleWidth">PSE*</th>
+            <th class="thTitle">TOC (%)</th>
+            <th class="thTitle thTitleWidth">Cinética</th>
+            <th class="thTitle  thTitleTopRight maxWidth1">HI (mgHC/gTOC)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.baseData.forEach(row => { %>
+            <tr>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.id_layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.top %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.base %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.thickness %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.depo_from %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.depo_until %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.lithology.lithology %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot.cot %></th>
+                <% if (row.kinetic.cinetic == null) { %>
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+                    <% } else { %>
+                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_cinetic_' + row.id) ? 'isInvalid' : null %>">
+                            <select name="<%= 'id_cinetic_' + row.id %>" id="" class=" <%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_cinetic_' + row.id) ? 'isInvalid' : null %>">
+                                
+                                <% data.cinetics.forEach(cinetic => { %>
+
+                                    <% if (locals.oldData) { %>
+                                        <option value="<%= cinetic.id %>" <%= oldData['id_cinetic_' + row.id] == cinetic.id ? 'selected' : null %>>
+                                            <%= cinetic.cinetic %>
+                                        </option>
+                                        <% } else { %>
+                                            <option value="<%= cinetic.id %>" <%= row.id_cinetic == cinetic.id ? 'selected' : null %>>
+                                                <%= cinetic.cinetic %>
+                                            </option>
+                                    <% } %>
+                                    
+                                <% }) %>
+
+                            </select>
+                        </th>
+                <% } %>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.hi.hi %></th>
+            </tr>
+        <% }) %>  
+    </tbody>
+</table>

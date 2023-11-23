@@ -1,0 +1,85 @@
+<table>
+
+    <thead class="tableRow">
+        <tr>
+            <th class="thTitle thTitleTopLeft">Capa</th>
+            <th class="thTitle maxWidth1 thWidth">Clave de unidad</th>
+            <th class="thTitle thWidth">Cima (m)</th>
+            <th class="thTitle thWidth">Base (m)</th>
+            <th class="thTitle thWidth">Espesor (m)</th>
+            <th class="thTitle maxWidth1 thWidth">Depo desde (Ma)</th>
+            <th class="thTitle maxWidth1 thWidth">Depo hasta (Ma)</th>
+            <th class="thTitle thLithology">Litología</th>
+            <th class="thTitle thTitleWidth">PSE*</th>
+            <th class="thTitle thToc">TOC (%)</th>
+            <th class="thTitle thKinetic">Cinética</th>
+            <th class="thTitle thTitleTopRight maxWidth1 hi1">HI (mgHC/gTOC)</th>
+            <th class="thTitle thTitleTopRight maxWidth1 hi2">HI (mgHC / gTOC)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.baseData.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.id_layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('top_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('top_' + row.id_layers) ? 'isInvalid' : null %>" type="text" name="<%= 'top_' + row.id_layers %>" value="<%= locals.oldData ? oldData['top_' + row.id_layers] : null %>" autocomplete="off">
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('base_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('base_' + row.id_layers) ? 'isInvalid' : null %>" type="text" name="<%= 'base_' + row.id_layers %>" value="<%= locals.oldData ? oldData['base_' + row.id_layers] : null %>" autocomplete="off">
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('thickness_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('thickness_' + row.id_layers) ? 'isInvalid' : null %>" type="text" name="<%= 'thickness_' + row.id_layers %>" value="<%= locals.oldData ? oldData['thickness_' + row.id_layers] : null %>" autocomplete="off">
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('depo_from_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_from_' + row.id_layers) ? 'isInvalid' : null %>" type="text" name="<%= 'depo_from_' + row.id_layers %>" value="<%= locals.oldData ? oldData['depo_from_' + row.id_layers] : null %>" autocomplete="off">
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('depo_until_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_until_' + row.id_layers) ? 'isInvalid' : null %>" type="text" name="<%= 'depo_until_' + row.id_layers %>"value="<%= locals.oldData ? oldData['depo_until_' + row.id_layers] : null %>" autocomplete="off">
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_lithologies_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_lithologies_' + row.id_layers %>" id="" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_lithologies_' + row.id_layers) ? 'isInvalid' : null %>">
+                        <option value="default"></option>
+                        <% data.lithologies.forEach(lithology => { %>
+                            <option value="<%= lithology.id %>" <%= locals.oldData && oldData['id_lithologies_' + row.id_layers] == lithology.id ? 'selected' : null %>><%= lithology.lithology %></option>
+                        <% }) %>
+                    </select>
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_pse_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_pse_' + row.id_layers %>" id="" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_pse_' + row.id_layers) ? 'isInvalid' : null %>">
+                        <option value="default"></option>
+                        <% data.pses.forEach(pse => { %>
+                            <option value="<%= pse.id %>" <%= locals.oldData && oldData['id_pse_' + row.id_layers] == pse.id ? 'selected' : null %>><%= pse.pse %></option>
+                        <% }) %>
+                    </select>
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_cot_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_cot_' + row.id_layers %>" id="" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_cot_' + row.id_layers) ? 'isInvalid' : null %> thLength">
+                        <option value='default'></option>
+                        <% data.cots.forEach(cot => { %>
+                            <option value="<%= cot.id %>" <%= locals.oldData && oldData['id_cot_' + row.id_layers] == cot.id ? 'selected' : null %>><%= cot.cot %></option>
+                        <% }) %>
+                    </select>
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_cinetic_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_cinetic_' + row.id_layers %>" id="" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_cinetic_' + row.id_layers) ? 'isInvalid' : null %>">
+                        <option value="default"></option>
+                        <% data.cinetics.forEach(cinetic => { %>
+                            <option value="<%= cinetic.id %>" <%= locals.oldData && oldData['id_cinetic_' + row.id_layers] == cinetic.id ? 'selected' : null %>><%= cinetic.cinetic %></option>
+                        <% }) %>
+                    </select>
+                </th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_hi_' + row.id_layers) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_hi_' + row.id_layers %>" id="" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_hi_' + row.id_layers) ? 'isInvalid' : null %> thLength">
+                        <option value="default"></option>
+                        <% data.his.forEach(hi => { %>
+                            <option value="<%= hi.id %>" <%= locals.oldData && oldData['id_hi_' + row.id_layers] == hi.id ? 'selected' : null %>><%= hi.hi %></option>
+                        <% }) %>
+                    </select>
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+
+</table>

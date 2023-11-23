@@ -1,0 +1,84 @@
+<table>
+
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="2">PWD</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Edad (ma)</th>
+            <th class="thTitle2 thTitleWidth">Valor (m)</th>
+        </tr>
+    </thead>
+
+    <tbody class="bTableData">
+        <% data.pwds.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('pwd_age_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('pwd_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'pwd_age_' + row.id %>" value="<%= locals.oldData ? oldData['pwd_age_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'pwd_pwd_' + row.id %>" value="<%= locals.oldData ? oldData['pwd_pwd_' + row.id] : null %>" autocomplete="off">
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+
+</table>
+
+<table>
+
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="2">SWIT</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Edad (ma)</th>
+            <th class="thTitle2 thTitleWidth">Valor (°C)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.swits.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('swit_age_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('swit_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'swit_age_' + row.id %>" value="<%= locals.oldData ? oldData['swit_age_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'swit_swit_' + row.id %>" value="<%= locals.oldData ? oldData['swit_swit_' + row.id] : null %>" autocomplete="off">
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+    
+</table>
+
+<table>
+
+    <thead>
+        <tr>
+            <th class="thTitle thTitleTopLeft thTitleTopRight" colspan="2">HF</th>
+        </tr>
+        <tr>
+            <th class="thTitle2 thTitleWidth">Edad (ma)</th>
+            <th class="thTitle2 thTitleWidth">Valor (mW/m2)</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% data.hfs.forEach(row => { %>
+            <tr>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_age_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_age_' + row.id %>" value="<%= locals.oldData ? oldData['hf_age_' + row.id] : null %>" autocomplete="off">
+                </th>
+
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>">
+                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_hf_' + row.id] : null %>" autocomplete="off">
+                </th>
+            </tr>
+        <% }) %>  
+    </tbody>
+
+</table>
+

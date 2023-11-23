@@ -1,0 +1,25 @@
+/*---Generals---*/
+npm init -y
+npm install express
+npm install ejs
+npm install method-override
+npm install multer
+npm install express-validator
+npm install express-session
+npm install bcryptjs
+npm install cors
+npm install node-fetch@2.6.1
+
+/*---Sequelize---*/
+1. npm install --save sequelize-cli
+2. npm install --save sequelize
+3. npm install mysql2
+
+Resumed --->
+npm init -y
+npm install express ejs method-override multer express-validator express-session bcryptjs sequelize-cli sequelize mysql2 cors node-fetch@2.6.1
+
+
+
+
+

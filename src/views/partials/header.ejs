@@ -1,0 +1,130 @@
+<div class="gridContainer2">
+
+    <div class="gridItem2 divHeaderLogo">
+        <img src="/images/companyLogoWhite.png" alt="Company Logo" class="headerLogo">
+    </div>
+
+    <div class="gridItem2 divHeaderMenu">
+        <div class="headerMenu">
+
+            <div class="menuItem1 zIndex1 <%= data.processData.routes[data.idRoute - 1].idIndexData == 1 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 1 ? 'focus2' : null %>">
+                <div class="contentItem1">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 1) { %>
+                        <div class="divIcon">
+                            <img src="/images/icons/wellIconBlue.png" alt="well" class="icon">
+                        </div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 1) { %>
+                            <div class="divIcon">
+                                <img src="/images/icons/wellIconWhite.png" alt="well" class="icon">
+                            </div>
+                        <% } else { %>
+                            <div class="divIcon">
+                                <img src="/images/icons/wellIconBlack.png" alt="well" class="icon">
+                            </div>
+                    <% } %>
+                    <div class="contentText1">Pozo</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex2 <%= data.processData.routes[data.idRoute - 1].idIndexData == 2 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 2 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 2) { %>
+                        <div class="divIcon">
+                            <img src="/images/icons/dataIconBlue.png" alt="well" class="icon">
+                        </div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 2) { %>
+                            <div class="divIcon"><img src="/images/icons/dataIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/dataIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1 contentTextDE">Carga de datos</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex3 <%= data.processData.routes[data.idRoute - 1].idIndexData == 3 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 3 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 3) { %>
+                        <div class="divIcon"><img src="/images/icons/calibrationIconBlue.png" alt="well" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 3) { %>
+                            <div class="divIcon"><img src="/images/icons/calibrationIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/calibrationIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1">Cond. de Frontera</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex4 <%= data.processData.routes[data.idRoute - 1].idIndexData == 4 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 4 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 4) { %>
+                        <div class="divIcon"><img src="/images/icons/simulationIconBlue.png" alt="well" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 4) { %>
+                            <div class="divIcon"><img src="/images/icons/simulationIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/simulationIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1">Simulación</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex5 <%= data.processData.routes[data.idRoute - 1].idIndexData == 5 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 5 ? 'focus2' : null %>">
+                <div class="contentItem3">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 5) { %>
+                        <div class="divIcon"><img src="/images/icons/calibrationIconBlue.png" alt="well" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 5) { %>
+                            <div class="divIcon"><img src="/images/icons/calibrationIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/calibrationIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1 contentTextBC">Ajuste Cond. Frontera</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex6 <%= data.processData.routes[data.idRoute - 1].idIndexData == 6 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 6 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 6) { %>
+                        <div class="divIcon"><img src="/images/icons/thermalCalIconBlue.png" alt="well" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 6) { %>
+                            <div class="divIcon"><img src="/images/icons/thermalCalIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/thermalCalIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1">Calibración Termal</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex7 <%= data.processData.routes[data.idRoute - 1].idIndexData == 7 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 7 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 7) { %>
+                        <div class="divIcon"><img src="/images/icons/sensibilityIconBlue.png" alt="pse-table" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 7) { %>
+                            <div class="divIcon"><img src="/images/icons/sensibilityIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/sensibilityIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1">Tabla PSE</div>
+                </div>
+            </div>
+
+            <div class="menuItem2 zIndex8 <%= data.processData.routes[data.idRoute - 1].idIndexData == 8 ? 'focus1' : data.processData.routes[data.idRoute - 1].idIndexData > 8 ? 'focus2' : null %>">
+                <div class="contentItem2">
+                    <% if (data.processData.routes[data.idRoute - 1].idIndexData > 8) { %>
+                        <div class="divIcon"><img src="/images/icons/sensibilityIconBlue.png" alt="well" class="icon"></div>
+                        <% } else if (data.processData.routes[data.idRoute - 1].idIndexData == 8) { %>
+                            <div class="divIcon"><img src="/images/icons/sensibilityIconWhite.png" alt="well" class="icon"></div>
+                        <% } else { %>
+                            <div class="divIcon"><img src="/images/icons/sensibilityIconBlack.png" alt="well" class="icon"></div>
+                    <% } %>
+                    <div class="contentText1">Sensibilidad</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gridItem2"></div>
+
+    
+
+</div>
+    
+

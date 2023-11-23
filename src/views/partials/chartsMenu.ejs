@@ -1,0 +1,11 @@
+
+<div class="divChartsMenu">
+    <% data.processData.charts.forEach(chart => { %>
+        <% if (data.chartData.idChartsMenu == chart.idChartsMenu) { %>
+            <div class="chartMenuLi <%= chart.title == title ? 'selectedLi' : null %>">
+                <a href=""><%= chart.title %></a>
+            </div>
+        <% } %>
+    <% }) %>
+</div>
+

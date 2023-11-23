@@ -1,0 +1,32 @@
+<%- include('./partials/head') %>
+
+<body class="gridBody">
+
+    <div class="gridContainer4">
+
+        <div class="gridItem4">
+            <%- include('./partials/header') %>
+        </div>
+
+        <div class="gridItem4 gridItemTable">
+            
+            <form action="<%= data.route %>" method="POST">
+
+                <div class="divTables">
+                    <%- include('./tables/' + ejsTable) %>
+                </div>
+
+        </div>
+            
+        <div class="gridItem4 gridItemButtons">
+            <%- include('./partials/buttons') %>
+        </div>
+
+            </form>
+
+    </div>
+    
+</body>
+
+
+

@@ -1,0 +1,54 @@
+
+<div class="divButtons">
+
+    <!---back button--->
+    <% if (data.backRoute != 'NA') { %>
+        <div class="button2">
+            <a href="<%= data.backRoute %>">
+                <div>
+                    <i class="fa-solid fa-chevron-left"></i>
+                    Volver
+                </div>
+            </a>
+         </div>
+    <% } %>
+    
+    <!---validate button--->
+    <% if (locals.validation && validation == 'passed') { %>
+        <div class="button2 unabledButton">
+            <div>Validar</div>
+            <div><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <% } else { %>
+            <button type="submit" class="button2">
+                Validar
+            </button>
+    <% } %>
+    
+
+    <!---continue--->
+    <% if (locals.validation && validation == 'fail') { %>
+        <div class="button2 unabledButton">
+            <div>Cotinuar</div>
+            <div><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+    <% } %>
+    <% if (locals.validation && validation == 'passed' || !locals.validation) { %>
+        <div class="button2">
+            <a href="<%= data.continueRoute %>" class="hrefButton2">
+                <div>Cotinuar</div>
+                <div><i class="fa-solid fa-chevron-right"></i></div>
+            </a>
+        </div>
+        </a>
+    <% } %>
+</div>
+
+<div class="testButton">
+    <a href="<%= data.continueRoute %>" class="hProvisionalButton">Continuar</a>
+</div>
+
+
+
+
+

@@ -1,0 +1,47 @@
+<%- include('./partials/head') %>
+
+<body class="gridBody">
+    <div class="gridContainer3">
+        <div class="gridItem3">
+            <div class="div7">
+                <img src="/images/companyLogoWhite.png" alt="Company Logo" class="endProcessLogo">
+            </div>
+        </div>
+
+        <div class="gridItem3">
+            <div class="title1"> Iniciar sesión</div>
+            <form action="/login/<%= processName %>/<%= idWell %>" method="POST">
+                <div class="divInputs">
+
+                    <div class="divInput">
+                        <input type="text" class="loginInput <%= locals.errors && errors.email ? 'inputIsInvalid' : null %>" name="email" placeholder="Email" value="<%= locals.oldData ? oldData.email : null %>">
+
+                        <div class="divError">
+                            <% if (locals.errors && errors.email) { %>
+                                <%= errors.email.msg %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="divInput">
+                        <input type="password" class="loginInput <%= locals.errors && errors.password ? 'inputIsInvalid' : null %>" name="password" placeholder="Constraseña">
+
+                        <div class="divError">
+                            <% if (locals.errors && errors.password) { %>
+                                <%= errors.password.msg %>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div class="divButtonLogin">
+                        <button type="submit" class="loginButton">Ingresar</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+
+

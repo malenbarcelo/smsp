@@ -1,0 +1,207 @@
+<%- include('./partials/head') %>
+
+<body class="gridBody">
+    <div class="gridContainer1">
+        <div class="gridItem1">
+            <%- include('./partials/header') %>
+        </div>
+
+        <div class="gridItem1">
+            <div class="chartsMenu">
+                <%- include('./partials/chartsMenu') %>
+                <%- include('./partials/chartsButtons') %>
+            </div>
+        </div>
+
+        <form action="/pse-table/<%= data.well.id %>/pse-summary-table" method="POST">
+
+            <div class="gridItem1 divCharts divPseTable">
+                <div class="pseTable1">
+                    <table class="pseTable">
+                        <thead>
+                            <tr>
+                                <th class="pseThTitle">Elemento/Proceso</th>
+                                <th class="pseThTitle">Nombre</th>
+                                <th class="pseThTitle">Desde (Ma)</th>
+                                <th class="pseThTitle thTitleBorderRight">Hasta (Ma)</th>
+                                <th class="pseThTitle2"></th>
+                                <th class="pseThTitle2"></th>
+                                <th class="pseThTitle2"></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <% pseWellData.tableData.forEach(element => { %>
+                                <tr>
+                                    <th class="pseTh">Elemento</th>
+                                    <th class="pseTh"><%= element.element %></th>
+                                    <th class="pseTh"><%= element.from %></th>
+                                    <th class="pseTh"><%= element.to %></th>
+                                    <th class="pseTh2 pseThColor"><input type="color" value="<%= element.color %>" class="pseColor" disabled></th>
+                                    <th class="pseTh2"></th>
+                                    <th class="pseTh2"></th>
+                                </tr>
+                            <% }) %>
+
+                            <% pseInputsData.forEach(element => { %>
+                                <tr id="<%= element.input %>">
+                                    <th class="pseTh">Proceso</th>
+
+                                    <th class="pseTh">
+                                        <input type="text" class="pseInput2" name="<%= 'process_'+ element.input %>"  id="<%= 'process_'+ element.input %>" value="<%= element.process %>" readonly>
+                                    </th>
+
+                                    <th class="pseTh">
+                                        <input type="text" class="pseInput <%= element.from_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'from_' + element.input %>" id="<%= 'from_' + element.input %>" value="<%= element.from_value %>" autocomplete="off">
+                                    </th>
+
+                                    <th class="pseTh">
+                                        <input type="text" class="pseInput <%= element.to_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'to_' + element.input %>" id="<%= 'to_' + element.input %>" value="<%= element.to_value %>" autocomplete="off">
+                                    </th>
+
+                                    <th class="pseTh2 pseThColor">
+                                        <input type="color" name="<%= 'color_' + element.input %>" value="<%= element.color %>" class="pseColor" id="<%= 'color_' + element.input %>">
+                                    </th>
+
+                                    <th class="pseTh2">
+                                        <div class="pseDivArrow">
+                                            <i class="fa-solid fa-up-long pseArrow" id="<%= 'up_' + element.input %>"></i>
+                                        </div>
+                                    </th>
+
+                                    <th class="pseTh2">
+                                        <div class="pseDivArrow">
+                                            <i class="fa-solid fa-down-long pseArrow" id="<%= 'down_' + element.input %>"></i>
+                                        </div>
+                                    </th>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pseTable2">
+                    <div class="pseTable3">
+    
+                        <div class="element">Elemento</div>
+                        <div class="process">Proceso</div>
+
+                        <div class="divElementDetails"style="top: <%= pseWellData.elementsDetailsTop + 'px' %>">
+                            <% pseWellData.tableData.forEach(element => { %>
+                                <div class="elementDetail">
+                                    <%= element.element %>
+                                </div>
+                            <% }) %>
+                        </div>
+        
+                        <div class="divProcessDetails"style="top: <%= pseWellData.processDetailsTop + 'px' %>">
+                            <% pseWellData.inputsData.forEach(process => { %>
+                                <div class="processDetail" id="<%= 'processDetail_' + process.input %>">
+                                    <%= process.process %>
+                                </div>
+                            <% }) %>
+                        </div>
+    
+                        <div class="gridPse">
+                            <div class="pseGridRow1 j" style="grid-column: span 3;">Jurásico</div>
+                            <div class="pseGridRow1 cr" style="grid-column: span 2;">Cretácico</div>
+                            <div class="pseGridRow1 p" style="grid-column: span 3;">Paleógeno</div>
+                            <div class="pseGridRow1 n" style="grid-column: span 2;">Neógeno</div>
+                            <div class="pseGridRow1 cu" style="grid-column: span 2;">C</div>
+            
+                            <div class="pseGridRow2 ji">Jur. Inf.</div>
+                            <div class="pseGridRow2 jm">Jur. Med.</div>
+                            <div class="pseGridRow2 js">Jur. Sup.</div>
+                            <div class="pseGridRow2 ci">Cret. Inf.</div>
+                            <div class="pseGridRow2 cs">Cret. Sup.</div>
+                            <div class="pseGridRow2 pa">Paleo.</div>
+                            <div class="pseGridRow2 e">Eloc.</div>
+                            <div class="pseGridRow2 o">Olig.</div>
+                            <div class="pseGridRow2 m">Mioc.</div>
+                            <div class="pseGridRow2 pli">P.</div>
+                            <div class="pseGridRow2 ple"></div>
+                            <div class="pseGridRow2 h"></div>
+
+                            <% pseWellData.tableData.forEach(element => { %>
+                                <div class="pseGridRow3" style="grid-column: span 12;">
+                                    <% element.ranges.forEach(range => { %>
+                                        <div class="elementRange"style="width: <%= range.width + 'px' %>;right: <%= range.right + 'px' %>;background-color: <%= element.color %>">
+                                        </div>
+                                    <% }) %>                 
+                                </div>
+                            <% }) %>
+
+                            <% pseWellData.inputsData.forEach(element => { %>
+                                <div class="pseGridRow3" style="grid-column: span 12;">
+                                    <div class="elementRange" id="<%= 'bar_' + element.input %>"></div>
+                                </div>
+                            <% }) %>
+    
+                            <div class="flexTimeLine" style="grid-column: span 12;">
+    
+                                <div class="year1">200</div>
+                                <div class="year2">150</div>
+                                <div class="year3">100</div>
+                                <div class="year4">50</div>
+                                <div class="year5">0</div>
+        
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine"></div>
+                                <div class="timeLine addBorder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="button3 <%= validation == 'passed' ? 'unabledButton2' : null %>">
+                    Validar
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+</body>
+
+                
+
+<div id="idWell" class="notVisible"><%= data.well.id %></div>
+
+<script type="module" src="/js/pseTable.js"></script>
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+

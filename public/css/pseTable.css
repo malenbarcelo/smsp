@@ -1,0 +1,329 @@
+:root{
+    --color1: #393939;
+    --color2: #ffffff;
+    --color3: #20344c;
+    --color4: #666666;
+    --color5: #4a4a4a;
+    --lengthPseTable: 600px
+}
+
+.divPseTable{
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pseTable2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pseTable{
+    border-collapse: collapse;
+}
+
+.pseTable3{
+    position: relative;
+}
+
+.pseThTitle{
+    margin: 0px;
+    background-color: var(--color3);
+    color:var(--color2);
+    padding:5px 10px;
+    border: black solid 1px;
+    border-right: var(--color2) solid 1px;
+    font-size: 0.9rem;
+}
+
+.pseThTitle2{
+    margin: 0px;
+    color:var(--color2);
+    padding:5px 10px;
+}
+
+.thTitleBorderRight{
+    border-right: black solid 1px
+}
+
+.pseTh{
+    background-color:var(--color2);
+    padding: 3px 8px;
+    border:var(--color1) solid 1px ;
+    font-size: 0.9rem;
+}
+
+.pseTh2{
+    background-color:var(--color2);
+    border:none;
+    font-size: 0.9rem;
+}
+
+.pseThColor{
+    padding-left:3px;
+}
+
+.pseColor{
+    width: 25px;
+    height: 21px;
+    padding: 0px;
+    border: rgb(194, 191, 191) solid 1px;
+}
+
+.pseDivArrow{
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    border: rgb(194, 191, 191) solid 1px;
+    background-color: rgb(244, 243, 243);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pseArrow{
+    color:var(--color3) ;
+    cursor: pointer;
+}
+
+.pseInput{
+    width: 50px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0px;
+    border: black solid 1px;
+}
+
+.pseInput2{
+    width: 130px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0px;
+    border: none;
+}
+
+.gridPse{
+    display: grid;
+    /*grid-template-columns: 72px 43.5px 46.5px 137.7px 102.3px 29.1px 65.7px 32.7px 52.8px 10.8px 5.4px 2px*/
+    grid-template-columns: 97.2px 58.7px 62.8px 185.9px 138.1px 39.3px 88.7px 44.1px 71.3px 14.6px 7.2px 2.7px
+}
+
+.pseGridRow1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    font-size: 0.9rem;
+    padding: 3px 0px;
+}
+
+.pseGridRow2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    border-bottom: black solid 1px;
+    font-size: 0.9rem;
+    padding: 2px 0px;
+}
+
+.pseGridRow3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 17px;
+    border-bottom: black solid 1px;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+.element{
+    font-size: 0.8rem;
+    background-color: rgb(254,217,102);
+    width: 70px;
+    transform: rotate(-90deg);
+    position: absolute;
+    top:60.5px;
+    right: -49px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:  rgb(254,217,102) solid 1px;
+    padding:2px 0px;
+}
+
+.process{
+    font-size: 0.8rem;
+    background-color: rgb(227,239,217);
+    border-left: rgb(227,239,217) solid 1px ;
+    width: 70px;
+    transform: rotate(-90deg);
+    position: absolute;
+    top:133px;
+    right: -49px;
+    height: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 0px;
+}
+
+.divElementDetails{
+    position: absolute;
+    right: -120.5px;
+    width: 95px;
+}
+
+.divProcessDetails{
+    position: absolute;
+    right: -120.5px;
+    width: 95px;
+}
+
+.elementDetail{
+    font-size: 0.7rem;
+    width: 90px;
+    padding-left: 5px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255,230,153);
+    border-top:rgb(255,230,153) solid 1px;
+    border-bottom: black solid 1px;  
+}
+
+.processDetail{
+    font-size: 0.7rem;
+    width: 90px;
+    padding-left: 5px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(210, 225, 197);
+    border-bottom: black solid 1px;  
+}
+
+
+.flexTimeLine{
+    display: flex;
+    position: relative;
+}
+
+.timeLine{
+    width: 40.5px;
+    border-left: black solid 1px;
+    height: 6px;
+}
+
+.addBorder{
+    border-right: black solid 1px;
+}
+
+.year1, .year2, .year3, .year4, .year5{
+    position: absolute;
+    font-size: 0.7rem;
+    bottom:-16px
+}
+
+.year5{
+    right: -2.7px
+}
+
+.year4{
+    right: 195.75px
+}
+
+.year3{
+    right: 395.55px
+}
+
+.year2{
+    right: 598.05px
+}
+
+.year1{
+    right: 800.55px
+}
+
+.j{
+    background-color:rgb(0,184,232);
+}
+.cr{
+    background-color: rgb(156,208,80)
+}
+.p{
+    background-color: rgb(255,153,51)
+}
+.n{
+    background-color: rgb(253,220,46);
+}
+.cu{
+    background-color: rgb(255,242,204)
+}
+
+.ji{
+    background-color:rgb(0,176,240)
+}
+.jm{
+    background-color: rgb(142,169,219)
+}
+.js{
+    background-color: rgb(217,225,242)
+}
+.ci{
+    background-color: rgb(146,208,80)
+}
+.cs{
+    background-color: rgb(198,224,180)
+}
+.pa{
+    background-color: rgb(255,153,0)
+}
+.e{
+    background-color: rgb(255,204,0)
+}
+.o{
+    background-color: rgb(255,204,153)
+}
+.m{
+    background-color: rgb(254,241,0)
+}
+.pli{
+    background-color: rgb(255,255,153)
+}
+.ple{
+    background-color: rgb(255,230,153) 
+}
+.h{
+    background-color:rgb(255,242,204)
+}
+
+.elementRange{
+    height: 17px;
+    position: absolute;
+}
+
+.isInvalidPse{
+    background-color:  red;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

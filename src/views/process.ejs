@@ -1,0 +1,23 @@
+<%- include('./partials/head') %>
+
+<body class="gridBody">
+    <div class="gridContainer3">
+        <div class="gridItem3">
+            <%- include('./partials/header') %>
+        </div>
+
+        <div class="gridItem3 divProcess">
+            <div class="processTitle">Un momento por favor...</div>
+            <div class="progressContainer">
+                <div class="progressBar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<div id="route" class="notVisible"><%= data.continueRoute %></div>
+
+<script type="module" src="/js/process.js"></script>
+
+
+

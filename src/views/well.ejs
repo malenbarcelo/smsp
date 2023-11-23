@@ -1,0 +1,26 @@
+<%- include('./partials/head') %>
+
+<body class="gridBody">
+    <div class="gridContainer3">
+        <div class="gridItem3">
+            <%- include('./partials/header') %>
+        </div>
+
+        <div class="gridItem3">
+            <div class="title1"> Pozo seleccionado</div>
+            <div class="divWells">
+                <% data.wells.forEach(well => { %>
+                    <div class="divWell <%= data.idWell != well.id ? 'unabledWell' : null %>">
+                        <%= well.well %></a>
+                    </div>
+                <% }) %>
+            </div>
+            <a href="<%= data.continueRoute %>">
+                <div class="button1">Continuar</div>
+            </a>
+        </div>
+    </div>
+</body>
+
+
+

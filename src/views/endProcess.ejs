@@ -1,0 +1,52 @@
+<%- include('./partials/head') %>
+
+<body class="endProcessBody">
+    <div class="div7">
+        <img src="/images/companyLogoWhite.png" alt="Company Logo" class="endProcessLogo">
+    </div>
+    
+    <div class="divEndProcess">
+        
+            <div class="div1">
+                <div><b>¡Felicitaciones!</b></div>
+            </div>
+    
+            <div class="div2">
+                <div>Has aprobado la etapa: <i><b><%= data.processData.description %></b></i></div>
+            </div>
+    
+            <div class="div3">
+                Tu nota: 85%
+            </div>
+
+            <div class="divDetails">
+    
+                <div class="div3">
+                    DETALLE DEL EJERCICIO
+                </div>
+            
+                <% exerciseAnswers.forEach(step => { %>
+                    <div class="div4">Paso: <b><%= step.step %></b></div>
+                    <div class="div5"><%= '- Cantidad de intentos: ' + step.try %></div>
+                    <div class="div5">- Observaciones:</div>
+                    <% if (step.observations != '') { %>
+                        <div class="div6">
+                            <%- step.observations.replace(/\n/g, '<br><br>') %> <!---replace \n for <br> to print it in ejs-->
+                        </div>
+                        <% } else { %>
+                            <div class="div6">Sin observaciones</div>
+                    <% } %>
+                <% }) %>
+            </div>
+    
+            
+            
+    </div>
+
+</body>
+
+
+
+
+
+
