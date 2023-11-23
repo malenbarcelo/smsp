@@ -1,5 +1,5 @@
-const username = "root"
-const password = "30941767"
+const username = "smsp_adm"
+const password = "smspadministrator"
 const database = "smsp_db"
 
 module.exports = 

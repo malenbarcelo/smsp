@@ -1,1 +1,1 @@
-export const dominio = 'http://localhost:3002'
+export const dominio = 'https://smsp.wnpower.host'
