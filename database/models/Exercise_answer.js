@@ -24,6 +24,18 @@ module.exports = (sequelize, DataTypes) => {
          type: DataTypes.STRING,
          allowNull: false,
       },
+      grade:{
+         type: DataTypes.DECIMAL,
+         allowNull: true,
+      },
+      login:{
+         type: DataTypes.INTEGER,
+         allowNull: false,
+      },
+      logout:{
+         type: DataTypes.INTEGER,
+         allowNull: true
+      },
       log_time:{
          type: DataTypes.INTEGER,
          allowNull: true,

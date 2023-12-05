@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-   const alias = "Layers"
+   const alias = "Kinetics"
    const cols = {
       id:{
          type : DataTypes.INTEGER,
@@ -8,20 +8,20 @@ module.exports = (sequelize, DataTypes) => {
          autoIncrement : true,
          allowNull: false
       },
-      layer:{
-         type: DataTypes.STRING,
-         allowNull: false,
+      id_wells:{
+         type : DataTypes.INTEGER,
+         allowNull: false
       },
-      id_layer:{
+      kinetic:{
          type: DataTypes.STRING,
          allowNull: false,
       },
    }
    const config = {
-   tableName : 'layers',
+   tableName : 'kinetics',
    timestamps : false
    }
-   const Layer = sequelize.define(alias, cols, config)
+   const Kinetic = sequelize.define(alias, cols, config)
    
-   return Layer
+   return Kinetic
 }

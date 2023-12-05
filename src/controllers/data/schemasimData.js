@@ -6,11 +6,13 @@ const schemasimData = {
     'simulatorsData':[
         {
             'idWell':1,
-            'simulatorId': 7,            
+            'simulatorId': 7, //dev simulator
+            //'simulatorId': 5, //prd simulator            
         },
         {
             'idWell':2,
-            'simulatorId': 8,            
+            'simulatorId': 8, //dev simulator
+            //'simulatorId': 6, //prd simulator            
         },
     ]
 }

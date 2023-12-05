@@ -208,6 +208,10 @@ input::-webkit-inner-spin-button {
     width: 100px
 }
 
+.thTitleWidth2{
+    width: 130px
+}
+
 .maxWidth1{
     width: 80px;
 }
@@ -260,12 +264,20 @@ input::-webkit-inner-spin-button {
     color: var(--color2);
 }
 
+.input3{
+    border: var(--color1) solid 1px;
+    background-color: rgb(213, 212, 212);
+    color: black;
+    padding: 3px 0px;
+}
+
 .select1{
     font-size: var(--thFontSize);
     text-align: center;
     border:none;
     background-color: var(--color4);
     color: var(--color2);
+    width: 100%;
 }
 
 .select2{
@@ -274,6 +286,7 @@ input::-webkit-inner-spin-button {
     border:none;
     background-color: var(--color5);
     color: var(--color2);
+    width: 100%;
 }
 
 .thLength{
@@ -377,6 +390,7 @@ animation: fill-progress 8s ease-in-out forwards;
 .divChartsMenu{
     font-size: 14px;
     width: max-content;
+    max-width: 85%;
     margin: auto;
 }
 
@@ -405,29 +419,25 @@ animation: fill-progress 8s ease-in-out forwards;
 .divInstructions{
     display: flex;
     justify-content: center;
-    margin-top: -2%;
+    margin-top: -1%;
     column-gap: 3%;
+    width: 100%;
 }
 
 .instructionsUl{
     color:var(--color2);
-    width: fit-content;
 }
 
 .instructionsLi{
     color: var(--color2);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: lighter;
     margin-bottom: 10px;
 }
 
-.instructionsLi2{
-    margin-bottom: 35px;
-}
-
 .instructionsTitle{
     color: var(--color2);
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /*---end process view---*/

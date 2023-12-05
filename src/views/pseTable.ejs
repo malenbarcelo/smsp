@@ -1,4 +1,5 @@
 <%- include('./partials/head') %>
+<%- include('./partials/userLogged') %>
 
 <body class="gridBody">
     <div class="gridContainer1">
@@ -13,7 +14,7 @@
             </div>
         </div>
 
-        <form action="/pse-table/<%= data.well.id %>/pse-summary-table" method="POST">
+        <form action="/pse-table/<%= data.idWell %>/pse-summary-table" method="POST">
 
             <div class="gridItem1 divCharts divPseTable">
                 <div class="pseTable1">
@@ -83,12 +84,15 @@
                 <div class="pseTable2">
                     <div class="pseTable3">
     
-                        <div class="element">Elemento</div>
-                        <div class="process">Proceso</div>
+                        <div class="element"style="width: <%= (pseWellData.tableData.length * 17  + pseWellData.tableData.length) + 'px' %>;top: <%= pseWellData.inputsData.length == 4 ? '65px' : '74px' %>;right: <%= pseWellData.tableData.length == 4 ? '-50px' : '-60px' %>">Elemento</div>
+                        
+                        <div class="process"style="width: <%= (pseWellData.inputsData.length * 17  + pseWellData.inputsData.length) + 'px' %>;bottom: <%= pseWellData.inputsData.length == 4 ? '29px' : '11px' %>;right: <%= pseWellData.inputsData.length == 4 ? '-50px' : '-33px' %>">
+                            <%= pseWellData.inputsData.length == 2 ? 'Proc.' : 'Proceso' %>
+                        </div>
 
                         <div class="divElementDetails"style="top: <%= pseWellData.elementsDetailsTop + 'px' %>">
                             <% pseWellData.tableData.forEach(element => { %>
-                                <div class="elementDetail">
+                                <div class="elementDetail <%= element.id == 1 ? 'divDetailsAddBorder' : null %>">
                                     <%= element.element %>
                                 </div>
                             <% }) %>
@@ -96,7 +100,7 @@
         
                         <div class="divProcessDetails"style="top: <%= pseWellData.processDetailsTop + 'px' %>">
                             <% pseWellData.inputsData.forEach(process => { %>
-                                <div class="processDetail" id="<%= 'processDetail_' + process.input %>">
+                                <div class="processDetail <%= process.input == 1 ? 'divDetailsAddBorder' : null %>" id="<%= 'processDetail_' + process.input %>">
                                     <%= process.process %>
                                 </div>
                             <% }) %>
@@ -185,7 +189,7 @@
 
                 
 
-<div id="idWell" class="notVisible"><%= data.well.id %></div>
+<div id="idWell" class="notVisible"><%= data.idWell %></div>
 
 <script type="module" src="/js/pseTable.js"></script>
 

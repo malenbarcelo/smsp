@@ -21,8 +21,8 @@
         <% data.baseData.forEach(row => { %>
             <tr>
 
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.layer %></th>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer.id_layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.layer %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.id_layer %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.top %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.base %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.thickness %></th>
@@ -30,7 +30,7 @@
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.depo_until %></th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
-                    <select name="<%= 'id_lithology_' + row.id %>" id="" class=" <%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
+                    <select name="<%= 'id_lithology_' + row.id %>" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
                         <% data.lithologies.forEach(lithology => { %>
 
                             <% if (locals.oldData) { %>
@@ -48,9 +48,9 @@
                 </th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot.cot %></th>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.kinetic.cinetic %></th>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.hi.hi %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.kinetic.kinetic %></th>
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.hi %></th>
                 
             </tr>
         <% }) %>  

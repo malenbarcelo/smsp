@@ -2,6 +2,7 @@
     const processesData = [
         {
             'name': 'simulation',
+            'routeParam':'entry-data',
             'description': 'Carga de parámetros y datos de simulación',
             'chartsQtyPerPage': 1,
             'idEndProcessRoute':14,
@@ -10,18 +11,24 @@
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:26
+                        idExercises:26, //dev
+                        //idExercises:17, //prd
                     },
                     {
                         idWells:2,
-                        idExercises:27
+                        idExercises:27,
+                        //idExercises:18, //prd
                     },
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Datos Base',
+                        'alias':'base-data',
+                        'ejsTable':'baseData',
+                        'title':'Datos base',
                         'idRoute':2,
+                        'allowedAttemps':3,
                         'tables':[
                             {
                                 'tableName':'base_data',
@@ -29,43 +36,54 @@
                                 'columns':[
                                     {
                                         'columnName': 'top',
-                                        'idColumn':3
+                                        'idColumn':3,
+                                        'margin':0.05
                                     },
                                     {
                                         'columnName': 'base',
-                                        'idColumn':4
+                                        'idColumn':4,
+                                        'margin':0.05
                                     },
                                     {
                                         'columnName': 'thickness',
-                                        'idColumn':5
+                                        'idColumn':5,
+                                        'margin':0.02
                                     },
                                     {
                                         'columnName': 'depo_from',
-                                        'idColumn':6
+                                        'idColumn':6,
+                                        'margin':0.1
                                     },
                                     {
                                         'columnName': 'depo_until',
-                                        'idColumn':7
+                                        'idColumn':7,
+                                        'margin':0.1
                                     },
                                     {
                                         'columnName': 'id_lithologies',
-                                        'idColumn':8
+                                        'idColumn':8,
+                                        'margin':0
                                     },
                                     {
                                         'columnName': 'id_pse',
-                                        'idColumn':9
+                                        'idColumn':9,
+                                        'margin':0
                                     },
                                     {
-                                        'columnName': 'id_cot',
-                                        'idColumn':10
+                                        'columnName': 'cot',
+                                        'idColumn':10,
+                                        'margin':0.1
+                                        
                                     },
                                     {
-                                        'columnName': 'id_cinetic',
-                                        'idColumn':11
+                                        'columnName': 'id_kinetics',
+                                        'idColumn':11,
+                                        'margin':0
                                     },
                                     {
-                                        'columnName': 'id_hi',
-                                        'idColumn':12
+                                        'columnName': 'hi',
+                                        'idColumn':12,
+                                        'margin':0.1
                                     }                                    
                                 ]
                             }
@@ -74,19 +92,20 @@
                     {
                         'idStep':2,
                         'stepName':'2_Datos en pozo',
+                        'alias':'data-in-well',
+                        'ejsTable':'dataInWell',
+                        'title':'Datos en pozo',
                         'idRoute':3,
+                        'allowedAttemps':3,
                         'tables':[
                             {
                                 'tableName':'well_data_temp',
                                 'alias':'temp',
                                 'columns':[
                                     {
-                                        'columnName': 'depth',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'temperature',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     }
                                 ]
                             },
@@ -95,20 +114,19 @@
                                 'alias':'ro',
                                 'columns':[
                                     {
-                                        'columnName': 'depth',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'ro',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     },
                                     {
                                         'columnName': 'ro_min',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     },
                                     {
                                         'columnName': 'ro_max',
-                                        'idColumn':3
+                                        'idColumn':3,
+                                        'margin':0.05
                                     },
                                 ]
                             }
@@ -117,19 +135,20 @@
                     {
                         'idStep':3,
                         'stepName':'3_Condición de frontera',
+                        'alias':'boundary-condition',
+                        'ejsTable':'boundaryCondition',
+                        'title':'Cond. de frontera',
                         'idRoute':4,
+                        'allowedAttemps':3,
                         'tables':[
                             {
                                 'tableName':'boundary_condition_pwd',
                                 'alias':'pwd',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'pwd',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.1,
                                     }
                                 ]
                             },
@@ -138,12 +157,9 @@
                                 'alias':'hf',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'hf',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05,
                                     }
                                 ]
                             },
@@ -152,12 +168,9 @@
                                 'alias':'swit',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'swit',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05,
                                     }
                                 ]
                             },
@@ -176,24 +189,25 @@
                 {'id':8,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1'},
             ],
             'routes':[
-                {'id':1,'route':'/well','idIndexData':1},
-                {'id':2,'route':'/entry-data/base-data','idIndexData':2},
-                {'id':3,'route':'/entry-data/data-in-well','idIndexData':2},
-                {'id':4,'route':'/entry-data/boundary-condition','idIndexData':3},
-                {'id':5,'route':'/simulation/process','idIndexData':4},
-                {'id':6,'route':'/charts/temp-depth','idIndexData':4,'idChart':1},
-                {'id':7,'route':'/charts/ro-depth','idIndexData':4,'idChart':2},
-                {'id':8,'route':'/charts/ro-time','idIndexData':4,'idChart':3},
-                {'id':9,'route':'/charts/tr-time','idIndexData':4,'idChart':4},
-                {'id':10,'route':'/charts/ro-burial','idIndexData':4,'idChart':5},
-                {'id':11,'route':'/charts/tr-burial','idIndexData':4,'idChart':6},
-                {'id':12,'route':'/charts/oil-burial-sat','idIndexData':4,'idChart':7},
-                {'id':13,'route':'/charts/gas-burial-sat','idIndexData':4,'idChart':8},
-                {'id':14,'route':'/end-process','idIndexData':4}
+                {'id':1,'route':'/simulation/well','idIndexData':1},
+                {'id':2,'route':'/simulation/base-data','idIndexData':2},
+                {'id':3,'route':'/simulation/data-in-well','idIndexData':2},
+                {'id':4,'route':'/simulation/boundary-condition','idIndexData':3},
+                {'id':5,'route':'/simulation/simulation-data/process','idIndexData':4},
+                {'id':6,'route':'/simulation/charts/temp-depth','idIndexData':4,'idChart':1},
+                {'id':7,'route':'/simulation/charts/ro-depth','idIndexData':4,'idChart':2},
+                {'id':8,'route':'/simulation/charts/ro-time','idIndexData':4,'idChart':3},
+                {'id':9,'route':'/simulation/charts/tr-time','idIndexData':4,'idChart':4},
+                {'id':10,'route':'/simulation/charts/ro-burial','idIndexData':4,'idChart':5},
+                {'id':11,'route':'/simulation/charts/tr-burial','idIndexData':4,'idChart':6},
+                {'id':12,'route':'/simulation/charts/oil-burial-sat','idIndexData':4,'idChart':7},
+                {'id':13,'route':'/simulation/charts/gas-burial-sat','idIndexData':4,'idChart':8},
+                {'id':14,'route':'/simulation/end-process','idIndexData':4}
             ]
         },
         {
             'name': 'calibration',
+            'routeParam':'entry-data',
             'description': 'Calibración del modelo 1D',
             'chartsQtyPerPage': 2,
             'idEndProcessRoute':14,
@@ -202,11 +216,13 @@
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:28
+                        idExercises:19, //dev
+                        //idExercises:17, //prd
                     },
                     {
                         idWells:2,
-                        idExercises:29
+                        idExercises:20, //dev
+                        //idExercises:17, //prd
                     },
                 ],
                 'steps':[
@@ -214,18 +230,19 @@
                         'idStep':1,
                         'stepName':'1_Calibración condición de frontera',
                         'idRoute':1,
+                        'alias':'boundary-condition-calibration',
+                        'ejsTable':'boundaryConditionCalibration',
+                        'title':'Calibración Cond. de frontera',
+                        'allowedAttemps':3,
                         'tables':[
                             {
                                 'tableName':'boundary_condition_pwd_calibration',
                                 'alias':'pwd',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'pwd',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.1
                                     }
                                 ]
                             },
@@ -234,12 +251,9 @@
                                 'alias':'hf',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'hf',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     }
                                 ]
                             },
@@ -248,12 +262,9 @@
                                 'alias':'swit',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'swit',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     }
                                 ]
                             }
@@ -263,18 +274,19 @@
                         'idStep':2,
                         'stepName':'2_Calibración termal',
                         'idRoute':4,
+                        'alias':'thermal-calibration',
+                        'ejsTable':'thermalCalibration',
+                        'title':'Calibración termal',
+                        'allowedAttemps':3,
                         'tables':[
                             {
                                 'tableName':'thermal_calibration',
                                 'alias':'calibración termal',
                                 'columns':[
                                     {
-                                        'columnName': 'age',
-                                        'idColumn':1
-                                    },
-                                    {
                                         'columnName': 'hf',
-                                        'idColumn':2
+                                        'idColumn':2,
+                                        'margin':0.05
                                     }
                                 ]
                             }
@@ -321,25 +333,26 @@
                 ]},
             ],
             'routes':[
-                {'id':1,'route':'/boundary-condition-calibration','idIndexData':5},
-                {'id':2,'route':'/boundary-condition/process','idIndexData':5},
-                {'id':3,'route':'/charts/cali-pwd-swit','idIndexData':5,'idChart':1},
-                {'id':4,'route':'/thermal-calibration','idIndexData':6},
-                {'id':5,'route':'/thermal/process','idIndexData':6},
-                {'id':6,'route':'/charts/temp-depth','idIndexData':6,'idChart':2},
-                {'id':7,'route':'/charts/ro-depth','idIndexData':6,'idChart':3},
-                {'id':8,'route':'/charts/ro-time','idIndexData':6,'idChart':4},
-                {'id':9,'route':'/charts/tr-time','idIndexData':6,'idChart':5},
-                {'id':10,'route':'/charts/ro-burial','idIndexData':6,'idChart':6},
-                {'id':11,'route':'/charts/tr-burial','idIndexData':6,'idChart':7},
-                {'id':12,'route':'/charts/oil-burial-sat','idIndexData':6,'idChart':8},
-                {'id':13,'route':'/charts/gas-burial-sat','idIndexData':6,'idChart':9},
-                {'id':14,'route':'/end-process','idIndexData':6}
+                {'id':1,'route':'/calibration/boundary-condition-calibration','idIndexData':5},
+                {'id':2,'route':'/calibration/boundary-condition/process','idIndexData':5},
+                {'id':3,'route':'/calibration/charts/cali-pwd-swit','idIndexData':5,'idChart':1},
+                {'id':4,'route':'/calibration/thermal-calibration','idIndexData':6},
+                {'id':5,'route':'/calibration/thermal-calibration/process','idIndexData':6},
+                {'id':6,'route':'/calibration/charts/temp-depth','idIndexData':6,'idChart':2},
+                {'id':7,'route':'/calibration/charts/ro-depth','idIndexData':6,'idChart':3},
+                {'id':8,'route':'/calibration/charts/ro-time','idIndexData':6,'idChart':4},
+                {'id':9,'route':'/calibration/charts/tr-time','idIndexData':6,'idChart':5},
+                {'id':10,'route':'/calibration/charts/ro-burial','idIndexData':6,'idChart':6},
+                {'id':11,'route':'/calibration/charts/tr-burial','idIndexData':6,'idChart':7},
+                {'id':12,'route':'/calibration/charts/oil-burial-sat','idIndexData':6,'idChart':8},
+                {'id':13,'route':'/calibration/charts/gas-burial-sat','idIndexData':6,'idChart':9},
+                {'id':14,'route':'/calibration/end-process','idIndexData':6}
             ]
         },
         {
             'name': 'pse-table',
             'description': 'Elaboración de tabla resumen PSE',
+            'routeParam':'pse-table',
             'chartsQtyPerPage': 1,
             'idEndProcessRoute':3,
             'exercisesData':{
@@ -347,18 +360,23 @@
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:30
+                        idExercises:30, //dev
+                        //idExercises:21, //prd
                     },
                     {
                         idWells:2,
-                        idExercises:31
+                        idExercises:31, //dev
+                        //idExercises:22, //prd
                     },
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Tabla PSE',
-                        'idRoute':2
+                        'alias':'pse-table',
+                        'title':'Tabla PSE',
+                        'idRoute':2,
+                        'allowedAttemps':3,
                     }
                 ]
             },
@@ -369,12 +387,13 @@
             'routes':[
                 {'id':1,'route':'/charts/ro-time','idIndexData':7,'idChart':1},
                 {'id':2,'route':'/pse-summary-table','idIndexData':7},
-                {'id':3,'route':'/end-process','idIndexData':7}
+                {'id':3,'route':'/pse-table/end-process','idIndexData':7}
             ]
         },
         {
             'name': 'toc-sensibility',
             'description': 'Sensibilidad contenido orgánico total (TOC)',
+            'routeParam':'sensibility',
             'chartsQtyPerPage': 2,
             'idEndProcessRoute':3,
             'exercisesData':{
@@ -382,14 +401,32 @@
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:32
+                        idExercises:32, //dev
+                        //idExercises:23, //prd
                     }
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Sensibilidad TOC',
-                        'idRoute':1
+                        'alias':'toc-sensibility',
+                        'ejsTable':'tocSensibility',
+                        'title':'Sensibilidad TOC',
+                        'idRoute':2,
+                        'allowedAttemps':3,
+                        'tables':[
+                            {
+                                'tableName':'toc_sensibility',
+                                'alias':'toc',
+                                'columns':[
+                                    {
+                                        'columnName': 'cot',
+                                        'idColumn':9,
+                                        'margin':0.1,
+                                    }                   
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -405,16 +442,17 @@
             ],
             'routes':[
                 {'id':1,'route':'/sensibility-exercises','idIndexData':8},
-                {'id':2,'route':'/toc','idIndexData':8},
-                {'id':3,'route':'/toc/process','idIndexData':8},
-                {'id':4,'route':'/charts/oil-burial-sat','idIndexData':8,'idChart':1},
-                {'id':5,'route':'/charts/gas-burial-sat','idIndexData':8,'idChart':2},
-                {'id':6,'route':'/end-process','idIndexData':8}
+                {'id':2,'route':'/toc-sensibility','idIndexData':8},
+                {'id':3,'route':'/toc-sensibility/toc/process','idIndexData':8},
+                {'id':4,'route':'/toc-sensibility/charts/oil-burial-sat','idIndexData':8,'idChart':1},
+                {'id':5,'route':'/toc-sensibility/charts/gas-burial-sat','idIndexData':8,'idChart':2},
+                {'id':6,'route':'/toc-sensibility/end-process','idIndexData':8}
             ]
         },
         {
             'name': 'hi-sensibility',
             'description': 'Sensibilidad índice de hidrógeno (HI)',
+            'routeParam':'sensibility',
             'chartsQtyPerPage': 2,
             'idEndProcessRoute':3,
             'exercisesData':{
@@ -422,14 +460,32 @@
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:33
+                        idExercises:33, //dev
+                        //idExercises:24, //prd
                     }
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Sensibilidad HI',
-                        'idRoute':1
+                        'alias':'hi-sensibility',
+                        'ejsTable':'hiSensibility',
+                        'title':'Sensibilidad HI',
+                        'idRoute':1,
+                        'allowedAttemps':3,
+                        'tables':[
+                            {
+                                'tableName':'hi_sensibility',
+                                'alias':'hi',
+                                'columns':[
+                                    {
+                                        'columnName': 'hi',
+                                        'idColumn':11,
+                                        'margin':0.1,
+                                    }                   
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -444,30 +500,49 @@
                 ]},
             ],
             'routes':[
-                {'id':1,'route':'/hi','idIndexData':8},
-                {'id':2,'route':'/hi/process','idIndexData':8},
-                {'id':3,'route':'/charts/oil-burial-sat','idIndexData':8,'idChart':1},
-                {'id':4,'route':'/charts/gas-burial-sat','idIndexData':8,'idChart':2},
-                {'id':5,'route':'/end-process','idIndexData':8}
+                {'id':1,'route':'/hi-sensibility','idIndexData':8},
+                {'id':2,'route':'/hi-sensibility/hi/process','idIndexData':8},
+                {'id':3,'route':'/hi-sensibility/charts/oil-burial-sat','idIndexData':8,'idChart':1},
+                {'id':4,'route':'/hi-sensibility/charts/gas-burial-sat','idIndexData':8,'idChart':2},
+                {'id':5,'route':'/hi-sensibility/end-process','idIndexData':8}
             ]
         },
         {
             'name': 'kinetic-sensibility',
             'description': 'Sensibilidad cinética del modelo',
+            'routeParam':'sensibility',
             'idEndProcessRoute':13,
             'exercisesData':{
                 'exerciseName': 'Sensibilidad cinética del modelo',
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:34
+                        idExercises:34, //dev
+                        //idExercises:25, //prd
                     }
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Sensibilidad Cinética',
-                        'idRoute':1
+                        'alias':'kinetic-sensibility',
+                        'ejsTable':'kineticSensibility',
+                        'title':'Sensibilidad Cinética',
+                        'idRoute':1,
+                        'allowedAttemps':3,
+                        'tables':[
+                            {
+                                'tableName':'kinetic_sensibility',
+                                'alias':'kinetic',
+                                'columns':[
+                                    {
+                                        'columnName': 'id_kinetics',
+                                        'idColumn':10,
+                                        'margin':0,
+                                    }                   
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -484,32 +559,51 @@
                 ]},
             ],
             'routes':[
-                {'id':1,'route':'/kinetic','idIndexData':8},
-                {'id':2,'route':'/kinetic/process','idIndexData':8},
-                {'id':3,'route':'/charts/oil-burial-sat','idIndexData':8,'idChart':1},
-                {'id':4,'route':'/charts/gas-burial-sat','idIndexData':8,'idChart':2},
-                {'id':5,'route':'/charts/oil-burial-sat-comp','idIndexData':8,'idChart':3},
-                {'id':6,'route':'/charts/gas-burial-sat-comp','idIndexData':8,'idChart':4},
-                {'id':7,'route':'/end-process','idIndexData':8},
+                {'id':1,'route':'/kinetic-sensibility','idIndexData':8},
+                {'id':2,'route':'/kinetic-sensibility/kinetic/process','idIndexData':8},
+                {'id':3,'route':'/kinetic-sensibility/charts/oil-burial-sat','idIndexData':8,'idChart':1},
+                {'id':4,'route':'/kinetic-sensibility/charts/gas-burial-sat','idIndexData':8,'idChart':2},
+                {'id':5,'route':'/kinetic-sensibility/charts/oil-burial-sat-comp','idIndexData':8,'idChart':3},
+                {'id':6,'route':'/kinetic-sensibility/charts/gas-burial-sat-comp','idIndexData':8,'idChart':4},
+                {'id':7,'route':'/kinetic-sensibility/end-process','idIndexData':8},
             ]
         },
         {
             'name': 'lithology-sensibility',
             'description': 'Sensibilidad cambio de litología',
+            'routeParam':'sensibility',
             'idEndProcessRoute':13,
             'exercisesData':{
                 'exerciseName': 'Sensibilidad cambio de litología',
                 'idExercise': [
                     {
                         idWells:1,
-                        idExercises:35
+                        idExercises:36, //dev
+                        //idExercises:26, //prd
                     }
                 ],
                 'steps':[
                     {
                         'idStep':1,
                         'stepName':'1_Sensibilidad Litología',
-                        'idRoute':1
+                        'alias':'lithology-sensibility',
+                        'ejsTable':'lithologySensibility',
+                        'title':'Sensibilidad Litología',
+                        'idRoute':1,
+                        'allowedAttemps':3,
+                        'tables':[
+                            {
+                                'tableName':'lithology_sensibility',
+                                'alias':'lithology',
+                                'columns':[
+                                    {
+                                        'columnName': 'id_lithology',
+                                        'idColumn':7,
+                                        'margin':0,
+                                    }                   
+                                ]
+                            }
+                        ]
                     }
                 ]
             },
@@ -526,18 +620,15 @@
                 ]},
             ],
             'routes':[
-                {'id':1,'route':'/lithology','idIndexData':8},
-                {'id':2,'route':'/lithology/process','idIndexData':8},
-                {'id':3,'route':'/charts/oil-burial-sat','idIndexData':8,'idChart':1},
-                {'id':4,'route':'/charts/gas-burial-sat','idIndexData':8,'idChart':2},
-                {'id':5,'route':'/charts/oil-burial-sat-comp','idIndexData':8,'idChart':3},
-                {'id':6,'route':'/charts/gas-burial-sat-comp','idIndexData':8,'idChart':4},
-                {'id':7,'route':'/end-process','idIndexData':8},
+                {'id':1,'route':'/lithology-sensibility','idIndexData':8},
+                {'id':2,'route':'/lithology-sensibility/lithology/process','idIndexData':8},
+                {'id':3,'route':'/lithology-sensibility/charts/oil-burial-sat','idIndexData':8,'idChart':1},
+                {'id':4,'route':'/lithology-sensibility/charts/gas-burial-sat','idIndexData':8,'idChart':2},
+                {'id':5,'route':'/lithology-sensibility/charts/oil-burial-sat-comp','idIndexData':8,'idChart':3},
+                {'id':6,'route':'/lithology-sensibility/charts/gas-burial-sat-comp','idIndexData':8,'idChart':4},
+                {'id':7,'route':'/lithology-sensibility/end-process','idIndexData':8},
             ]
-        },
-        
+        }
     ]
-
-       
 
 module.exports = processesData

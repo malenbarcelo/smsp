@@ -1,4 +1,5 @@
 <%- include('./partials/head') %>
+<%- include('./partials/userLogged') %>
 
 <body class="gridBody">
 
@@ -10,7 +11,7 @@
 
         <div class="gridItem4 gridItemTable">
             
-            <form action="<%= data.route %>" method="POST">
+            <form action="<%= routes.route %>" method="POST">
 
                 <div class="divTables">
                     <%- include('./tables/' + ejsTable) %>

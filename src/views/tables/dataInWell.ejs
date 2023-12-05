@@ -13,8 +13,8 @@
     <tbody>
         <% data.wellDataTemp.forEach(row => { %>
             <tr>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('temp_depth_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('temp_depth_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'temp_depth_' + row.id %>" value="<%= locals.oldData ? oldData['temp_depth_' + row.id] : null %>" autocomplete="off">
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                    <%= row.depth %>
                 </th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>">
@@ -47,8 +47,8 @@
     <tbody>
         <% data.wellDataRo.forEach(row => { %>
             <tr>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_depth_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_depth_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_depth_' + row.id %>" value="<%= locals.oldData ? oldData['ro_depth_' + row.id] : null %>" autocomplete="off">
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                    <%= row.depth %>
                 </th>
 
                 <% if (data.well.id == 1) { %>

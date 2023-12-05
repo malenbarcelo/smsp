@@ -1,24 +1,14 @@
 const db = require('../../database/models')
 const wellsQueries = require('./dbQueries/wellsQueries')
 const exercisesAnswersQueries = require('./dbQueries/exercisesAnswersQueries')
+const sessionsQueries = require('./dbQueries/sessionsQueries')
 const pseQueries = require('./dbQueries/pseQueries')
 const processesData = require('./data/processesData')
 const indexData = require('./data/indexData')
 const fetch = require('node-fetch')
 const {apiUrlUsers} = require('../controllers/data/schemasimData')
 const {validationResult} = require('express-validator')
-
-//get DB Data
-async function getData(processName,idRoute,idWell){
-  const wells = await wellsQueries.allWells()
-  const processData = processesData.filter(process => process.name == processName)[0]  
-  const idContinueRoute = idRoute + 1
-  const idBackRoute = idRoute - 1
-  const continueRoute = '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idContinueRoute)[0].route
-  const backRoute = idBackRoute == 0 ? 'NA' : '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idBackRoute)[0].route
-  const data = {wells,indexData,processData,idWell,idRoute,continueRoute,backRoute}
-  return data
-}
+const {getRoutes,getResumedData} = require('./functions/getProcessData')
 
 const indexController = {
   index: async(req,res) =>{
@@ -68,35 +58,65 @@ const indexController = {
 
       req.session.userLogged = userToLogin
 
-      const processData = processesData.filter(process => process.name == processName)[0]
-      
+      //get process data
+      const processData = processesData.filter(process => process.name == processName)[0]      
       const continueRoute = processData.routes[0].route
-
       const exerciseName = processData.exercisesData.exerciseName
+      const idExercise = processData.exercisesData.idExercise.filter(exercise => exercise.idWells == idWell)[0].idExercises
+      const routeParam = processData.routeParam
 
+      ///store session data
+      //delete user session data if exists
+      await sessionsQueries.deleteSessionData(userToLogin.id_user,idWell,idExercise)
+      //create new session
+      await sessionsQueries.createSession(userToLogin.id_user,idWell,idExercise)
+      
       //delete exercises data from database
       await exercisesAnswersQueries.deleteExercisesAnswers(userToLogin.id_user,idWell,exerciseName)
-
+      
       //if process is PSE table, then restablish pse_data_saved data
       await pseQueries.restablishData(userToLogin.id_user,idWell)
 
-      return res.redirect('/' + processName + '/' + idWell + continueRoute)
+      return res.redirect('/' + routeParam + '/' + idWell + continueRoute)
 
     }catch(error){
       console.log(error)
       return res.send('Ha ocurrido un error')
     }
   },
+  logout: (req,res) => {
+
+    const processName = req.params.processName
+    const idWell = req.params.idWell
+
+    console.log(processName)
+
+    req.session.destroy()
+
+    return res.redirect('/login/' + processName + '/' + idWell)
+    
+  },
   well: async(req,res) =>{
     try{
 
+      //specific info
       const idRoute = 1
-      const processName = req.params.processName
+      const title = 'Pozo'
+      const routeParam = 'entry-data'
+
+      //get info to render
       const idWell = req.params.idWell
 
-      const data = await getData(processName,idRoute,idWell)
+      const processName = req.params.processName
+      
+      const data = await getResumedData(idWell,processName)
+      
+      const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
+      
+      const idIndexData = data.processData.routes[idRoute - 1].idIndexData
 
-      return res.render('well',{title:'Pozo',data})
+      return res.render('well',{title,data,idIndexData,routes,processName,
+        idWell})
 
     }catch(error){
       console.log(error)
@@ -106,25 +126,25 @@ const indexController = {
   process: async(req,res) =>{
     try{
 
-      var idRoute = 2
+      //specific info
+      const title = 'Simulación en progreso'
+      
+      //get info to render
+      const idWell = req.params.idWell
       const processName = req.params.processName
       const processDesc = req.params.processDesc
+      
+      const data = await getResumedData(idWell,processName)
 
-      if (processDesc == 'thermal' || processDesc == 'simulation') {
-        idRoute = 5
-      }
-      if (processDesc == 'toc') {
-        idRoute = 3
-      }
-      if (processDesc == 'kinetic-2' || processDesc == 'lithology-2') {
-        idRoute = 7
-      }
+      const routeParam = data.processData.routeParam      
 
-      const idWell = req.params.idWell
+      const idRoute = data.processData.routes.filter(route => route.route.split('/')[1] == processName && route.route.split('/')[2] == processDesc && route.route.split('/')[3] == 'process' )[0].id
 
-      const data = await getData(processName,idRoute,idWell)
+      const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
 
-      return res.render('process',{title:'Simulación en progreso',data})
+      const idIndexData = data.processData.routes[idRoute - 1].idIndexData
+
+      return res.render('process',{title,data,routes,idIndexData,processName,idWell})
 
     }catch(error){
       console.log(error)
@@ -145,7 +165,15 @@ const indexController = {
 
       const exerciseAnswers = await exercisesAnswersQueries.findAnswers(idUser,idWell,exerciseName)
 
-      return res.render('endProcess',{title:'Fin del proceso',data,exerciseAnswers})
+      let gradesSum = 0
+
+      exerciseAnswers.forEach(answer => {
+          gradesSum += parseFloat(answer.grade,2)
+      })
+
+      const grade = gradesSum / exerciseAnswers.length
+
+      return res.render('endProcess',{title:'Fin del proceso',data,exerciseAnswers,grade,processName,idWell})
 
     }catch(error){
       console.log(error)

@@ -11,6 +11,7 @@
             'divElementWidth':72,
             'tableData':[
                 {
+                    'id':1,
                     'element':'Roca Sobrecarga',
                     'from':99.5,
                     'to':0,
@@ -34,6 +35,7 @@
                     ]
                 },
                 {
+                    'id':2,
                     'element':'Roca Sello',
                     'from':70.6,
                     'to':33.9,
@@ -47,6 +49,7 @@
                     ]
                 },
                 {
+                    'id':3,
                     'element':'Roca Yacimiento',
                     'from':89.3,
                     'to':70.6,
@@ -66,6 +69,7 @@
                 },
                 {
                     'element':'Roca Fuente',
+                    'id':4,
                     'from':112,
                     'to':28.4,
                     'color':'#303030',
@@ -137,6 +141,7 @@
             'processDetailsTop': 132,
             'tableData':[
                 {
+                    'id':1,
                     'element':'Roca Sobrecarga',
                     'from':145,
                     'to':0,
@@ -156,6 +161,7 @@
                 },
                 {
                     'element':'Roca Sello',
+                    'id':2,
                     'from':11.6,
                     'to':3.6,
                     'color':'#8420BE',
@@ -179,6 +185,7 @@
                 },
                 {
                     'element':'Roca Yacimiento',
+                    'id':3,
                     'from':13,
                     'to':3.8,
                     'color':'#FFC904',
@@ -202,6 +209,7 @@
                 },
                 {
                     'element':'Roca Fuente',
+                    'id':4,
                     'from':152,
                     'to':145,
                     'color':'#303030',
@@ -214,6 +222,7 @@
                     ]
                 },
                 {
+                    'id':5,
                     'element':'Roca Bajocarga',
                     'from':220,
                     'to':152,
@@ -236,7 +245,6 @@
                     'to_value': 0,
                     'from_is_invalid':0,
                     'to_is_invalid':0
-                    
                 },
                 {
                     'input':2,

@@ -16,6 +16,9 @@ window.addEventListener('load',async()=>{
     //define processes data
     let processes = []
     for (let i = 1; i <= inputsData.length; i++) {
+
+        const from = inputsData[i-1].from_value > 200 ? 200 : inputsData[i-1].from_value
+
         processes.push(
             {
                 'id':i,
@@ -24,14 +27,14 @@ window.addEventListener('load',async()=>{
                 'color':inputsData[i-1].color,
                 'arrowUp':'up_' + i,
                 'arrowDown':'down_' + i,
-                'from':inputsData[i-1].from_value,
+                'from':from,
                 'to':inputsData[i-1].to_value,
-                'width':parseFloat((inputsData[i-1].from_value - inputsData[i-1].to_value)*divWidth/years,1),
+                'width':parseFloat((from - inputsData[i-1].to_value)*divWidth/years,1),
                 'right':parseFloat(inputsData[i-1].to_value*divWidth/years,1),
                 'fromIsInvalid':inputsData[i-1].from_is_invalid,
                 'toIsInvalid':inputsData[i-1].to_is_invalid
             }
-        )
+        )   
     }
     
     //get all inputs, moveUps, moveDowns and colors
@@ -167,8 +170,10 @@ window.addEventListener('load',async()=>{
             let right = processes[idProcessToEdit-1].right
 
             if (typeOfInput == 'from') {
+
+                const fromValue = input.value > 200 ? 200 : input.value
                 processes[idProcessToEdit-1].from = input.value
-                width = parseFloat((input.value - processes[idProcessToEdit-1].to)*divWidth/years,1)  
+                width = parseFloat((fromValue - processes[idProcessToEdit-1].to)*divWidth/years,1)  
                 processes[idProcessToEdit-1].width = width
             }else{
                 processes[idProcessToEdit-1].to = input.value

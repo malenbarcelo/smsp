@@ -145,6 +145,24 @@
     margin-left: 13%;
 }
 
+/*---userLogged---*/
+.userLogged{
+    text-align: right;
+    z-index: 100;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+.logout{
+    color: rgb(77, 77, 246);
+}
+
+.userLoggedName{
+    color:var(--color2)
+}
+
+
 @media (max-width:1350px){
     .contentText1{
         font-size: var(--fontSize2);

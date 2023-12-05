@@ -3,69 +3,31 @@ const sequelize = require('sequelize')
 const exercisesAnswersQueries = require('../dbQueries/exercisesAnswersQueries')
 const {simulatorsData} = require('../data/schemasimData')
 const bcrypt = require('bcryptjs')
+const sessionsQueries = require('../dbQueries/sessionsQueries')
 
 const exercisesAnswers = {
 
-    entryData: async(data,idRoute,idUser,errors) => {
+    saveAnswers: async(data,stepData,idUser,errors,idWell,idExercise,observations) => {
 
-        const stepsData = data.processData.exercisesData.steps
-
-        const step = stepsData.filter(stepData => stepData.idRoute == idRoute)[0]
-        const tables = step.tables
         const exerciseName = data.processData.exercisesData.exerciseName
-        const stepName = step.stepName
-        const idWell = data.well.id        
-        let observations = tables.length == 1 ? (tables[0].alias + ' = ') : ''
-
+        const stepName = stepData.stepName
+        const allowedAttemps = stepData.allowedAttemps
+        
         const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
 
-        //write observations if corresponds...if errors > 10 resume data
-        let errorsResumed = []
-        if (errors.length > 10) {
-            errorsResumed = errors.slice(0, 9)
-            const lastError = errors[errors.length-1]
-            errorsResumed.push(lastError)
-        }else{
-            errorsResumed = errors
-        }
+        //create or update exercises answers table
+        const stepSession = await sessionsQueries.findStepSession(idUser,idWell,idExercise,stepName)
 
-        errorsResumed.forEach((error,i) => {
-
-            const errorData = error.split('_')
-                        
-            const errorAlias = tables.length == 1 ? tables[0].alias : errorData[0]
-            const rowNumber = errorData[errorData.length-1]
-          
-            if (tables.length != 1) {
-                errorData.shift()
-            }
-            
-            errorData.pop()
-            
-            const errorColumn = errorData.join('_')
-          
-            const table = tables.filter(table => table.alias == errorAlias)[0]            
-
-            const columnNumber = table.columns.filter(column => column.columnName == errorColumn)[0].idColumn
-
-            if (i == 9 && errors.length > errorsResumed.length) {
-                observations += '...'
-            }
-
-            if (tables.length == 1) {
-                observations += '[C:' + columnNumber + ' F:' + rowNumber + ']'
-            }else{
-                observations += (observations != '' ? ', ' : '') + errorAlias + ' = [C:' + columnNumber + ' F:' + rowNumber + ']'
-            }
-        })
-
-        //create or update exercises answers tables
         if (findStep.length == 0) {
             const stepAnswer = {
                 'id_wells': idWell,
                 'id_users': idUser,
                 'exercise': exerciseName,
+                'grade':errors.length == 0 ? 100 : (parseFloat(100 - (100 / stepData.allowedAttemps),2)),
                 'step': stepName,
+                'login':stepSession.login, //login time
+                'logout':errors.length != 0 ? null : new Date().getTime(), //logout time
+                'logTime':errors.length != 0 ? null : ((new Date().getTime() - stepSession.login)/1000), //log time in secs
                 'type': errors.length == 0 ? 'Paso realizado correctamente' : 'Error',
                 'observations': errors.length == 0 ? '' : 'INTENTO ' + (findStep.length + 1) + ': ' + observations,
                 'try':1
@@ -78,62 +40,66 @@ const exercisesAnswers = {
 
             const idStepAnswers = findStep[0].id
             const tryNumber = findStep.length == 0 ? 1 : (findStep[0].try + 1)
-            const newObservations = findStep[0].observations + '\n' + 'INTENTO ' + tryNumber + ': ' + (errors.length == 0 ? 'Paso realizado correctamente' : observations)
-            
-            //update data in database
-            await exercisesAnswersQueries.updateStepAnswer(idStepAnswers,tryNumber,newObservations)
-        }
-    },
-    pseAndSensibility: async(idWell,idUser,exerciseName,stepName,observations,errors) => {
+            let newObservations = findStep[0].observations
 
-        const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
-
-        //create or update exercises answers tables
-        if (findStep.length == 0) {
-            const stepAnswer = {
-                'id_wells': idWell,
-                'id_users': idUser,
-                'exercise': exerciseName,
-                'step': stepName,
-                'type': errors.length == 0 ? 'Paso realizado correctamente' : 'Error',
-                'observations': errors.length == 0 ? '' : 'INTENTO ' + (findStep.length + 1) + ': ' + observations,
-                'try':1
+            if (tryNumber == allowedAttemps + 1 ) {
+                newObservations += '\n' + 'Supera cantidad de intentos'
+            }
+            if (tryNumber <= allowedAttemps) {
+                newObservations += '\n' + 'INTENTO ' + tryNumber + ': ' + (errors.length == 0 ? 'Paso realizado correctamente' : observations)
             }
 
-            //create data in database
-            await exercisesAnswersQueries.saveStepAnswer(stepAnswer)
-
-        } else{
-
-            const idStepAnswers = findStep[0].id
-            const tryNumber = findStep.length == 0 ? 1 : (findStep[0].try + 1)
-            const newObservations = findStep[0].observations + '\n' + 'INTENTO ' + tryNumber + ': ' + (errors.length == 0 ? 'Paso realizado correctamente' : observations)
+            let grade = findStep[0].grade
+            
+            //get grade
+            if (tryNumber >= stepData.allowedAttemps && errors.length > 0) {
+                grade = 0
+            }
+            if (tryNumber < stepData.allowedAttemps && errors.length > 0) {
+                grade = (parseFloat(100 - ((100 / stepData.allowedAttemps) * tryNumber),2))
+            }
             
             //update data in database
-            await exercisesAnswersQueries.updateStepAnswer(idStepAnswers,tryNumber,newObservations)
+            const login = findStep[0].login //login time
+            const logout = new Date().getTime() //logout time
+            const logTime = (logout - login)/1000 //log time in secs
+            await exercisesAnswersQueries.updateStepAnswer(idStepAnswers,tryNumber,newObservations,grade,logout,logTime)
         }
     },
-    bodyToPost: async(data,idUser,token) => {
+    bodyToPost: async(data,idWell,idUser,token,idExercise) => {
 
         const exerciseName = data.processData.exercisesData.exerciseName
-        const idWell = data.well.id
         const date = new Date()
         const timestamp = date.getTime()
-        const idsExercise = data.processData.exercisesData.idExercise
-        const idExercise = idsExercise.filter(exercise => exercise.idWells == idWell)[0].idExercises
-
+        
         const simulatorId = simulatorsData.filter(simulator => simulator.idWell == idWell)[0].simulatorId
 
         //get all exercise steps
         const exerciseAnswers = await exercisesAnswersQueries.findAnswers(idUser,idWell,exerciseName)
+        
+        //calculate grade
+        let gradesSum = 0
 
+        exerciseAnswers.forEach(answer => {
+            gradesSum += parseFloat(answer.grade,2)
+        })
+
+        const grade = gradesSum / exerciseAnswers.length
+
+        //calculate log_time
+        const session = await sessionsQueries.findSession(idUser,idWell,idExercise)
+        const login = session.login
+        const logout = new Date().getTime()
+        const durationSecs = (logout - login)/1000
+
+        //create body to post
         const body = {
           'id_exercises':idExercise,
           'id_users':idUser,
           'id_simulators': simulatorId,
           'date':timestamp,
-          'grade':85.00,
-          'duration_secs':780,
+          'grade':grade,
+          'duration_secs':parseInt(durationSecs),
           'token_hashed':bcrypt.hashSync(token,10),
           'answers':[]
         }
@@ -141,13 +107,11 @@ const exercisesAnswers = {
         exerciseAnswers.forEach(answer => {
             body.answers.push({
                 'description':answer.step,
-                'log_time':0,
+                'log_time':answer.log_time,
                 'type':answer.type,
                 'observations':answer.observations
-            })
-            
+            })            
         })
-
           return body
         
       }

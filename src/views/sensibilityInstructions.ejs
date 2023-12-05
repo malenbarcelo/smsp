@@ -1,12 +1,15 @@
 <%- include('./partials/head') %>
+<%- include('./partials/userLogged') %>
 
 <body class="gridBody">
-    <div class="gridContainer3">
-        <div class="gridItem3">
+
+    <div class="gridContainer4">
+
+        <div class="gridItem4">
             <%- include('./partials/header') %>
         </div>
 
-        <div class="gridItem3">
+        <div class="gridItem4 gridItemTable">
 
             <div class="title2">Ejercicios de Sensibilidad</div>
 
@@ -37,10 +40,12 @@
                             </li>
                             <li class="instructionsLi">Comparativo: Original-Tissot en Saturación de gas
                             </li>
+                            
                         </ul>
                     </li>
+                    
                 </ul>
-            
+
                 <ul class="instructionsUl">
                     <li class="instructionsLi2">
                         <h3 class="instructionsTitle">D.4 Cambios en litología Shale-black por Sandstone-clay-rich</h3>
@@ -52,16 +57,13 @@
                         </ul>
                     </li>
                 </ul>
-            
             </div>
-
-            <div class="divButtons">
-                    <div class="button1">
-                        <a href="<%= data.continueRoute %>">
-                            Continuar
-                        </a>
-                    </div>
-                </a>
+            <div class="divButtons divInstructionsButton">
+                <div class="button5">
+                    <a href="<%= continueRoute %>">
+                        Continuar
+                    </a>
+                </div>
             </div>
         </div>
     </div>

@@ -1,35 +1,15 @@
 const wellsQueries = require('./dbQueries/wellsQueries')
-const baseDataQueries = require('./dbQueries/baseDataQueries')
+const sessionsQueries = require('./dbQueries/sessionsQueries')
 const pseQueries = require('./dbQueries/pseQueries')
 const processesData = require('./data/processesData')
 const indexData = require('./data/indexData')
 const validations = require('./data/validations')
 const pseData = require('./data/pseTablesData')
-const {pseAndSensibility, bodyToPost} = require('./functions/exercisesAnswers')
+const {saveAnswers, bodyToPost} = require('./functions/exercisesAnswers')
 const fetch = require('node-fetch')
 const {apiUrlExercises} = require('./data/schemasimData')
-
-//get DB Data
-async function getData(idWell,idRoute){
-
-  //well data
-  const well = await wellsQueries.wellName(idWell)
-  const baseData = await baseDataQueries.baseData(idWell)
-  
-  //processes data
-  const processName='pse-table'
-  const processData = processesData.filter(process => process.name == processName)[0]
-
-  const idContinueRoute = parseInt(idRoute) + 1
-
-  const idBackRoute = parseInt(idRoute) - 1
-  const continueRoute = '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idContinueRoute)[0].route
-  const backRoute = idBackRoute == 0 ? 'NA' : '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idBackRoute)[0].route
-
-  const data = {processData,continueRoute,backRoute,indexData,idRoute,well,baseData}
-
-  return data
-}
+const {getRoutes,getResumedData} = require('./functions/getProcessData')
+const exercisesAnswersQueries = require('./dbQueries/exercisesAnswersQueries')
 
 const pseTableController = {
   pseTable: async(req,res) =>{
@@ -38,10 +18,15 @@ const pseTableController = {
       const idRoute = 2
       let validation = 'fail'
       idUser = req.session.userLogged.id_user
-
-      const data = await getData(idWell,idRoute)
+      const idIndexData = 7
+      const routeParam = 'pse-table'
+      const processName = 'pse-table'
+      const data = await getResumedData(idWell,processName)
+      const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const pseInputsData = await pseQueries.pseInputsData(idWell,idUser)
       const pseWellData = pseData.filter(data => data.idWell == idWell)[0]
+      const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
+      const exerciseName = data.processData.exercisesData.exerciseName
       
       data.chartData = {
         'idChartsMenu':1
@@ -55,12 +40,43 @@ const pseTableController = {
 
       pseWellData.tableData.forEach(element => {
         element.ranges.forEach(range => {
+          const from = range.from > 200 ? 200 : range.from //because Jurasico goes up to 200
           range.right = (range.to * (pseWidth / ma)).toFixed(3)
-          range.width = ((range.from - range.to) * (pseWidth / ma)).toFixed(3)
+          range.width = ((from - range.to) * (pseWidth / ma)).toFixed(3)
         })
-      }) 
+      })
 
-      return res.render('pseTable',{title:'Tabla Resumen PSE',data,validation,pseInputsData,pseWellData})
+      //create step session
+      const login = new Date().getTime() //login time
+      const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
+      const stepName = stepData.stepName
+      await sessionsQueries.deleteStepSessionData(idUser,idWell,idExercise,stepName) //delete session if exists
+      await sessionsQueries.createStepSession(idUser,idWell,idExercise,stepName,login) //create new session
+
+      //findout if pse table data has already been completed and passed
+      const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
+      const findPseDataSaved = await pseQueries.pseInputsData(idWell,idUser)
+      let errors = 0
+      findPseDataSaved.forEach(element => {
+        if (element.from_is_invalid == 1 || element.to_is_invalid == 1) {
+          errors += 1
+        }
+      })
+      
+      if (findStep.length != 0 && errors == 0) {
+        validation = 'passed'
+      }
+
+      return res.render('pseTable',{
+        title:'Tabla Resumen PSE',
+        data,
+        validation,
+        pseInputsData,
+        pseWellData,
+        idIndexData,
+        routes,
+        processName,
+        idWell})
 
     }catch(error){
       console.log(error)
@@ -73,13 +89,19 @@ const pseTableController = {
       const idWell = req.params.idWell
       const idRoute = 2
       let validation = 'fail'
+      const routeParam = 'pse-table'
+      const processName = 'pse-table'
       const pseWellData = pseData.filter(data => data.idWell == idWell)[0]
-      const data = await getData(idWell,idRoute)
+      const data = await getResumedData(idWell,processName)
+      const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
       const idUser = req.session.userLogged.id_user
       const token = req.session.userLogged.tokenHashed
       const stepName = data.processData.exercisesData.steps[0].stepName
       const exerciseName = data.processData.exercisesData.exerciseName
-            
+      const idIndexData = 7
+      const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
+      const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
+      
       //add info to data
       data.chartData = {
         'idChartsMenu': 1
@@ -135,13 +157,13 @@ const pseTableController = {
       //save data in pse_data_saved
       await pseQueries.pseSaveData(idWell,idUser,body)
 
-      //save data in exercises_answers
-      await pseAndSensibility(idWell, idUser, exerciseName, stepName, observations,errors)
+      //save exercises answers
+      await saveAnswers(data,stepData,idUser,errors,idWell,idExercise,observations)
 
       //post info to schemasim
       if (errors.length == 0) {
 
-        const body = await bodyToPost(data,idUser,token)
+        const body = await bodyToPost(data,idWell,idUser,token,idExercise)
 
         const options = {
             method: 'POST',
@@ -165,7 +187,11 @@ const pseTableController = {
         data,
         validation,
         pseInputsData,
-        pseWellData
+        pseWellData,
+        idIndexData,
+        routes,
+        processName,
+        idWell
     })
 
     }catch(error){
@@ -180,16 +206,18 @@ const pseTableController = {
       const chartRouteParam = req.params.chartRouteParam
       const well = await wellsQueries.wellName(idWell)
       const processData = processesData.filter(process => process.name == 'pse-table')[0]
+      const processName = 'pse-table'
       const chartData = processData.charts.filter(chart => chart.routeParam == chartRouteParam)[0]
       const idRoute = processData.routes.filter(route => route.idChart == chartData.id)[0].id
-      const idContinueRoute = parseInt(idRoute) + 1
-      var idBackRoute = parseInt(idRoute) - 1
-      const continueRoute = '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idContinueRoute)[0].route
-      const backRoute = idBackRoute == 0 ? 'NA' : '/' + processData.name + '/' + idWell + processData.routes.filter(route => route.id == idBackRoute)[0].route
+      const routeParam = 'pse-table'
       
-      const data = {well,processData,continueRoute,backRoute,indexData,idRoute,chartData}
+      const routes = await getRoutes(idRoute,idWell,processData,routeParam)
 
-      return res.render('charts',{title:chartData.title,data})
+      const data = {well,processData,chartData}
+
+      const idIndexData = indexData.id
+
+      return res.render('charts',{title:chartData.title,data,routes,idIndexData,processName,idWell})
 
     }catch(error){
       console.log(error)

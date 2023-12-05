@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
          autoIncrement : true,
          allowNull: false
       },
-      id_layers:{
+      layer:{
+         type: DataTypes.INTEGER,
+         allowNull: false,
+      },
+      id_layer:{
          type: DataTypes.INTEGER,
          allowNull: false,
       },
@@ -40,26 +44,22 @@ module.exports = (sequelize, DataTypes) => {
          type: DataTypes.INTEGER,
          allowNull: false,
       },
-      id_cot:{
+      cot:{
+         type: DataTypes.DECIMAL,
+         allowNull: true,
+      },
+      id_kinetics:{
          type: DataTypes.INTEGER,
          allowNull: true,
       },
-      id_cinetic:{
-         type: DataTypes.INTEGER,
-         allowNull: true,
-      },
-      id_hi:{
-         type: DataTypes.INTEGER,
+      hi:{
+         type: DataTypes.DECIMAL,
          allowNull: true,
       },
       id_wells:{
          type: DataTypes.INTEGER,
          allowNull: false,
-      },
-      id_range:{
-         type: DataTypes.INTEGER,
-         allowNull: false,
-      },
+      }
    }
    const config = {
    tableName : 'base_data',
@@ -72,10 +72,6 @@ module.exports = (sequelize, DataTypes) => {
          as:'well',
          foreignKey: 'id_wells'
       }),
-      Base_data.belongsTo(models.Layers,{
-         as:'layer',
-         foreignKey: 'id_layers'
-      }),
       Base_data.belongsTo(models.Lithologies,{
          as:'lithology',
          foreignKey: 'id_lithologies'
@@ -84,18 +80,11 @@ module.exports = (sequelize, DataTypes) => {
          as:'pse',
          foreignKey: 'id_pse'
       }),
-      Base_data.belongsTo(models.Cinetic,{
+      Base_data.belongsTo(models.Kinetics,{
          as:'kinetic',
-         foreignKey: 'id_cinetic'
-      }),
-      Base_data.belongsTo(models.Cot,{
-         as:'cot',
-         foreignKey: 'id_cot'
-      }),
-      Base_data.belongsTo(models.Hi,{
-         as:'hi',
-         foreignKey: 'id_hi'
+         foreignKey: 'id_kinetics'
       })
+      
     }
    
    return Base_data

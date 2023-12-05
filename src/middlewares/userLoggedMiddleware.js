@@ -3,7 +3,7 @@ const fs = require('fs');
 
 function userLoggedMiddleware(req,res,next){
     
-    //res.locals.isLogged=false
+    res.locals.isLogged=false
     
     if(req.session.userLogged){
         res.locals.isLogged = true

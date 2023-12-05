@@ -22,6 +22,7 @@ const pseQueries = {
         return pseInputsData
     },
     pseSaveData: async(idWell,idUser,newData) => {
+        
         for (let i = 0; i < newData.length; i++) {
             await db.Pse_data_saved.update(
                 {

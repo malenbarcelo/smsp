@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
 
-   const alias = "Cinetic"
+   const alias = "Sessions"
    const cols = {
       id:{
          type : DataTypes.INTEGER,
@@ -12,16 +12,24 @@ module.exports = (sequelize, DataTypes) => {
          type : DataTypes.INTEGER,
          allowNull: false
       },
-      cinetic:{
-         type: DataTypes.STRING,
+      id_users:{
+         type : DataTypes.INTEGER,
+         allowNull: false
+      },
+      id_exercises:{
+         type: DataTypes.INTEGER,
          allowNull: false,
       },
+      login:{
+         type: DataTypes.INTEGER,
+         allowNull: false,
+      }
    }
    const config = {
-   tableName : 'cinetic',
+   tableName : 'sessions',
    timestamps : false
    }
-   const Cinetic = sequelize.define(alias, cols, config)
+   const Session = sequelize.define(alias, cols, config)
    
-   return Cinetic
+   return Session
 }

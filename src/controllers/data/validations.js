@@ -1,19 +1,19 @@
 
     const validations = {
         cotSensibility: {
-            'id_cot_5':2,
-            'id_cot_9':2,
-            'id_cot_12':2
+            'cot_5':5,
+            'cot_9':5,
+            'cot_12':5
         },
         hiSensibility: {
-            'id_hi_5':4,
-            'id_hi_9':4,
-            'id_hi_12':3
+            'hi_5':500,
+            'hi_9':500,
+            'hi_12':400
         },
         kineticSensibility1: {
-            'id_cinetic_5':3,
-            'id_cinetic_9':3,
-            'id_cinetic_12':3
+            'id_kinetics_5':3,
+            'id_kinetics_9':3,
+            'id_kinetics_12':3
         },
         lithologySensibility1: {
             'id_lithology_1': "1",

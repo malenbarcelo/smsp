@@ -11,10 +11,10 @@
     </thead>
 
     <tbody class="bTableData">
-        <% data.pwds.forEach(row => { %>
+        <% data.pwdsCalibration.forEach(row => { %>
             <tr>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('pwd_age_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('pwd_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'pwd_age_' + row.id %>" value="<%= locals.oldData ? oldData['pwd_age_' + row.id] : null %>" autocomplete="off">
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                    <%= row.age %>
                 </th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>">
@@ -39,10 +39,10 @@
     </thead>
 
     <tbody>
-        <% data.swits.forEach(row => { %>
+        <% data.switsCalibration.forEach(row => { %>
             <tr>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('swit_age_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('swit_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'swit_age_' + row.id %>" value="<%= locals.oldData ? oldData['swit_age_' + row.id] : null %>" autocomplete="off">
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                    <%= row.age %>
                 </th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>">
@@ -67,10 +67,10 @@
     </thead>
 
     <tbody>
-        <% data.hfs.forEach(row => { %>
+        <% data.hfsCalibration.forEach(row => { %>
             <tr>
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_age_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_age_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_age_' + row.id %>" value="<%= locals.oldData ? oldData['hf_age_' + row.id] : null %>" autocomplete="off">
+                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                    <%= row.age %>
                 </th>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>">

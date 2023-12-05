@@ -1,16 +1,28 @@
 <div class="divChartsButtons">
 
     <!---back button--->
-    <a href="<%= data.backRoute %>" id="<%= data.idBackButton %>">
-        <div class="button3">
-            <div><i class="fa-solid fa-chevron-left"></i></div>
-            <div>Volver</div>
-        </div>
-    </a>
+    <% if (routes.backRoute != 'NA') { %>
+        <a href="<%= routes.backRoute %>" id="<%= data.idBackButton %>">
+            <div class="button3">
+                <div><i class="fa-solid fa-chevron-left"></i></div>
+                <div>Volver</div>
+            </div>
+        </a>
+    <% } %>    
 
     <!---continue--->
-    <div class="button3 <%= locals.validation && validation == 'fail' ? 'unabledButton2' : null %>">
-        <div><a href="<%= data.continueRoute %>">Continuar</a></div>
-        <div><i class="fa-solid fa-chevron-right"></i></div>
-    </div>
+    <% if (locals.validation && validation == 'fail') { %>
+        <div class="button3 unabledButton2">
+            <div>Continuar</div>
+            <div><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <% } else { %>
+            <div class="button3">
+                <div><a href="<%= routes.continueRoute %>">Continuar</a></div>
+                <div><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+         
+     
+    <% } %>
+    
 </div>

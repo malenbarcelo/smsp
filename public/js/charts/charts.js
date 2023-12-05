@@ -7,20 +7,17 @@ window.addEventListener('load',async()=>{
 
     const myChart = document.getElementById('myChart')
     const idWell = document.getElementById('idWell').innerText
-    const chartNAme = document.getElementById('chartName').innerText
+    const chartName = document.getElementById('chartName').innerText
     
     const runtime = new Runtime()
 
-    const rutaArchivo = './chartsData/well' + idWell + '/' + chartNAme + '.js'
+    const rutaArchivo = './chartsData/well' + idWell + '/' + chartName + '.js'
     const module = await import(rutaArchivo)
 
     var {proportion,width,height,mb,ml,mt,mr,graphicAttributes,ejeXConfig,ejeYConfig,colorPalette,datosCapas,puntos,poligono1, lineaY0,alphaName} = module
 
     const widthResolution = window.screen.width
     const heightResolution = window.screen.height
-
-    console.log(widthResolution)
-    console.log(heightResolution)
 
     proportion = proportion * (widthResolution / 1700)
     width = width * (widthResolution / 1700)

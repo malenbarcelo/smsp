@@ -6,12 +6,9 @@ const baseDataQueries = {
         const baseData = await db.Base_data.findAll({
             where:{id_wells:idWell},
             include: [
-                {association:'layer'},
                 {association:'lithology'},
                 {association:'pse'},
-                {association:'kinetic'},
-                {association:'cot'},
-                {association:'hi'},
+                {association:'kinetic'}
             ],
             raw:true,
             nest:true
@@ -32,33 +29,12 @@ const baseDataQueries = {
         })
         return pses
     },
-    cots: async(idWell) => {
-        const cots = await db.Cot.findAll({
+    kinetics: async(idWell) => {
+        const kinetics = await db.Kinetics.findAll({
             where:{id_wells:idWell},
             raw:true,
         })
-        return cots
-    },
-    cinetics: async(idWell) => {
-        const cinetics = await db.Cinetic.findAll({
-            where:{id_wells:idWell},
-            raw:true,
-        })
-        return cinetics
-    },
-    his: async(idWell) => {
-        const his = await db.Hi.findAll({
-            where:{id_wells:idWell},
-            raw:true,
-        })
-        return his
-    },
-    layers: async() => {
-        const layers = await db.Layers.findAll({
-            where:{id_wells:idWell},
-            raw:true,
-        })
-        return layers
+        return kinetics
     },
     getPseData: async(idPse) => {
         const maxMa = await db.Base_data.findAll({

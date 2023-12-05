@@ -50,9 +50,7 @@ const apisController = {
         'status':'Datos guardados correctamente'
       }
 
-      return res.status(200).json(postResult)
-      
-      
+      return res.status(200).json(postResult)      
 
     }catch(error){
       console.log(error)
