@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       ro_min:{
          type: DataTypes.DECIMAL,
-         allowNull: false,
+         allowNull: true,
       },
       ro:{
          type: DataTypes.DECIMAL,
@@ -26,9 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       id_wells:{
          type: DataTypes.INTEGER,
-         allowNull: true,
-      },
-
+         allowNull: false,
+      }
    }
    const config = {
    tableName : 'well_data_ro',

@@ -11,6 +11,8 @@ const exercisesAnswers = {
 
         const exerciseName = data.processData.exercisesData.exerciseName
         const stepName = stepData.stepName
+        const idStep = stepData.idStep
+        const stepsQty = data.processData.exercisesData.steps.length
         const allowedAttemps = stepData.allowedAttemps
         
         const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
@@ -30,7 +32,9 @@ const exercisesAnswers = {
                 'logTime':errors.length != 0 ? null : ((new Date().getTime() - stepSession.login)/1000), //log time in secs
                 'type': errors.length == 0 ? 'Paso realizado correctamente' : 'Error',
                 'observations': errors.length == 0 ? '' : 'INTENTO ' + (findStep.length + 1) + ': ' + observations,
-                'try':1
+                'try':1,
+                'stepStatus': errors.length == 0 ? 'passed' : 'fail',
+                'exerciseStatus': errors.length == 0 && idStep == stepsQty ? 'done' : 'in process'
             }
 
             //create data in database
@@ -63,7 +67,15 @@ const exercisesAnswers = {
             const login = findStep[0].login //login time
             const logout = new Date().getTime() //logout time
             const logTime = (logout - login)/1000 //log time in secs
-            await exercisesAnswersQueries.updateStepAnswer(idStepAnswers,tryNumber,newObservations,grade,logout,logTime)
+            const stepStatus = errors.length == 0 ? 'passed' : 'fail'
+            const exerciseStatus = errors.length == 0 && idStep == stepsQty ? 'done' : 'in process'
+
+            await exercisesAnswersQueries.updateStepAnswer(idStepAnswers,tryNumber,newObservations,grade,logout,logTime,stepStatus,exerciseStatus)
+
+            //if step==last step and errors == 0 --> update steps data
+            if (errors.length == 0 && idStep == stepsQty) {
+                await exercisesAnswersQueries.updateExerciseStatus(idWell,idUser,exerciseName)
+            }
         }
     },
     bodyToPost: async(data,idWell,idUser,token,idExercise) => {
@@ -113,7 +125,6 @@ const exercisesAnswers = {
             })            
         })
           return body
-        
       }
 }
 

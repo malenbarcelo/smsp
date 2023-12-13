@@ -27,6 +27,7 @@ const pseTableController = {
       const pseWellData = pseData.filter(data => data.idWell == idWell)[0]
       const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
       const exerciseName = data.processData.exercisesData.exerciseName
+      let confirmLogout = true
       
       data.chartData = {
         'idChartsMenu':1
@@ -67,6 +68,10 @@ const pseTableController = {
         validation = 'passed'
       }
 
+      if (findStep.length != 0 && findStep[0].exercise_status == 'done') {
+        confirmLogout = false
+      }
+
       return res.render('pseTable',{
         title:'Tabla Resumen PSE',
         data,
@@ -76,7 +81,9 @@ const pseTableController = {
         idIndexData,
         routes,
         processName,
-        idWell})
+        idWell,
+        confirmLogout,
+        exerciseName})
 
     }catch(error){
       console.log(error)
@@ -101,7 +108,8 @@ const pseTableController = {
       const idIndexData = 7
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
-      
+      let confirmLogout = true
+
       //add info to data
       data.chartData = {
         'idChartsMenu': 1
@@ -160,6 +168,12 @@ const pseTableController = {
       //save exercises answers
       await saveAnswers(data,stepData,idUser,errors,idWell,idExercise,observations)
 
+      //findout if step has already been done      
+      const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
+      if (findStep.length != 0 && findStep[0].exercise_status == 'done') {
+        confirmLogout = false
+      }
+
       //post info to schemasim
       if (errors.length == 0) {
 
@@ -191,7 +205,9 @@ const pseTableController = {
         idIndexData,
         routes,
         processName,
-        idWell
+        idWell,
+        confirmLogout,
+        exerciseName
     })
 
     }catch(error){
@@ -210,6 +226,16 @@ const pseTableController = {
       const chartData = processData.charts.filter(chart => chart.routeParam == chartRouteParam)[0]
       const idRoute = processData.routes.filter(route => route.idChart == chartData.id)[0].id
       const routeParam = 'pse-table'
+      let confirmLogout = false
+      const exerciseName = processData.exercisesData.exerciseName
+      const idUser = req.session.userLogged.id_user
+
+      //findout if step has already been done      
+      const findExercise = await exercisesAnswersQueries.findExercise(idWell, idUser, exerciseName)
+
+      if (findExercise.length == 0) {
+        confirmLogout = true
+      }
       
       const routes = await getRoutes(idRoute,idWell,processData,routeParam)
 
@@ -217,7 +243,7 @@ const pseTableController = {
 
       const idIndexData = indexData.id
 
-      return res.render('charts',{title:chartData.title,data,routes,idIndexData,processName,idWell})
+      return res.render('charts',{title:chartData.title,data,routes,idIndexData,processName,idWell,confirmLogout,exerciseName})
 
     }catch(error){
       console.log(error)

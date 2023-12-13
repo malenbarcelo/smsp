@@ -20,7 +20,7 @@ const alphaName = "Petróleo (%)";
 export { proportion,width, height, ml, mr, mt, mb, alphaName };
 
 const datosIniciales = [
-    ["TERCIARIO",5.33,1,0,"black","black"],
+["TERCIARIO",5.33,1,0,"black","black"],
 ["TERCIARIO",0,0,0,"black","black"],
 ["MARANON",7.35,1,0,"black","black"],
 ["MARANON",5.33,1,0,"black","black"],

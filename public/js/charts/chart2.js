@@ -5,9 +5,10 @@ import { createHorizontalRectangle, createVerticalRectangle, drawHorizontalLines
 
 window.addEventListener('load',async()=>{
 
-    const myChart = document.getElementById('myChart')
+    const myChart2 = document.getElementById('myChart2')
+    
     const idWell = document.getElementById('idWell').innerText
-    const chartName = document.getElementById('chartName').innerText
+    const chartName = document.getElementById('chartName2').innerText
     
     const runtime = new Runtime()
 
@@ -89,7 +90,9 @@ function _4(d3, DOM) {
   ax.call(draw, datosCapas, x, y);
 
   //hide d3 bar with info
-  document.documentElement.querySelector('.observablehq--inspect').style.display = 'none';
+  document.documentElement.querySelectorAll('.observablehq--inspect').forEach(function(element) {
+    element.style.display = 'none';
+  })
 
   //  return svg.node()
 
@@ -480,8 +483,8 @@ function _4(d3, DOM) {
     let yValue = yNew.invert(my);
 
     d3.select("#tooltip")
-      .style("left", (mx + myChart.offsetLeft - width/10) + "px")
-      .style("top", (my + myChart.offsetTop - height/30) + "px")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart2.offsetTop - height/30) + "px")
       .style("visibility", "visible")
       .style('background-color', 'white')
       .style('font-size', `${proportion*12}px`)
@@ -494,8 +497,8 @@ function _4(d3, DOM) {
     let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
   
     d3.select("#tooltip")
-      .style("left", (mx + myChart.offsetLeft - width/10) + "px")
-      .style("top", (my + myChart.offsetTop - height/30) + "px")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart2.offsetTop - height/30) + "px")
       .style("visibility", "visible")
       .style('background-color', 'white')
       .style('font-size', `${proportion*12}px`)
@@ -710,5 +713,5 @@ function define(runtime, observer) {
 
     //console.log(positionX)
 
-    const main = runtime.module(define, Inspector.into(myChart))
+    const main = runtime.module(define, Inspector.into(myChart2))
 })

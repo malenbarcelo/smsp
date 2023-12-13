@@ -48,6 +48,14 @@ module.exports = (sequelize, DataTypes) => {
          type: DataTypes.STRING,
          allowNull: false,
       },
+      step_status:{
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
+      exercise_status:{
+         type: DataTypes.STRING,
+         allowNull: false,
+      },
       observations:{
          type: DataTypes.STRING,
          allowNull: true,

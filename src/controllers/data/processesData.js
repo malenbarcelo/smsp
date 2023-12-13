@@ -3,11 +3,11 @@
         {
             'name': 'simulation',
             'routeParam':'entry-data',
-            'description': 'Carga de parámetros y datos de simulación',
+            'description': 'Modelado 1D y simulación',
             'chartsQtyPerPage': 1,
             'idEndProcessRoute':14,
             'exercisesData':{
-                'exerciseName': 'Carga de parámetros y datos de simulación',
+                'exerciseName': 'Modelado 1D y simulación',
                 'idExercise': [
                     {
                         idWells:1,
@@ -33,6 +33,7 @@
                             {
                                 'tableName':'base_data',
                                 'alias':'datos base',
+                                'restablishDataQuery':'baseData',
                                 'columns':[
                                     {
                                         'columnName': 'top',
@@ -101,6 +102,7 @@
                             {
                                 'tableName':'well_data_temp',
                                 'alias':'temp',
+                                'restablishDataQuery':'wellDataTemp',
                                 'columns':[
                                     {
                                         'columnName': 'temperature',
@@ -112,6 +114,7 @@
                             {
                                 'tableName':'well_data_ro',
                                 'alias':'ro',
+                                'restablishDataQuery':'wellDataRo',
                                 'columns':[
                                     {
                                         'columnName': 'ro',
@@ -144,6 +147,7 @@
                             {
                                 'tableName':'boundary_condition_pwd',
                                 'alias':'pwd',
+                                'restablishDataQuery':'boundaryConditionPwd',
                                 'columns':[
                                     {
                                         'columnName': 'pwd',
@@ -155,6 +159,7 @@
                             {
                                 'tableName':'boundary_condition_hf',
                                 'alias':'hf',
+                                'restablishDataQuery':'boundaryConditionHf',
                                 'columns':[
                                     {
                                         'columnName': 'hf',
@@ -166,6 +171,7 @@
                             {
                                 'tableName':'boundary_condition_swit',
                                 'alias':'swit',
+                                'restablishDataQuery':'boundaryConditionSwit',
                                 'columns':[
                                     {
                                         'columnName': 'swit',
@@ -180,7 +186,7 @@
             },
             'charts':[
                 {'id':1,'name':'tempDepth','marginLeft':'20%','marginTop':'-2%','title':'Temp-Prof','chartTitle':'Temperatura, Chambira 1X-original','routeParam':'temp-depth','idChartsMenu':'1'},
-                {'id':2,'name':'roDepth','marginLeft':'10%','title':'Ro-Prof','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original','routeParam':'ro-depth','idChartsMenu':'1'},
+                {'id':2,'name':'roDepth','marginLeft':'20%','marginTop':'-2%','title':'Ro-Prof','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original','routeParam':'ro-depth','idChartsMenu':'1'},
                 {'id':3,'name':'roTime','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original','routeParam':'ro-time','idChartsMenu':'1'},
                 {'id':4,'name':'trTime','marginLeft':'22%','marginTop':'3%','title':'TR-Tiempo','chartTitle':'ALL, Chambira 1X-orig','routeParam':'tr-time','idChartsMenu':'1'},
                 {'id':5,'name':'roBurial','marginLeft':'20%','marginTop':'8%','title':'Ro-Sepultamiento','chartTitle':'Gráfico Ro-Sepultamiento, Chambira 1X-orig','routeParam':'ro-burial','idChartsMenu':'1'},
@@ -295,15 +301,15 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'caliPwdSwit','marginLeft':'20%','marginTop':'-5%','title':'PWD-SWIT-Prof.','routeParam':'cali-pwd-swit','idChartsMenu':'1','pageChartsInfo':[
+                {'id':1,'name':'pwdSwitDepth','marginLeft':'15%','marginTop':'-3%','title':'PWD-SWIT-Prof.','routeParam':'cali-pwd-swit','idChartsMenu':'1','pageChartsInfo':[
                     {'id':1,'chartTitle':'Temperatura, Chambira 1X-original - Sin Calibración'},
                     {'id':2,'chartTitle':'Temperatura, Chambira 1X-original - Con Calibración'}
                 ]},
-                {'id':2,'name':'tempDepth','idChartsMenu':'2','marginLeft':'20%','marginTop':'-5%','title':'Temp-Prof','routeParam':'temp-depth','pageChartsInfo':[
+                {'id':2,'name':'tempDepth','idChartsMenu':'2','marginLeft':'18%','marginTop':'-2%','title':'Temp-Prof','routeParam':'temp-depth','pageChartsInfo':[
                     {'id':1,'chartTitle':'Temperatura, Chambira 1X-original - Sin Calibración'},
                     {'id':2,'chartTitle':'Temperatura, Chambira 1X-original - Con Calibración'}
                 ]},
-                {'id':3,'name':'roDepth','idChartsMenu':'2','marginLeft':'23%','marginTop':'3%','title':'Ro-Prof','routeParam':'ro-depth','pageChartsInfo':[
+                {'id':3,'name':'roDepth','idChartsMenu':'2','marginLeft':'12%','marginTop':'-2%','title':'Ro-Prof','routeParam':'ro-depth','pageChartsInfo':[
                     {'id':1,'chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Sin Calibración'},
                     {'id':2,'chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Con Calibración'}
                 ]},
@@ -374,9 +380,15 @@
                         'idStep':1,
                         'stepName':'1_Tabla PSE',
                         'alias':'pse-table',
+                        'ejsTable':'pseTable',
                         'title':'Tabla PSE',
                         'idRoute':2,
                         'allowedAttemps':3,
+                        'tables':[
+                            {
+                                'restablishDataQuery':'pseTable'
+                            }
+                        ]
                     }
                 ]
             },

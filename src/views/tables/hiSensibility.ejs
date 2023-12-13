@@ -32,16 +32,29 @@
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.kinetic.kinetic %></th>
-                
-                <% if (row.hi == null) { %>
-                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
-                    <% } else { %>
-                        
-                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %> input3" type="text" name="<%= 'hi_' + row.id %>" value="<%= locals.oldData ? oldData['hi_' + row.id] : row.hi %>" autocomplete="off">
-                        </th>
 
+                <% if (validation == 'passed') { %>
+                    
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                        <% if (row.id == 5 || row.id == 9) { %>
+                            500
+                        <% } %>
+                        <% if (row.id == 12) { %>
+                            400
+                        <% } %>
+                    </th>
+
+                    <% } else { %>
+                        <% if (row.hi == null) { %>
+                            <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+                            <% } else { %>
+                                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %> input3" type="text" name="<%= 'hi_' + row.id %>" value="<%= locals.oldData ? oldData['hi_' + row.id] : row.hi %>" autocomplete="off">
+                                </th>
+                        <% } %>
                 <% } %>
+                
+                
             </tr>
         <% }) %>  
     </tbody>

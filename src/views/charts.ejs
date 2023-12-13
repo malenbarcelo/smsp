@@ -6,7 +6,6 @@
         <div class="gridItem1">
             <%- include('./partials/header') %>
         </div>
-
         
         <div class="gridItem1">
             <div class="chartsMenu">
@@ -38,7 +37,7 @@
                 <div class="divChart">                
                     <div class="chartTitle"><%= data.chartData.pageChartsInfo[1].chartTitle %></div>
                     <div class="chart" id="myChart2"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
-                        <div id="tooltip" style="position: absolute; visibility: hidden;"></div>
+                        <div id="tooltip2" style="position: absolute; visibility: hidden;"></div>
                     </div>                
                 </div>
             </div>
@@ -48,10 +47,16 @@
 </body>
 
 <div class="notVisible" id="idWell"><%= data.well.id %></div>
-<div class="notVisible" id="chartName"><%= data.chartData.name %></div>
+<div class="notVisible" id="chartName1"><%= data.chartData.name %></div>
+<div class="notVisible" id="chartName2"><%= data.processData.name == 'calibration' ? data.chartData.name + 'Calibrated' : data.chartData.name + 'Sensibility' %></div>
+<div class="notVisible" id="processName"><%= processName %></div>
 
-<script type="module" src="/js/charts/charts1.js"></script>
-<script type="module" src="/js/charts/charts2.js"></script>
+<%- include('./partials/logoutPopup') %>
+
+<script type="module" src="/js/logoutPopup.js"></script>
+<script type="module" src="/js/charts/chart1.js"></script>
+<script type="module" src="/js/charts/chart2.js"></script>
+
 
 
 

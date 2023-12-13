@@ -2,7 +2,6 @@
 const dataValidations = require('../data/validations')
 
 const validations = {
-
     getDataToCompare: (ejsTable,data,processName) => {
 
         var dataToCompare = {}

@@ -17,9 +17,16 @@
                     <%= row.age %>
                 </th>
 
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>">
-                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_' + row.id] : null %>" autocomplete="off">
-                </th>
+                <% if (validation == 'passed') { %>
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                        <%= row.hf %>
+                    </th>
+                    <% } else { %>
+                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_' + row.id] : null %>" autocomplete="off">
+                        </th>
+                <% } %>
+                
             </tr>
         <% }) %>  
     </tbody>

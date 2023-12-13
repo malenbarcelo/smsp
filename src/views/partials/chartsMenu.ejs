@@ -3,7 +3,24 @@
     <% data.processData.charts.forEach(chart => { %>
         <% if (data.chartData.idChartsMenu == chart.idChartsMenu) { %>
             <div class="chartMenuLi <%= chart.title == title ? 'selectedLi' : null %>">
-                <a href=""><%= chart.title %></a>
+                <% if (data.processData.routeParam == 'pse-table') { %>
+                    
+                    <% if (chart.id == 1) { %>
+                        <a href="<%= '/pse-table/' + idWell + '/charts/ro-time' %>" id="<%= 'hrefToChart_' + idWell %>">
+                            <%= chart.title %>
+                        </a>
+                        <% } else { %>
+                            <a href="<%= '/pse-table/' + idWell + '/pse-summary-table' %>">
+                                <%= chart.title %>
+                            </a>
+                    <% } %>
+                    
+                    <% } else { %>
+                        <a href="<%= '/' + data.processData.routeParam + '/' + idWell + '/' + data.processData.name + '/charts/' + chart.routeParam  %>">
+                            <%= chart.title %>
+                        </a>
+                <% } %>
+                
             </div>
         <% } %>
     <% }) %>

@@ -14,6 +14,18 @@ const exercisesAnswersQueries = {
         })
         return findStep
     },
+    findExercise: async(idWell,idUser,exerciseName) => {
+        const findExercise = await db.Exercises_answers.findAll({
+            where:{
+                id_wells:idWell,
+                id_users:idUser,
+                exercise:exerciseName,
+                exercise_status:'done'
+            },
+            raw:true,
+        })
+        return findExercise
+    },
     saveStepAnswer: async(stepAnswer) => {
 
         await db.Exercises_answers.create({
@@ -28,9 +40,11 @@ const exercisesAnswersQueries = {
             type:stepAnswer.type,
             observations:stepAnswer.observations,
             try:stepAnswer.try,
+            step_status:stepAnswer.stepStatus,
+            exercise_status:stepAnswer.exerciseStatus
         })
     },
-    updateStepAnswer: async(idStepAnswers,tryNumber,newObservations,grade,logout,logTime) => {
+    updateStepAnswer: async(idStepAnswers,tryNumber,newObservations,grade,logout,logTime,stepStatus,exerciseStatus) => {
 
         await db.Exercises_answers.update(
             {
@@ -38,10 +52,25 @@ const exercisesAnswersQueries = {
             grade:grade,
             logout:logout,
             log_time:logTime,
-            observations:newObservations
+            observations:newObservations,
+            step_status:stepStatus,
+            exercise_status:exerciseStatus
             },
             {where:{
                 id: idStepAnswers
+            }}
+        )
+    },
+    updateExerciseStatus: async(idWell,idUser,exerciseName) => {
+
+        await db.Exercises_answers.update(
+            {
+            exercise_status:'done'
+            },
+            {where:{
+                exercise: exerciseName,
+                id_wells:idWell,
+                id_users:idUser
             }}
         )
     },

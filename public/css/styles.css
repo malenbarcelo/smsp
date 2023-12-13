@@ -265,9 +265,9 @@ input::-webkit-inner-spin-button {
 }
 
 .input3{
-    border: var(--color1) solid 1px;
-    background-color: rgb(213, 212, 212);
-    color: black;
+    /*border: var(--color1) solid 1px;*/
+    border: none;
+    background-color: rgb(149, 145, 145);
     padding: 3px 0px;
 }
 
@@ -367,7 +367,7 @@ animation: fill-progress 8s ease-in-out forwards;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    column-gap: 20px;
+    column-gap: 0px;
 }
 
 .divChart{
@@ -378,6 +378,7 @@ animation: fill-progress 8s ease-in-out forwards;
     height: 100%;
     width: 50%;
     margin-top: 30px;
+    overflow: hidden;
 }
 
 .chartTitle{
@@ -390,7 +391,7 @@ animation: fill-progress 8s ease-in-out forwards;
 .divChartsMenu{
     font-size: 14px;
     width: max-content;
-    max-width: 85%;
+    max-width: 90%;
     margin: auto;
 }
 
@@ -460,7 +461,6 @@ animation: fill-progress 8s ease-in-out forwards;
     border-radius: 10px;
 }
 
-
 .div1{
     text-align: center;
     font-size: 30px;
@@ -510,9 +510,75 @@ animation: fill-progress 8s ease-in-out forwards;
     margin-top: 15px;
 }
 
+.divLogoEndProcess{
+    margin-top: 30px;
+    text-align: center;
+}
+
 .endProcessLogo{
     height: 80px;
 }
+
+.endProcessLogo2{
+    height: 100px;
+}
+
+/*-----popups-----*/
+.logoutPopup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  .logoutPopupContent{
+    margin: 15% auto;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    font-size: 13px;
+    background-color: white;
+  }
+
+  .logoutPopupText{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .logoutPopupButtons{
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    margin-top: 10px;
+  }
+
+  .logoutPopupButton{
+    background-color:var(--color3);
+    border:none;
+    padding: 4px 8px;
+    margin-top: 10px;
+    color:  #efeded;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100px;
+    text-align: center;
+    border-radius: 15px;
+  }
+
+  .logoutPopupButton:hover{
+    color:var(--color2);
+    background-color: var(--color4);
+  }
+
+
 
 @media (max-width:1350px){
     .maxWidth1{

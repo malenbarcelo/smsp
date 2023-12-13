@@ -4,11 +4,10 @@
         <div class="userLoggedName">
             <%= userLogged.first_name + ' ' + userLogged.last_name %>
         </div>
-        <div>
-            <a href="<%= '/logout/' + processName + '/' + idWell %>" class="logout">
-                Cerrar sesión
-            </a>
-        </div>
+        <% if (!confirmLogout) { %>
+            <a href="<%= '/logout/' + processName + '/' + idWell %>" class="logout">Cerrar sesión</a>
+            <% } else { %>
+                <div class="logout" id="logout">Cerrar sesión</div>
+        <% } %>
     <% } %>
 </div>
-

@@ -2,8 +2,8 @@
 <%- include('./partials/userLogged') %>
 
 <body class="endProcessBody">
-    <div class="div7">
-        <img src="/images/companyLogoWhite.png" alt="Company Logo" class="endProcessLogo">
+    <div class="divLogoEndProcess">
+        <img src="/images/companyLogoWhite.png" alt="Company Logo" class="endProcessLogo2">
     </div>
     
     <div class="divEndProcess">
@@ -39,10 +39,10 @@
                     <% } %>
                 <% }) %>
             </div>
-    
-            
             
     </div>
+
+    <a href="<%= '/logout/' + processName + '/' + idWell %>" class="button6">Salir</a>
 
 </body>
 

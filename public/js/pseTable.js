@@ -6,6 +6,7 @@ window.addEventListener('load',async()=>{
     
     const idWell = document.getElementById('idWell').innerText    
     const backButton = document.getElementById('pseTable_' + idWell)
+    const hrefToChart = document.getElementById('hrefToChart_' + idWell)
     
     const divWidth = 810
     const years = 200
@@ -203,6 +204,14 @@ window.addEventListener('load',async()=>{
     })
 
     backButton.addEventListener("click",async(e)=>{
+        await fetch(dominio + '/apis/' + idWell + '/pse-table',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(processes)
+        })
+    })
+
+    hrefToChart.addEventListener("click",async(e)=>{
         await fetch(dominio + '/apis/' + idWell + '/pse-table',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},

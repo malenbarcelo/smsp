@@ -1,11 +1,12 @@
-const {saveAnswers,bodyToPost} = require('./functions/exercisesAnswers.js')
+const {saveAnswers,saveProvisionalData,bodyToPost} = require('./functions/exercisesAnswers.js')
 const {getRoutes,getData} = require('./functions/getProcessData.js')
 const processesData = require('./data/processesData.js')
 const wellsQueries = require('./dbQueries/wellsQueries.js')
 const sessionsQueries = require('./dbQueries/sessionsQueries.js')
+const exercisesAnswersQueries = require('./dbQueries/exercisesAnswersQueries')
 const {getDataToCompare,getObservations,getColumnsMargins} = require('./functions/validations.js')
 const fetch = require('node-fetch')
-const {apiUrlExercises} = require('./data/schemasimData')
+const {apiUrlExercises} = require('./data/schemasimData.js')
 
 const dataAndSensibilityController = {
   viewTable: async(req,res) =>{
@@ -27,11 +28,26 @@ const dataAndSensibilityController = {
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
       const idUser = req.session.userLogged.id_user
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
+      const exerciseName = data.processData.exercisesData.exerciseName
+      let confirmLogout = true
 
-      //create step session
-      const login = new Date().getTime() //login time
-      await sessionsQueries.deleteStepSessionData(idUser,idWell,idExercise,stepName) //delete session if exists
-      await sessionsQueries.createStepSession(idUser,idWell,idExercise,stepName,login) //create new session
+      //findout if step has already been done      
+      const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
+
+      //if step has already been done, show table data. Otherwise, create step session
+      if (findStep.length == 0) {
+        //create step session
+        const login = new Date().getTime() //login time
+        await sessionsQueries.deleteStepSessionData(idUser,idWell,idExercise,stepName) //delete session if exists
+        await sessionsQueries.createStepSession(idUser,idWell,idExercise,stepName,login) //create new session
+      }else{
+        if (findStep[0].step_status == 'passed') {
+          validation = 'passed'
+        }
+        if (findStep[0].exercise_status == 'done') {
+          confirmLogout = false
+        }
+      }
 
       //render tables ejs
       return res.render('tables',{
@@ -42,7 +58,9 @@ const dataAndSensibilityController = {
         routes,
         idIndexData,
         processName,
-        idWell
+        idWell,
+        exerciseName,
+        confirmLogout
       })
 
     }catch(error){
@@ -68,8 +86,10 @@ const dataAndSensibilityController = {
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
       const idUser = req.session.userLogged.id_user
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
-      
-      //gte validation info
+      const exerciseName = data.processData.exercisesData.exerciseName
+      let confirmLogout = true
+
+      //get validation info
       const token = req.session.userLogged.tokenHashed
 
       //get correct info from db tables or validations.js
@@ -124,6 +144,12 @@ const dataAndSensibilityController = {
       //save exercises answers
       await saveAnswers(data,stepData,idUser,errors,idWell,idExercise,observations)
 
+      //findout if step has already been done      
+      const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
+      if (findStep.length != 0 && findStep[0].exercise_status == 'done') {
+        confirmLogout = false
+      }
+
       //post info to schemasim if step is the last of the exercise
       const stepsQty = data.processData.exercisesData.steps.length
       const idStep = stepData.idStep
@@ -147,7 +173,7 @@ const dataAndSensibilityController = {
         const postResponse = await response.json()
 
         console.log(postResponse)
-      }        
+      }
 
       //render tables ejs
       return res.render('tables',{
@@ -160,7 +186,9 @@ const dataAndSensibilityController = {
         errors,
         oldData: req.body,
         processName,
-        idWell
+        idWell,
+        exerciseName,
+        confirmLogout
       })
 
     }catch(error){
@@ -181,10 +209,20 @@ const dataAndSensibilityController = {
       const idRoute = processData.routes.filter(route => route.idChart == chartData.id)[0].id
       const routes = await getRoutes(idRoute,idWell,processData,routeParam)
       const idIndexData = processData.routes[idRoute - 1].idIndexData
+      let confirmLogout = false
+      const exerciseName = processData.exercisesData.exerciseName
+      const idUser = req.session.userLogged.id_user
 
       const data = {well,processData,routes,idIndexData,idRoute,chartData}
 
-      return res.render('charts',{title:chartData.title,data,idIndexData,routes,processName,idWell})
+      //findout if step has already been done      
+      const findExercise = await exercisesAnswersQueries.findExercise(idWell, idUser, exerciseName)
+
+      if (findExercise.length == 0) {
+        confirmLogout = true
+      }
+
+      return res.render('charts',{title:chartData.title,data,idIndexData,routes,processName,idWell,confirmLogout,exerciseName})
 
     }catch(error){
       console.log(error)
@@ -198,9 +236,10 @@ const dataAndSensibilityController = {
       const continueRoute = '/sensibility/' + idWell + '/' + 'toc-sensibility'
       const idIndexData = 8
       const processName = 'toc-sensibility'
+      const confirmLogout = false
 
       return res.render('sensibilityInstructions',{title:'Ejercicios de simulación',continueRoute,idIndexData,
-      idWell,processName})
+      idWell,processName,confirmLogout})
 
     }catch(error){
       console.log(error)

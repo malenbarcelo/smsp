@@ -33,14 +33,26 @@
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.lithology.lithology %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
 
-                <% if (row.cot == null) { %>
-                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+                <% if (validation == 'passed') { %>
+
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                        <% if (row.id == 5 || row.id == 9 || row.id == 12) { %>
+                            5
+                        <% } %>
+                    </th>
+
                     <% } else { %>
+                        <% if (row.cot == null) { %>
 
-                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %> input3" type="text" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : row.cot %>" autocomplete="off">
-                        </th>
+                            <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
 
+                            <% } else { %>
+        
+                                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %> input3" type="text" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : row.cot %>" autocomplete="off">
+                                </th>
+
+                        <% } %>
                 <% } %>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.kinetic.kinetic %></th>

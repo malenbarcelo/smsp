@@ -1,5 +1,3 @@
-const db = require('../../database/models')
-const wellsQueries = require('./dbQueries/wellsQueries')
 const exercisesAnswersQueries = require('./dbQueries/exercisesAnswersQueries')
 const sessionsQueries = require('./dbQueries/sessionsQueries')
 const pseQueries = require('./dbQueries/pseQueries')
@@ -64,6 +62,7 @@ const indexController = {
       const exerciseName = processData.exercisesData.exerciseName
       const idExercise = processData.exercisesData.idExercise.filter(exercise => exercise.idWells == idWell)[0].idExercises
       const routeParam = processData.routeParam
+      const processSteps = processData.exercisesData.steps
 
       ///store session data
       //delete user session data if exists
@@ -73,10 +72,10 @@ const indexController = {
       
       //delete exercises data from database
       await exercisesAnswersQueries.deleteExercisesAnswers(userToLogin.id_user,idWell,exerciseName)
-      
+
       //if process is PSE table, then restablish pse_data_saved data
       await pseQueries.restablishData(userToLogin.id_user,idWell)
-
+      
       return res.redirect('/' + routeParam + '/' + idWell + continueRoute)
 
     }catch(error){
@@ -103,6 +102,7 @@ const indexController = {
       const idRoute = 1
       const title = 'Pozo'
       const routeParam = 'entry-data'
+      const confirmLogout = false
 
       //get info to render
       const idWell = req.params.idWell
@@ -115,8 +115,7 @@ const indexController = {
       
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
 
-      return res.render('well',{title,data,idIndexData,routes,processName,
-        idWell})
+      return res.render('well',{title,data,idIndexData,routes,processName,idWell,confirmLogout})
 
     }catch(error){
       console.log(error)
@@ -128,13 +127,22 @@ const indexController = {
 
       //specific info
       const title = 'Simulación en progreso'
+      let confirmLogout = false
       
       //get info to render
       const idWell = req.params.idWell
       const processName = req.params.processName
       const processDesc = req.params.processDesc
-      
+      const idUser = req.session.userLogged.id_user
       const data = await getResumedData(idWell,processName)
+      const exerciseName = data.processData.exercisesData.exerciseName
+
+      //findout if step has already been done      
+      const findExercise = await exercisesAnswersQueries.findExercise(idWell, idUser, exerciseName)
+
+      if (findExercise.length == 0) {
+        confirmLogout = true
+      }
 
       const routeParam = data.processData.routeParam      
 
@@ -144,7 +152,7 @@ const indexController = {
 
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
 
-      return res.render('process',{title,data,routes,idIndexData,processName,idWell})
+      return res.render('process',{title,data,routes,idIndexData,processName,idWell,confirmLogout,exerciseName})
 
     }catch(error){
       console.log(error)
@@ -160,10 +168,11 @@ const indexController = {
       const idBackRoute = idRoute - 1 
       const idUser = req.session.userLogged.id_user
       const exerciseName = processData.exercisesData.exerciseName
+      const confirmLogout = false
 
       const data = {processData,indexData,idRoute}
 
-      const exerciseAnswers = await exercisesAnswersQueries.findAnswers(idUser,idWell,exerciseName)
+      const exerciseAnswers = await exercisesAnswersQueries.findAnswers(idUser,idWell,exerciseName,confirmLogout)
 
       let gradesSum = 0
 
@@ -173,7 +182,7 @@ const indexController = {
 
       const grade = gradesSum / exerciseAnswers.length
 
-      return res.render('endProcess',{title:'Fin del proceso',data,exerciseAnswers,grade,processName,idWell})
+      return res.render('endProcess',{title:'Fin del proceso',data,exerciseAnswers,grade,processName,idWell,confirmLogout})
 
     }catch(error){
       console.log(error)

@@ -31,30 +31,44 @@
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.lithology.lithology %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot %></th>
-                <% if (row.kinetic.kinetic == null) { %>
-                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+
+                <% if (validation == 'passed') { %>
+
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                        <% if (row.id == 5 || row.id == 9 || row.id == 12) { %>
+                            Tissot-in-Waples(1992)-TIII-Crack
+                        <% } %>
+                    </th>
+
                     <% } else { %>
-                        <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_kinetics_' + row.id) ? 'isInvalid' : null %>">
-                            <select name="<%= 'id_kinetics_' + row.id %>" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_kinetics_' + row.id) ? 'isInvalid' : null %>">
-                                
-                                <% data.kinetics.forEach(kinetic => { %>
+                        <% if (row.kinetic.kinetic == null) { %>
+                            <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+                            <% } else { %>
+                                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_kinetics_' + row.id) ? 'isInvalid' : null %>">
+                                    <select name="<%= 'id_kinetics_' + row.id %>" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_kinetics_' + row.id) ? 'isInvalid' : null %>">
+                                        
+                                        <% data.kinetics.forEach(kinetic => { %>
+        
+                                            <% if (locals.oldData) { %>
+                                                <option value="<%= kinetic.id %>" <%= oldData['id_kinetics_' + row.id] == kinetic.id ? 'selected' : null %>>
+                                                    <%= kinetic.kinetic %>
+                                                </option>
+                                                <% } else { %>
+                                                    <option value="<%= kinetic.id %>" <%= row.id_kinetic == kinetic.id ? 'selected' : null %>>
+                                                        <%= kinetic.kinetic %>
+                                                    </option>
+                                            <% } %>
+                                            
+                                        <% }) %>
+        
+                                    </select>
+                                </th>
+                        <% } %>
 
-                                    <% if (locals.oldData) { %>
-                                        <option value="<%= kinetic.id %>" <%= oldData['id_kinetics_' + row.id] == kinetic.id ? 'selected' : null %>>
-                                            <%= kinetic.kinetic %>
-                                        </option>
-                                        <% } else { %>
-                                            <option value="<%= kinetic.id %>" <%= row.id_kinetic == kinetic.id ? 'selected' : null %>>
-                                                <%= kinetic.kinetic %>
-                                            </option>
-                                    <% } %>
-                                    
-                                <% }) %>
-
-                            </select>
-                        </th>
                 <% } %>
+                
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.hi %></th>
+                
             </tr>
         <% }) %>  
     </tbody>

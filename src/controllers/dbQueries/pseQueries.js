@@ -67,9 +67,7 @@ const pseQueries = {
                 from_is_invalid:inputsData[i].from_is_invalid,
                 to_is_invalid:inputsData[i].to_is_invalid
             })
-            
         }
-        
     }
 }
 

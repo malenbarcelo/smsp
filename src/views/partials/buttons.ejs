@@ -3,13 +3,11 @@
 
     <!---back button--->
     <% if (routes.backRoute != 'NA') { %>
-        <div class="button2">
-            <a href="<%= routes.backRoute %>">
-                <div>
-                    <i class="fa-solid fa-chevron-left"></i>
-                    Volver
-                </div>
-            </a>
+        <div class="button2" id="returnButton">            
+            <div>
+                <i class="fa-solid fa-chevron-left"></i>
+                Volver
+            </div>            
          </div>
     <% } %>
     

@@ -17,7 +17,12 @@
 </body>
 
 <div id="route" class="notVisible"><%= routes.continueRoute %></div>
+<div class="notVisible" id="idWell"><%= idWell %></div>
+<div class="notVisible" id="processName"><%= processName %></div>
 
+<%- include('./partials/logoutPopup') %>
+
+<script type="module" src="/js/logoutPopup.js"></script>
 <script type="module" src="/js/process.js"></script>
 
 

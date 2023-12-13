@@ -29,23 +29,37 @@
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.depo_from %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.depo_until %></th>
 
-                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
-                    <select name="<%= 'id_lithology_' + row.id %>" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
-                        <% data.lithologies.forEach(lithology => { %>
+                <% if (validation == 'passed') { %>
 
-                            <% if (locals.oldData) { %>
-                                <option value="<%= lithology.id %>" <%= oldData['id_lithology_' + row.id] == lithology.id ? 'selected' : null %>>
-                                    <%= lithology.lithology %>
-                                </option>
-                                <% } else { %>
-                                    <option value="<%= lithology.id %>" <%= row.id_lithologies == lithology.id ? 'selected' : null %>>
-                                        <%= lithology.lithology %>
-                                    </option>
-                            <% } %>
+                    <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
+                        <% if (row.id == 5 || row.id == 9 || row.id == 12) { %>
+                            Sandstone-clay-rich
+                        <% } %>
+                    </th>
 
-                        <% }) %>
-                    </select>
-                </th>
+                    <% } else { %>
+                        <% if (row.kinetic.kinetic == null) { %>
+                            <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"></th>
+                            <% } else { %>
+                                <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
+                                    <select name="<%= 'id_lithology_' + row.id %>" class="<%= row.id % 2 == 0 ? 'select1' : 'select2' %> <%= locals.errors && errors.includes('id_lithology_' + row.id) ? 'isInvalid' : null %>">
+                                        <% data.lithologies.forEach(lithology => { %>
+                
+                                            <% if (locals.oldData) { %>
+                                                <option value="<%= lithology.id %>" <%= oldData['id_lithology_' + row.id] == lithology.id ? 'selected' : null %>>
+                                                    <%= lithology.lithology %>
+                                                </option>
+                                                <% } else { %>
+                                                    <option value="<%= lithology.id %>" <%= row.id_lithologies == lithology.id ? 'selected' : null %>>
+                                                        <%= lithology.lithology %>
+                                                    </option>
+                                            <% } %>
+                
+                                        <% }) %>
+                                    </select>
+                                </th>
+                        <% } %>
+                <% } %>
 
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.pse.pse %></th>
                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>"><%= row.cot %></th>
