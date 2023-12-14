@@ -19,6 +19,12 @@ Resumed --->
 npm init -y
 npm install express ejs method-override multer express-validator express-session bcryptjs sequelize-cli sequelize mysql2 cors node-fetch@2.6.1
 
+PRD -->
+Change files: 
+src/controllers/data/processesData.js
+src/controllers/data/schemasimData.js
+src/controllers/data/domains.js
+
 
 
 

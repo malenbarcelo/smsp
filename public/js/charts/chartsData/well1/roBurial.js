@@ -4,7 +4,8 @@
     horizontalLines: false,
     colorMap: false,
     fillPatterns: true,
-    extraPoligons: true
+    extraPoligons: true,
+    well: 0
 }
 
 const proportion = 0.8;
@@ -20,7 +21,7 @@ const alphaName = "Petróleo (%)";
 export { proportion,width, height, ml, mr, mt, mb, alphaName };
 
 const datosIniciales = [
-["TERCIARIO",5.33,1,0,"black","black"],
+    ["TERCIARIO",5.33,1,0,"black","black"],
 ["TERCIARIO",0,0,0,"black","black"],
 ["MARANON",7.35,1,0,"black","black"],
 ["MARANON",5.33,1,0,"black","black"],
@@ -188,6 +189,9 @@ const poligono1 = [
     {C: 0, m:3627, alpha:0},
 ];
 
+const poligonos = [poligono1];
+const coloresPoligonos = ['#00FF00','#FFFF00']
+
 // Configuración de ejes
 const ejeXConfig = {
     dominio: [100, 0],
@@ -233,7 +237,8 @@ export {
     ejeXConfig,
     ejeYConfig,
     datosCapas,
-    poligono1,
+    poligonos,
+    coloresPoligonos,
     lineaY0,
     colorPalette
 };

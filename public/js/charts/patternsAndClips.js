@@ -39,8 +39,8 @@ export function definePatterns(svg) {
       .attr("stroke", "#000000")
       .attr("stroke-width", 1);
       
-      let patternNo1 = defs.append("pattern")
-          .attr("id", "patternNo1")
+      let sandstoneTypical = defs.append("pattern")
+          .attr("id", "sandstoneTypical")
           .attr("patternUnits", "userSpaceOnUse")
           .attr("width", 18)   // Establece el ancho según lo que desees
           .attr("height", 36); // Establece el alto según lo que desees
@@ -60,23 +60,85 @@ export function definePatterns(svg) {
           .attr("fill", "black");
       
       // Luego, usamos el sub-patrón dentro del patrón principal.
-      patternNo1.append("rect")
+      sandstoneTypical.append("rect")
           .attr("width", 36)
           .attr("height", 36)
           .attr("fill", "url(#dotPattern)");
       
       // Añadir formas de 'T' al patrón
-      patternNo1.append("path")
+      sandstoneTypical.append("path")
       .attr("d", "M0,0 h4 M2,0 v4")
       .attr("stroke", "#000000")
       .attr("stroke-width", 1);
       
       // Añadir formas de 'T' al patrón
-      patternNo1.append("path")
+      sandstoneTypical.append("path")
       .attr("d", "M8,19 h4 M10,19 v4")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
+
+      let shale = defs.append("pattern")
+      .attr("id", "shale")
+      .attr("patternUnits", "userSpaceOnUse")
+      .attr("width", 20)   // Establece el ancho según lo que desees
+      .attr("height", 12); // Establece el alto según lo que desees
+  
+        // Añadir formas al patrón
+        shale.append("path")
+        .attr("d", "M4,0.5 h12 M0,7 h6 M14,7 h6")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1);
       
+      let shaleSlit = defs.append("pattern")
+      .attr("id", "shaleSlit")
+      .attr("patternUnits", "userSpaceOnUse")
+      .attr("width", 20)   // Establece el ancho según lo que desees
+      .attr("height", 12); // Establece el alto según lo que desees
+  
+        // Añadir formas al patrón
+        shaleSlit.append("path")
+        .attr("d", "M4,0.5 h12 M0,7 h6 M14,7 h6 M7,9 L10,4 M10,9 L13.5,4")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1);
+
+        let limestone = defs.append("pattern")
+        .attr("id", "limestone")
+        .attr("patternUnits", "userSpaceOnUse")
+        .attr("width", 12)   // Establece el ancho según lo que desees
+        .attr("height", 12); // Establece el alto según lo que desees
+    
+          // Añadir formas al patrón
+          limestone.append("path")
+//          .attr("d", "M2,0 v3 M0,2 h6 M2,5 v5 M0,6 h6 M2,6 v2")
+            .attr("d", "M0,0.5 h12 M0,6.5 h12 M0.5,0 v7 M6.5,6 v8")
+          .attr("stroke", "blue")
+          .attr("stroke-width", 1);
+
+          let limestoneChalk = defs.append("pattern")
+          .attr("id", "limestoneChalk")
+          .attr("patternUnits", "userSpaceOnUse")
+          .attr("width", 10)   // Establece el ancho según lo que desees
+          .attr("height", 10); // Establece el alto según lo que desees
+      
+                     
+           limestoneChalk.append("path")
+            .attr("d", "M0,0 A5,5 0 0,0 10,0  M5,5 A5,5 0 0,0 10,10 M0,10 A5,5 0 0,0 5,5 ") // Medio círculo inferior
+            .attr("stroke", "#00B0F0")
+            .attr("stroke-width", 1)
+            .attr("fill", "none");
+
+            let siltAndSand = defs.append("pattern")
+            .attr("id", "siltAndSand")
+            .attr("patternUnits", "userSpaceOnUse")
+            .attr("width", 10)   // Establece el ancho según lo que desees
+            .attr("height", 10); // Establece el alto según lo que desees
+        
+                       
+             siltAndSand.append("path")
+              .attr("d", "M0,10 L3,7 M5,5 L8,2 M2,4 v1 M7,9 v1") // Medio círculo inferior
+              .attr("stroke", "#FF9933")
+              .attr("stroke-width", 1)
+              .attr("fill", "none");
       
       let patternNo4 = defs.append("pattern")
           .attr("id", "patternNo4")
@@ -90,20 +152,20 @@ export function definePatterns(svg) {
       .attr("stroke", "black")
       .attr("stroke-width", 1);
       
-      let patternNo2 = defs.append("pattern")
-          .attr("id", "patternNo2")
+      let sandstoneShaly = defs.append("pattern")
+          .attr("id", "sandstoneShaly")
           .attr("patternUnits", "userSpaceOnUse")
           .attr("width", 12)   // Establece el ancho según lo que desees
           .attr("height", 12); // Establece el alto según lo que desees
       
       // Añadir formas al patrón
-      patternNo2.append("path")
+      sandstoneShaly.append("path")
       .attr("d", "M0,0 h7 M9,6 h5")
       .attr("stroke", "black")
       .attr("stroke-width", 1);
       
       // Luego, usamos el sub-patrón dentro del patrón principal.
-      patternNo2.append("rect")
+      sandstoneShaly.append("rect")
           .attr("width", 36)
           .attr("height", 36)
           .attr("fill", "url(#dotPattern)");

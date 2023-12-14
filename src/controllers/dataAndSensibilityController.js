@@ -30,6 +30,7 @@ const dataAndSensibilityController = {
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       const exerciseName = data.processData.exercisesData.exerciseName
       let confirmLogout = true
+      const type = 'view'
 
       //findout if step has already been done      
       const findStep = await exercisesAnswersQueries.findStep(idWell, idUser, exerciseName, stepName)
@@ -60,7 +61,8 @@ const dataAndSensibilityController = {
         processName,
         idWell,
         exerciseName,
-        confirmLogout
+        confirmLogout,
+        type
       })
 
     }catch(error){
@@ -88,6 +90,7 @@ const dataAndSensibilityController = {
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       const exerciseName = data.processData.exercisesData.exerciseName
       let confirmLogout = true
+      const type = 'validation'
 
       //get validation info
       const token = req.session.userLogged.tokenHashed
@@ -173,7 +176,7 @@ const dataAndSensibilityController = {
         const postResponse = await response.json()
 
         console.log(postResponse)
-      }
+      } 
 
       //render tables ejs
       return res.render('tables',{
@@ -188,7 +191,8 @@ const dataAndSensibilityController = {
         processName,
         idWell,
         exerciseName,
-        confirmLogout
+        confirmLogout,
+        type
       })
 
     }catch(error){

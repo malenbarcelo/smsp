@@ -15,12 +15,12 @@ const ml = width*50/800;
 const mr = width*200/800;
 const mt = height*50/600;
 const mb = height*150/600;
-const alphaName = "Fracción de Vapor (%)";
+const alphaName = "Petróleo (%)";
 
 export { proportion,width, height, ml, mr, mt, mb, alphaName };
 
 const datosIniciales = [
-    ["TERCIARIO",5.33,5,0,"black","black"],
+["TERCIARIO",5.33,5,0,"black","black"],
 ["TERCIARIO",0,0,0,"black","black"],
 ["MARANON",7.35,0,0,"black","black"],
 ["MARANON",5.33,5,0,"black","black"],
@@ -40,11 +40,11 @@ const datosIniciales = [
 ["POZOSHALE",30,21,0,"black","black"],
 ["POZOSHALE",28.4,25,0,"black","black"],
 ["POZOSHALE",20,958,0,"black","black"],
-["POZOSHALE",13.65,1561,0.03,"black","black"],
-["POZOSHALE",10,1764,0.11,"black","black"],
-["POZOSHALE",7.35,1893,0.19,"black","black"],
-["POZOSHALE",5.33,2813,0.41,"black","black"],
-["POZOSHALE",0,3055,0.94,"black","black"],
+["POZOSHALE",13.65,1561,0.05,"black","black"],
+["POZOSHALE",10,1764,0.13,"black","black"],
+["POZOSHALE",7.35,1893,0.15,"black","black"],
+["POZOSHALE",5.33,2813,0.32,"black","black"],
+["POZOSHALE",0,3055,0.39,"black","black"],
 ["POZOSAND",33.9,10,0,"black","black"],
 ["POZOSAND",30,21,0,"black","black"],
 ["POZOSAND",28.4,194,0,"black","black"],
@@ -102,11 +102,11 @@ const datosIniciales = [
 ["CHONTA",30,983,0,"black","black"],
 ["CHONTA",28.4,1101,0,"black","black"],
 ["CHONTA",20,1866,0,"black","black"],
-["CHONTA",13.65,2418,0,"black","black"],
-["CHONTA",10,2610,0,"black","black"],
-["CHONTA",7.35,2733,0,"black","black"],
-["CHONTA",5.33,3639,0,"black","black"],
-["CHONTA",0,3872,0,"black","black"],
+["CHONTA",13.65,2418,0.01,"black","black"],
+["CHONTA",10,2610,0.03,"black","black"],
+["CHONTA",7.35,2733,0.05,"black","black"],
+["CHONTA",5.33,3639,0.11,"black","black"],
+["CHONTA",0,3872,0.41,"black","black"],
 ["CHONTASAND",89.3,10,0,"black","black"],
 ["CHONTASAND",86,10,0,"black","black"],
 ["CHONTASAND",83.5,580,0,"black","black"],
@@ -166,35 +166,36 @@ const datosIniciales = [
 ["RAYA",33.9,1350,0,"black","black"],
 ["RAYA",30,1396,0,"black","black"],
 ["RAYA",28.4,1502,0,"black","black"],
-["RAYA",20,2231,0,"black","black"],
-["RAYA",13.65,2773,0,"black","black"],
-["RAYA",10,2963,0,"black","black"],
-["RAYA",7.35,3084,0,"black","black"],
-["RAYA",5.33,3990,0,"black","black"],
-["RAYA",0,4220,0,"black","black"],
+["RAYA",20,2231,0.01,"black","black"],
+["RAYA",13.65,2773,0.07,"black","black"],
+["RAYA",10,2963,0.15,"black","black"],
+["RAYA",7.35,3084,0.2,"black","black"],
+["RAYA",5.33,3990,0.31,"black","black"],
+["RAYA",0,4220,1,"black","black"],
 ["RAYABASE",100,473,0,"black","black"],
-["RAYABASE",99.5,490,0,"black","black"],
-["RAYABASE",90,497,0,"black","black"],
-["RAYABASE",89.3,497,0,"black","black"],
-["RAYABASE",86,517,0,"black","black"],
-["RAYABASE",83.5,984,0,"black","black"],
-["RAYABASE",80,1043,0,"black","black"],
+["RAYABASE",99.5,488,0,"black","black"],
+["RAYABASE",90,494,0,"black","black"],
+["RAYABASE",89.3,495,0,"black","black"],
+["RAYABASE",86,516,0,"black","black"],
+["RAYABASE",83.5,978,0,"black","black"],
+["RAYABASE",80,1039,0,"black","black"],
 ["RAYABASE",70.6,1356,0,"black","black"],
-["RAYABASE",70,1363,0,"black","black"],
-["RAYABASE",65.5,1398,0,"black","black"],
-["RAYABASE",60,1439,0,"black","black"],
-["RAYABASE",55.8,1474,0,"black","black"],
-["RAYABASE",50,1512,0,"black","black"],
-["RAYABASE",40,1575,0,"black","black"],
-["RAYABASE",33.9,1610,0,"black","black"],
-["RAYABASE",30,1655,0,"black","black"],
-["RAYABASE",28.4,1756,0,"black","black"],
-["RAYABASE",20,2473,0,"black","black"],
-["RAYABASE",13.65,3010,0,"black","black"],
-["RAYABASE",10,3200,0,"black","black"],
-["RAYABASE",7.35,3318,0,"black","black"],
-["RAYABASE",5.33,4227,0,"black","black"],
-["RAYABASE",0,4450,0,"black","black"]
+["RAYABASE",70,1361,0,"black","black"],
+["RAYABASE",65.5,1399,0,"black","black"],
+["RAYABASE",60,1441,0,"black","black"],
+["RAYABASE",55.8,1471,0,"black","black"],
+["RAYABASE",50,1511,0,"black","black"],
+["RAYABASE",40,1573,0,"black","black"],
+["RAYABASE",33.9,1609,0,"black","black"],
+["RAYABASE",30,1652,0,"black","black"],
+["RAYABASE",28.4,1753,0,"black","black"],
+["RAYABASE",20,2468,0.01,"black","black"],
+["RAYABASE",13.65,3007,0.07,"black","black"],
+["RAYABASE",10,3195,0.15,"black","black"],
+["RAYABASE",7.35,3316,0.2,"black","black"],
+["RAYABASE",5.33,4220,0.31,"black","black"],
+["RAYABASE",0,4450,1,"black","black"]
+  
 ];
 
 
@@ -243,7 +244,7 @@ const ejeYConfig = {
     dominio: [0, 4450],
     ticksMajor: d3.range(0, 4450, 500),
     ticksMinor: d3.range(0, 4450, 100),
-    titulo: "Profundidad [m]"
+    titulo: "Profundidad [m]" 
 };
 
 const colorPalette = [

@@ -5,7 +5,8 @@
     colorMap: false,
     fillPatterns: true,
     additionalPoints: false,
-    additionalRanges: true
+    additionalRanges: true,
+    well: 0
 }
 
 const proportion = 1.05;

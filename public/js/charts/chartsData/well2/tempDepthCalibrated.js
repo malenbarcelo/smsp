@@ -4,12 +4,11 @@
     horizontalLines: true,
     colorMap: false,
     fillPatterns: true,
-    additionalPoints: false,
-    additionalRanges: true,
-    well:0
+    additionalPoints: true,
+    well: 1
 }
 
-const proportion = 1.05;
+const proportion = 1;
 const width = proportion*500;
 const height = proportion*500;
 
@@ -23,27 +22,45 @@ export { proportion ,width, height, ml, mr, mt, mb, alphaName };
 
 
 const datosIniciales = [
-    ["CAPA",0.2,0,0,"black","black"],
-    ["CAPA",0.29,340,0,"black","black"],
-    ["CAPA",0.3,697,0,"black","black"],
-    ["CAPA",0.32,1054,0,"black","black"],
-    ["CAPA",0.34,1411,0,"black","black"],
-    ["CAPA",0.36,1738,0,"black","black"],
-    ["CAPA",0.4,2067,0,"black","black"],
-    ["CAPA",0.42,2397,0,"black","black"],
-    ["CAPA",0.45,2726,0,"black","black"],
-    ["CAPA",0.48,3055,0,"black","black"],
-    ["CAPA",0.5,3176,0,"black","black"],
-    ["CAPA",0.51,3230,0,"black","black"],
-    ["CAPA",0.52,3375,0,"black","black"],
-    ["CAPA",0.55,3624,0,"black","black"],
-    ["CAPA",0.58,3872,0,"black","black"],
-    ["CAPA",0.64,4162,0,"black","black"],
-    ["CAPA",0.65,4200,0,"black","black"],
-    ["CAPA",0.65,4220,0,"black","black"],
-    ["CAPA",0.7,4450,0,"black","black"]
-    
-    
+    ["CAPA",	22	,	5	,0,"blue","blue"],
+["CAPA",	26.7	,	208	,0,"blue","blue"],
+["CAPA",	35.8	,	599	,0,"blue","blue"],
+["CAPA",	44.57	,	990	,0,"blue","blue"],
+["CAPA",	49.06	,	1190	,0,"blue","blue"],
+["CAPA",	50.12	,	1237	,0,"blue","blue"],
+["CAPA",	50.97	,	1285	,0,"blue","blue"],
+["CAPA",	53.07	,	1379	,0,"blue","blue"],
+["CAPA",	55.54	,	1520	,0,"blue","blue"],
+["CAPA",	61.37	,	1783	,0,"blue","blue"],
+["CAPA",	67.2	,	2047	,0,"blue","blue"],
+["CAPA",	69.37	,	2171	,0,"blue","blue"],
+["CAPA",	72.1	,	2296	,0,"blue","blue"],
+["CAPA",	79.74	,	2644	,0,"blue","blue"],
+["CAPA",	87.37	,	2993	,0,"blue","blue"],
+["CAPA",	94.99	,	3342	,0,"blue","blue"],
+["CAPA",	97.62	,	3482	,0,"blue","blue"],
+["CAPA",	104.42	,	3794	,0,"blue","blue"],
+["CAPA",	111.23	,	4107	,0,"blue","blue"],
+["CAPA",	118.04	,	4419	,0,"blue","blue"],
+["CAPA",	124.86	,	4732	,0,"blue","blue"],
+["CAPA",	133.41	,	5123	,0,"blue","blue"],
+["CAPA",	141.98	,	5515	,0,"blue","blue"],
+["CAPA",	150.58	,	5906	,0,"blue","blue"],
+["CAPA",	159.2	,	6298	,0,"blue","blue"],
+["CAPA",	165.95	,	6677	,0,"blue","blue"],
+["CAPA",	172.75	,	7057	,0,"blue","blue"],
+["CAPA",	179.61	,	7435	,0,"blue","blue"],
+["CAPA",	185.11	,	7735	,0,"blue","blue"],
+["CAPA",	186.68	,	7832	,0,"blue","blue"],
+["CAPA",	187.58	,	7881	,0,"blue","blue"],
+["CAPA",	188.49	,	7930	,0,"blue","blue"],
+["CAPA",	196.44	,	8284	,0,"blue","blue"],
+["CAPA",	204.45	,	8637	,0,"blue","blue"],
+["CAPA",	212.54	,	8990	,0,"blue","blue"],
+["CAPA",	219.8	,	9298	,0,"blue","blue"],
+["CAPA",	227.22	,	9605	,0,"blue","blue"],
+["CAPA",	234.81	,	9912	,0,"blue","blue"]
+
 ];
 
 
@@ -72,32 +89,24 @@ datosIniciales.forEach(([nombre, C, m, alpha,color_]) => {
 
 const datosCapas = Object.values(capas);
 
-
-const rangos = [
-    { m: 3900, C1: 0.55, C2: 0.73 },
-    { m: 3900, C1: 0.57, C2: 0.72 },
-    { m: 3900, C1: 0.59, C2: 0.73 },
-    { m: 4000, C1: 0.59, C2: 0.72 },
-    { m: 4090, C1: 0.59, C2: 0.7 },
-    { m: 4090, C1: 0.58, C2: 0.75 },
-    { m: 4110, C1: 0.61, C2: 0.71 },
-    { m: 4110, C1: 0.63, C2: 0.8 },
-    { m: 4200, C1: 0.63, C2: 0.74 },
-    { m: 4300, C1: 0.65, C2: 0.82 },
-    { m: 4390, C1: 0.65, C2: 0.82 },
-    { m: 4400, C1: 0.7, C2:  0.88 }
+const puntos = [
+    { m: 1240, C: 49 },
+    { m: 1600, C: 51 },
+    { m: 1820, C: 59 },
+    { m: 1950, C: 64 },
+    { m: 2017, C: 71 }
 ];
 
 // Configuración de ejes
 const ejeXConfig = {
-    dominio: [0, 1],
+    dominio: [0, 400],
     ticksMajor: d3.range(0, 200, 50),
     ticksMinor: d3.range(0, 200, 40),
-    titulo: "Reflectancia de Vitrinita [%Ro]"
+    titulo: "Temperatura [C]"
 };
 
 const ejeYConfig = {
-    dominio: [0, 4450],
+    dominio: [0, 9914],
     ticksMajor: d3.range(0, 4450, 500),
     ticksMinor: d3.range(0, 4450, 100),
     titulo: "Profundidad [m]"
@@ -129,7 +138,7 @@ const colorPalette = [
 
 // Exporta las configuraciones y datos para que sean accesibles desde otros archivos
 export {
-    rangos,
+    puntos,
     ejeXConfig,
     ejeYConfig,
     datosCapas,

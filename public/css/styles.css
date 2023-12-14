@@ -553,6 +553,20 @@ animation: fill-progress 8s ease-in-out forwards;
     row-gap: 10px;
   }
 
+  .confirmPopupText{
+    margin-top: 10px;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .fa-circle-check{
+    color: rgb(8, 182, 8);
+    font-size: 25px;
+  }
+
   .logoutPopupButtons{
     display: flex;
     justify-content: center;

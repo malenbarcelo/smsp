@@ -5,7 +5,7 @@
     colorMap: false,
     fillPatterns: false,
     additionalPoints: false,
-    well: 0
+    well: 1
 }
 
 const proportion = 0.9;
@@ -22,55 +22,38 @@ export { proportion,width, height, ml, mr, mt, mb, alphaName };
 
 
 const datosIniciales = [
-    ["POZOSHALE", 28.4, 0.23, 0, "red", "red"],
-    ["POZOSHALE", 20, 0.33, 0.05, "red", "red"],
-    ["POZOSHALE", 13.65, 0.4, 0.01, "red", "red"],
-    ["POZOSHALE", 10, 0.42, 0.05, "red", "red"],
-    ["POZOSHALE", 7.35, 0.44, 0.05, "red", "red"],
-    ["POZOSHALE", 5.33, 0.48, 0.14, "red", "red"],
-    ["POZOSHALE", 0, 0.57, 0.52, "red", "red"],
-    ["CHONTA", 83.5, 0.26, 0, "blue", "blue"],
-    ["CHONTA", 80, 0.31, 0, "blue", "blue"],
-    ["CHONTA", 70.6, 0.34, 0, "blue", "blue"],
-    ["CHONTA", 70, 0.34, 0, "blue", "blue"],
-    ["CHONTA", 65.5, 0.35, 0, "blue", "blue"],
-    ["CHONTA", 60, 0.37, 0, "blue", "blue"],
-    ["CHONTA", 55.8, 0.37, 0, "blue", "blue"],
-    ["CHONTA", 50, 0.38, 0, "blue", "blue"],
-    ["CHONTA", 40, 0.39, 0, "blue", "blue"],
-    ["CHONTA", 33.9, 0.4, 0, "blue", "blue"],
-    ["CHONTA", 30, 0.4, 0, "blue", "blue"],
-    ["CHONTA", 28.4, 0.4, 0, "blue", "blue"],
-    ["CHONTA", 20, 0.45, 0, "blue", "blue"],
-    ["CHONTA", 13.65, 0.53, 0, "blue", "blue"],
-    ["CHONTA", 10,   0.57, 0, "blue", "blue"],
-    ["CHONTA", 7.35, 0.59, 0, "blue", "blue"],
-    ["CHONTA", 5.33, 0.62, 0.01, "blue", "blue"],
-    ["CHONTA", 0,    0.71, 0.06, "blue", "blue"],
-    ["RAYA", 100, 0.27, 0, "black", "black"],
-    ["RAYA", 99.5, 0.27, 0, "black", "black"],
-    ["RAYA", 90, 0.31, 0, "black", "black"],
-    ["RAYA", 89.3, 0.31, 0, "black", "black"],
-    ["RAYA", 86, 0.32, 0, "black", "black"],
-    ["RAYA", 83.5, 0.36, 0, "black", "black"],
-    ["RAYA", 80, 0.38, 0, "black", "black"],
-    ["RAYA", 70.6, 0.40, 0, "black", "black"],
-    ["RAYA", 70, 0.41, 0, "black", "black"],
-    ["RAYA", 65.5, 0.42, 0, "black", "black"],
-    ["RAYA", 60, 0.43, 0, "black", "black"],
-    ["RAYA", 55.8, 0.44, 0, "black", "black"],
-    ["RAYA", 50, 0.45, 0, "black", "black"],
-    ["RAYA", 40, 0.46, 0, "black", "black"],
-    ["RAYA", 33.9, 0.47, 0, "black", "black"],
-    ["RAYA", 30, 0.47, 0, "black", "black"],
-    ["RAYA", 28.4, 0.48, 0, "black", "black"],
-    ["RAYA", 20, 0.53, 0, "black", "black"],
-    ["RAYA", 13.65, 0.61, 0, "black", "black"],
-    ["RAYA", 10,   0.65, 0, "black", "black"],
-    ["RAYA", 7.35, 0.67, 0, "black", "black"],
-    ["RAYA", 5.33, 0.7, 0.01, "black", "black"],
-    ["RAYA", 0,    0.79, 0.06, "black", "black"]      
-
+    ["Titoniano",	150.1	,	0	 ,0, "black", "black"],
+    ["Titoniano",	150	,	0	 ,0, "black", "black"],
+    ["Titoniano",	145	,	0	 ,0, "black", "black"],
+    ["Titoniano",	140.9	,	0	 ,0, "black", "black"],
+    ["Titoniano",	130	,	0	 ,0, "black", "black"],
+    ["Titoniano",	129.9	,	0	 ,0, "black", "black"],
+    ["Titoniano",	119.4	,	0	 ,0, "black", "black"],
+    ["Titoniano",	115	,	0	 ,0, "black", "black"],
+    ["Titoniano",	100.1	,	0	 ,0, "black", "black"],
+    ["Titoniano",	81.09	,	0.02	 ,0, "black", "black"],
+    ["Titoniano",	70	,	0.05	 ,0, "black", "black"],
+    ["Titoniano",	65.5	,	0.07	 ,0, "black", "black"],
+    ["Titoniano",	51	,	6.51	 ,0, "black", "black"],
+    ["Titoniano",	50	,	7.9	 ,0, "black", "black"],
+    ["Titoniano",	48.6	,	10.6	 ,0, "black", "black"],
+    ["Titoniano",	37	,	37.83	 ,0, "black", "black"],
+    ["Titoniano",	25	,	61.48	 ,0, "black", "black"],
+    ["Titoniano",	23	,	64.31	 ,0, "black", "black"],
+    ["Titoniano",	20.3,		69.92	 ,0, "black", "black"],
+    ["Titoniano",	16	,	81.74	 ,0, "black", "black"],
+    ["Titoniano",	13	,	85.74	 ,0, "black", "black"],
+    ["Titoniano",	11.6,		86.75	 ,0, "black", "black"],
+    ["Titoniano",	6.8	,	89.78	 ,0, "black", "black"],
+    ["Titoniano",	5.3	,	90.46	 ,0, "black", "black"],
+    ["Titoniano",	4	,	91	 ,0, "black", "black"],
+    ["Titoniano",	3.8	,	91.07	 ,0, "black", "black"],
+    ["Titoniano",	3.6	,	91.14	 ,0, "black", "black"],
+    ["Titoniano",	2.7	,	91.53	 ,0, "black", "black"],
+    ["Titoniano",	1.8	,	92.01	 ,0, "black", "black"],
+    ["Titoniano",	0	,	93.84	 ,0, "black", "black"]
+    
+    
 ];
 
 
@@ -109,17 +92,17 @@ const puntos = [
 
 // Configuración de ejes
 const ejeXConfig = {
-    dominio: [100, 0],
+    dominio: [150.1, 0],
     ticksMajor: d3.range(0, 100, 10),
     ticksMinor: d3.range(0, 100, 5),
     titulo: "Tiempo [Ma]"
 };
 
 const ejeYConfig = {
-    dominio: [0.85, 0.1],
+    dominio: [100, 0],
     ticksMajor: d3.range(0, 1, 0.1),
     ticksMinor: d3.range(0, 1, 0.01),
-    titulo: "Reflectancia de Vitrinita [%Ro]"
+    titulo: "TR Fracción [%]"
 };
 
 const colorPalette = [

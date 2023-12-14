@@ -3,7 +3,8 @@
     sideReference: true,
     horizontalLines: false,
     colorMap: true,
-    fillPatterns: true
+    fillPatterns: true,
+    well: 0
 }
 
 const proportion = 0.8;

@@ -1,49 +1,47 @@
 ﻿export const graphicAttributes = {
-    upperReference: false,
-    sideReference: true,
-    horizontalLines: true,
+    upperReference: true,
+    sideReference: false,
+    horizontalLines: false,
     colorMap: false,
-    fillPatterns: true,
+    fillPatterns: false,
     additionalPoints: false,
-    additionalRanges: true,
-    well:0
+    well: 1
 }
 
-const proportion = 1.05;
-const width = proportion*500;
+const proportion = 0.9;
+const width = proportion*800;
 const height = proportion*500;
 
-const ml = width*50/500;
-const mr = width*200/500;
+const ml = width*50/800;
+const mr = width*200/800;
 const mt = height*50/500;
 const mb = height*50/500;
 const alphaName = "Petróleo (%)";
 
-export { proportion ,width, height, ml, mr, mt, mb, alphaName };
+export { proportion,width, height, ml, mr, mt, mb, alphaName };
 
 
 const datosIniciales = [
-    ["CAPA",0.2,0,0,"black","black"],
-    ["CAPA",0.29,340,0,"black","black"],
-    ["CAPA",0.3,697,0,"black","black"],
-    ["CAPA",0.32,1054,0,"black","black"],
-    ["CAPA",0.34,1411,0,"black","black"],
-    ["CAPA",0.36,1738,0,"black","black"],
-    ["CAPA",0.4,2067,0,"black","black"],
-    ["CAPA",0.42,2397,0,"black","black"],
-    ["CAPA",0.45,2726,0,"black","black"],
-    ["CAPA",0.48,3055,0,"black","black"],
-    ["CAPA",0.5,3176,0,"black","black"],
-    ["CAPA",0.51,3230,0,"black","black"],
-    ["CAPA",0.52,3375,0,"black","black"],
-    ["CAPA",0.55,3624,0,"black","black"],
-    ["CAPA",0.58,3872,0,"black","black"],
-    ["CAPA",0.64,4162,0,"black","black"],
-    ["CAPA",0.65,4200,0,"black","black"],
-    ["CAPA",0.65,4220,0,"black","black"],
-    ["CAPA",0.7,4450,0,"black","black"]
+    ["Titoniano",	145	,	0.22	 ,0, "black", "black"],
+    ["Titoniano",	115	,	0.25	 ,0, "black", "black"],
+    ["Titoniano",	65.5	,	0.3	 ,0, "black", "black"],
+    ["Titoniano",	48.6	,	0.44	 ,0, "black", "black"],
+    ["Titoniano",	25	,	0.65	 ,0, "black", "black"],
+    ["Titoniano",	23	,	0.67	 ,0, "black", "black"],
+    ["Titoniano",	16	,	0.78	 ,0, "black", "black"],
+    ["Titoniano",	13	,	0.85	 ,0, "black", "black"],
+    ["Titoniano",	11.6	,	0.88	 ,0, "black", "black"],
+    ["Titoniano",	6.8	,	1.01	 ,0, "black", "black"],
+    ["Titoniano",	5.3	,	1.06	 ,0, "black", "black"],
+    ["Titoniano",	4	,	1.1	 ,0, "black", "black"],
+    ["Titoniano",	3.8	,	1.1	 ,0, "black", "black"],
+    ["Titoniano",	3.6	,	1.11	 ,0, "black", "black"],
+    ["Titoniano",	2.7	,	1.13	 ,0, "black", "black"],
+    ["Titoniano",	1.8	,	1.16	 ,0, "black", "black"],
+    ["Titoniano",	0	,	1.31	 ,0, "black", "black"],
     
-    
+   
+
 ];
 
 
@@ -72,35 +70,27 @@ datosIniciales.forEach(([nombre, C, m, alpha,color_]) => {
 
 const datosCapas = Object.values(capas);
 
-
-const rangos = [
-    { m: 3900, C1: 0.55, C2: 0.73 },
-    { m: 3900, C1: 0.57, C2: 0.72 },
-    { m: 3900, C1: 0.59, C2: 0.73 },
-    { m: 4000, C1: 0.59, C2: 0.72 },
-    { m: 4090, C1: 0.59, C2: 0.7 },
-    { m: 4090, C1: 0.58, C2: 0.75 },
-    { m: 4110, C1: 0.61, C2: 0.71 },
-    { m: 4110, C1: 0.63, C2: 0.8 },
-    { m: 4200, C1: 0.63, C2: 0.74 },
-    { m: 4300, C1: 0.65, C2: 0.82 },
-    { m: 4390, C1: 0.65, C2: 0.82 },
-    { m: 4400, C1: 0.7, C2:  0.88 }
+const puntos = [
+    { m: 0, C: 30 },
+    { m: 3000, C: 100 },
+    { m: 3555, C: 125 },
+    { m: 4200, C: 140 },
+    { m: 4400, C: 130 }
 ];
 
 // Configuración de ejes
 const ejeXConfig = {
-    dominio: [0, 1],
-    ticksMajor: d3.range(0, 200, 50),
-    ticksMinor: d3.range(0, 200, 40),
-    titulo: "Reflectancia de Vitrinita [%Ro]"
+    dominio: [145, 0],
+    ticksMajor: d3.range(0, 100, 10),
+    ticksMinor: d3.range(0, 100, 5),
+    titulo: "Tiempo [Ma]"
 };
 
 const ejeYConfig = {
-    dominio: [0, 4450],
-    ticksMajor: d3.range(0, 4450, 500),
-    ticksMinor: d3.range(0, 4450, 100),
-    titulo: "Profundidad [m]"
+    dominio: [3, 0],
+    ticksMajor: d3.range(0, 1, 0.1),
+    ticksMinor: d3.range(0, 1, 0.01),
+    titulo: "Reflectancia de Vitrinita [%Ro]"
 };
 
 const colorPalette = [
@@ -129,7 +119,7 @@ const colorPalette = [
 
 // Exporta las configuraciones y datos para que sean accesibles desde otros archivos
 export {
-    rangos,
+    puntos,
     ejeXConfig,
     ejeYConfig,
     datosCapas,

@@ -4,7 +4,8 @@
     horizontalLines: false,
     colorMap: false,
     fillPatterns: false,
-    additionalPoints: false
+    additionalPoints: false,
+    well: 0
 }
 
 const proportion = 0.9;

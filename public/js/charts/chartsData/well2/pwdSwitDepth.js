@@ -1,15 +1,15 @@
-﻿export const graphicAttributes = {
+﻿//this chart is equal to tempDepth
+export const graphicAttributes = {
     upperReference: false,
     sideReference: true,
     horizontalLines: true,
     colorMap: false,
     fillPatterns: true,
-    additionalPoints: false,
-    additionalRanges: true,
-    well:0
+    additionalPoints: true,
+    well: 1
 }
 
-const proportion = 1.05;
+const proportion = 1;
 const width = proportion*500;
 const height = proportion*500;
 
@@ -23,27 +23,45 @@ export { proportion ,width, height, ml, mr, mt, mb, alphaName };
 
 
 const datosIniciales = [
-    ["CAPA",0.2,0,0,"black","black"],
-    ["CAPA",0.29,340,0,"black","black"],
-    ["CAPA",0.3,697,0,"black","black"],
-    ["CAPA",0.32,1054,0,"black","black"],
-    ["CAPA",0.34,1411,0,"black","black"],
-    ["CAPA",0.36,1738,0,"black","black"],
-    ["CAPA",0.4,2067,0,"black","black"],
-    ["CAPA",0.42,2397,0,"black","black"],
-    ["CAPA",0.45,2726,0,"black","black"],
-    ["CAPA",0.48,3055,0,"black","black"],
-    ["CAPA",0.5,3176,0,"black","black"],
-    ["CAPA",0.51,3230,0,"black","black"],
-    ["CAPA",0.52,3375,0,"black","black"],
-    ["CAPA",0.55,3624,0,"black","black"],
-    ["CAPA",0.58,3872,0,"black","black"],
-    ["CAPA",0.64,4162,0,"black","black"],
-    ["CAPA",0.65,4200,0,"black","black"],
-    ["CAPA",0.65,4220,0,"black","black"],
-    ["CAPA",0.7,4450,0,"black","black"]
-    
-    
+    ["CAPA",6,5,0,"blue","blue"],
+["CAPA",10.62,208,0,"blue","blue"],
+["CAPA",19.61,599,0,"blue","blue"],
+["CAPA",28.3,990,0,"blue","blue"],
+["CAPA",32.77,1190,0,"blue","blue"],
+["CAPA",33.83,1237,0,"blue","blue"],
+["CAPA",34.66,1285,0,"blue","blue"],
+["CAPA",36.76,1379,0,"blue","blue"],
+["CAPA",39.19,1519,0,"blue","blue"],
+["CAPA",45.01,1783,0,"blue","blue"],
+["CAPA",50.83,2047,0,"blue","blue"],
+["CAPA",52.98,2171,0,"blue","blue"],
+["CAPA",55.7,2295,0,"blue","blue"],
+["CAPA",63.33,2644,0,"blue","blue"],
+["CAPA",70.95,2993,0,"blue","blue"],
+["CAPA",78.56,3341,0,"blue","blue"],
+["CAPA",81.17,3482,0,"blue","blue"],
+["CAPA",87.96,3794,0,"blue","blue"],
+["CAPA",94.75,4107,0,"blue","blue"],
+["CAPA",101.55,4420,0,"blue","blue"],
+["CAPA",108.35,4732,0.03,"blue","blue"],
+["CAPA",116.87,5124,0.11,"blue","blue"],
+["CAPA",125.42,5515,0.19,"blue","blue"],
+["CAPA",133.98,5907,0.41,"blue","blue"],
+["CAPA",142.56,6299,0.94,"blue","blue"],
+["CAPA",149.19,6678,0,"blue","blue"],
+["CAPA",155.86,7058,0,"blue","blue"],
+["CAPA",162.57,7437,0,"blue","blue"],
+["CAPA",167.94,7737,0,"blue","blue"],
+["CAPA",169.49,7834,0,"blue","blue"],
+["CAPA",170.37,7883,0,"blue","blue"],
+["CAPA",171.26,7932,0,"blue","blue"],
+["CAPA",179.13,8285,0,"blue","blue"],
+["CAPA",187.08,8639,0,"blue","blue"],
+["CAPA",195.11,8992,0,"blue","blue"],
+["CAPA",202.06,9299,0,"blue","blue"],
+["CAPA",209.17,9607,0,"blue","blue"],
+["CAPA",216.42,9914,0,"blue","blue"]
+
 ];
 
 
@@ -72,32 +90,24 @@ datosIniciales.forEach(([nombre, C, m, alpha,color_]) => {
 
 const datosCapas = Object.values(capas);
 
-
-const rangos = [
-    { m: 3900, C1: 0.55, C2: 0.73 },
-    { m: 3900, C1: 0.57, C2: 0.72 },
-    { m: 3900, C1: 0.59, C2: 0.73 },
-    { m: 4000, C1: 0.59, C2: 0.72 },
-    { m: 4090, C1: 0.59, C2: 0.7 },
-    { m: 4090, C1: 0.58, C2: 0.75 },
-    { m: 4110, C1: 0.61, C2: 0.71 },
-    { m: 4110, C1: 0.63, C2: 0.8 },
-    { m: 4200, C1: 0.63, C2: 0.74 },
-    { m: 4300, C1: 0.65, C2: 0.82 },
-    { m: 4390, C1: 0.65, C2: 0.82 },
-    { m: 4400, C1: 0.7, C2:  0.88 }
+const puntos = [
+    { m: 1240, C: 49 },
+    { m: 1600, C: 51 },
+    { m: 1820, C: 59 },
+    { m: 1950, C: 64 },
+    { m: 2017, C: 71 }
 ];
 
 // Configuración de ejes
 const ejeXConfig = {
-    dominio: [0, 1],
+    dominio: [0, 400],
     ticksMajor: d3.range(0, 200, 50),
     ticksMinor: d3.range(0, 200, 40),
-    titulo: "Reflectancia de Vitrinita [%Ro]"
+    titulo: "Temperatura [C]"
 };
 
 const ejeYConfig = {
-    dominio: [0, 4450],
+    dominio: [0, 9914],
     ticksMajor: d3.range(0, 4450, 500),
     ticksMinor: d3.range(0, 4450, 100),
     titulo: "Profundidad [m]"
@@ -129,7 +139,7 @@ const colorPalette = [
 
 // Exporta las configuraciones y datos para que sean accesibles desde otros archivos
 export {
-    rangos,
+    puntos,
     ejeXConfig,
     ejeYConfig,
     datosCapas,

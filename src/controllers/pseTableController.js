@@ -28,6 +28,7 @@ const pseTableController = {
       const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
       const exerciseName = data.processData.exercisesData.exerciseName
       let confirmLogout = true
+      const type = 'view'
       
       data.chartData = {
         'idChartsMenu':1
@@ -83,7 +84,9 @@ const pseTableController = {
         processName,
         idWell,
         confirmLogout,
-        exerciseName})
+        exerciseName,
+        type
+      })
 
     }catch(error){
       console.log(error)
@@ -109,6 +112,7 @@ const pseTableController = {
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       let confirmLogout = true
+      const type = 'validation'
 
       //add info to data
       data.chartData = {
@@ -207,7 +211,8 @@ const pseTableController = {
         processName,
         idWell,
         confirmLogout,
-        exerciseName
+        exerciseName,
+        type
     })
 
     }catch(error){

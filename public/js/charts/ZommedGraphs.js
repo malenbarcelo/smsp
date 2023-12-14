@@ -1,13 +1,58 @@
-//import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Petroleo-Sepult-1.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Gas-Sepult-1.js';
-import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligono1, lineaY0} from './Ro-Sepult-1.js';
-//import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Rho-Tiempo-1.js';
-//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './TR-Tiempo-1.js';
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Temp-Prof-1.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './TR-Sepult-1.js';
 
 
-import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2, nombresDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js';
+// TR-Tiempo
+//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Tiempo-1.js';
+//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Tiempo-1-C.js';
+//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Tiempo-2.js';
+//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Tiempo-2-C.js';
+
+// rho-tiempo
+// import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Rho-Tiempo-1.js';
+// import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Rho-Tiempo-1-C.js';
+//import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Rho-Tiempo-2.js';
+//import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Rho-Tiempo-2-C.js';
+
+// Gas-Sepultamient0
+// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Gas-Sepult-1.js';
+// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Gas-Sepult-1-C.js';
+//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Gas-Sepult-2.js';
+//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Gas-Sepult-2-C.js';
+
+ // Petroleo-Sepultamiento
+// import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Petroleo-Sepult-1.js';
+// import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Petroleo-Sepult-1-C.js';
+//import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Petroleo-Sepult-2.js';
+//import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Petroleo-Sepult-2-C.js';
+
+//Rho-Prof
+//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-O/Rho-Prof-1.js';
+//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-C/Rho-Prof-1-C.js';
+//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Rho-Prof-2.js';
+//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Rho-Prof-2-C.js';
+
+// Temp-Prof
+// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-O/Temp-Prof-1.js';
+// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-C.js';
+// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-SWIT-C.js';
+//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Temp-Prof-2.js';
+ //import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Temp-Prof-2-C.js';
+
+ // Rho-Sepultamiento
+// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos, coloresPoligonos, lineaY0} from './Pozo1-O/Ro-Sepult-1.js';
+//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo1-C/Ro-Sepult-1-C.js';
+//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-O/Ro-Sepult-2.js';
+import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-C/Ro-Sepult-2-C.js';
+
+// TR-Sepultamiento
+// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Sepult-1.js';
+// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Sepult-1-C.js';
+// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Sepult-2.js';
+//import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Sepult-2-C.js';
+
+
+ import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2, nombresDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js';
+
+
 import { definePatterns, defineClips } from './patternsAndClips.js';
 import { createHorizontalRectangle, createVerticalRectangle, drawHorizontalLines, drawColorScale} from './graphAttributes.js';
 
@@ -17,11 +62,11 @@ window.yNew;
 
 
 // https://observablehq.com/@wsygzn/zoom-candlesticks@36
-function _1(md) {
-  return (
-    md`# hola`
-  )
-}
+// function _1(md) {
+//   return (
+//     md`# hola`
+//   )
+// }
 
 function _d3(require) {
   return (
@@ -31,11 +76,33 @@ function _d3(require) {
 
 
 function _4(d3, DOM) {
-
-  let svg = d3.select(DOM.svg(width, height))
+  // viwBox
   
-  let defs
+  let svg = d3.select(DOM.svg(width, height))
 
+  
+  //ESTE BLOQUE PERMITE VER EL AREA DE GRÁFICO Y LOS MÁRGENES
+  // svg.append('rect')
+  // .attr('x', 0)
+  // .attr('y', 0)
+  // .attr('width', width)
+  // .attr('height', height)
+  // .attr('fill', "none")
+  // .attr("stroke", "red")  // color de la línea
+  // .attr("stroke-width", 2); // grosor de la línea
+
+  // svg.append('rect')
+  // .attr('x', ml)
+  // .attr('y', mt)
+  // .attr('width', width-ml-mr)
+  // .attr('height', height-mt-mb)
+  // .attr('fill', "none")
+  // .attr("stroke", "blue")  // color de la línea
+  // .attr("stroke-width", 2); // grosor de la línea
+  
+  
+  
+  let defs;
   // Llama a la función para definir los patrones
   if(graphicAttributes.fillPatterns)
   {
@@ -60,6 +127,7 @@ function _4(d3, DOM) {
   {
     datosCapas.forEach((capa, index) => {
       const gradientId = `gradientFor${capa.nombre.replace(/\s+/g, '')}`; // Esto genera un ID único basado en el nombre de la capa
+      //const gradientId = `gradientFor${capa.nombre.replace(/[^\w]+/g, '')}`;
       const gradientDefinition = createDiscreteGradientForLayer(capa.datos, gradientId);
       defs.html(defs.html() + gradientDefinition); // Añadimos la definición del gradiente al contenedor <defs>
     });
@@ -109,7 +177,7 @@ function _4(d3, DOM) {
     ax.call(draw, datosCapas, xNew, yNew);
   }
 
-
+  
   function draw(g, data, x, y) {
     if (data[0] && data[data.length - 1]) {
       //#region Preparacion de area del gràfico
@@ -117,6 +185,7 @@ function _4(d3, DOM) {
       g.selectAll('g').remove()
 
       defineClips(svg,ml,mr,mt,mb,width,height);
+
 
       let XticksMajor = ejeXConfig.ticksMajor;
       let XticksMinor = ejeXConfig.ticksMinor;
@@ -204,15 +273,17 @@ function _4(d3, DOM) {
       
       if(graphicAttributes.horizontalLines)
       {
-        drawHorizontalLines(g,lineasHorizontales, ml, width, mr,y,proportion);
+        drawHorizontalLines(g,lineasHorizontales[graphicAttributes.well], ml, width, mr,y,proportion);//CAMBIO - lineasHorizontales[graphicAttributes.well]
       }
       
       if (graphicAttributes.additionalPoints) {
         drawPlusSigns(g,puntos,x,y,proportion)
       }
+
+      if (graphicAttributes.additionalRanges) {
+        drawRanges(g,rangos,x,y,proportion)
+      }
     
-      
-      
       // Dibujar líneas y area 
       let line = d3.line()
         .x(d => x(d.C))
@@ -223,15 +294,22 @@ function _4(d3, DOM) {
         .y0(d => y(d.m))
         .y1(d => y(d.m));  // Esto se ajustará según el conjunto de datos del siguiente item.
 
-
-        if(graphicAttributes.extraPoligons)
+        if(graphicAttributes.extraPoligons) // CAMBIO - Todo este IF cambió porque ahora hay varios polígonos
         {
           //drawLine(g,poligono1,"black","line100",line);
           const RayaBaseData = data[data.length-1].datos;
-          let [interpolatedData1, interpolatedData2] = interpolateData(poligono1, RayaBaseData);
-          paintAreaBetweenLines(g, interpolatedData1, interpolatedData2, '#FFFF00', 'PaintedArea', area);
-          [interpolatedData1, interpolatedData2] = interpolateData(lineaY0, poligono1);
-          paintAreaBetweenLines(g, interpolatedData1, interpolatedData2, '#00FF00', 'PaintedArea2', area);
+          let [interpolatedData1, interpolatedData2] = interpolateData(poligonos[poligonos.length-1], RayaBaseData);
+          paintAreaBetweenLines(g, interpolatedData1, interpolatedData2, coloresPoligonos[coloresPoligonos.length-1], 'FirstPaintedArea', area);
+
+          for(let i=0;i<poligonos.length-1;i++)
+          {
+              [interpolatedData1, interpolatedData2] = interpolateData(poligonos[i], poligonos[i+1]);
+              paintAreaBetweenLines(g, interpolatedData1, interpolatedData2, coloresPoligonos[poligonos.length-i-1], 'PaintedArea'+i, area);
+          }
+          
+          [interpolatedData1, interpolatedData2] = interpolateData(lineaY0, poligonos[0]);
+          paintAreaBetweenLines(g, interpolatedData1, interpolatedData2, coloresPoligonos[0], 'LastPaintedArea3', area);
+          
         }
 
       data.forEach((item, index) => {
@@ -243,21 +321,25 @@ function _4(d3, DOM) {
 
           const [interpolatedData1, interpolatedData2] = interpolateData(item.datos, nextData);
           if(graphicAttributes.colorMap)
-            drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, 'gradientFor' + item.nombre, 'gradientArea' + (index + 1), area);
+            drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `gradientFor${item.nombre.replace(/\s+/g, '')}`, 'gradientArea' + (index + 1), area);//CAMBIO - Para poder ver las capas con nombres que tienen espacios
           if(graphicAttributes.fillPatterns)
             texturizeAreaBetweenLines(g, interpolatedData1, interpolatedData2, findPattern(item.nombre), 'textureArea' + (index + 1), area);
         }
       });
 
-      if(graphicAttributes.extraPoligons)
+      if(graphicAttributes.extraPoligons)// CAMBIO - Este IF cambió, porque ahora hay varios polígonos
        {
-         drawLine(g,poligono1,"black","elPoligono",line,true);
+        poligonos.forEach((poligono,indice)=>{
+         drawLine(g,poligono,"black","elPoligono"+indice,line,true);
+         //drawLine(g,poligonos[1],"black","elPoligono2",line,true);
+        });
       }
 
 
 
       if(graphicAttributes.sideReference)
-        createHorizontalRectangle(g, lineasHorizontales, nombresDeCapas, coloresDeCapas, texturasDeCapas, width, mr, mt, height, mb, y, proportion);
+        createHorizontalRectangle(g, lineasHorizontales[graphicAttributes.well], nombresDeCapas[graphicAttributes.well], coloresDeCapas[graphicAttributes.well], texturasDeCapas[graphicAttributes.well], width, mr, mt, height, mb, y, proportion);//CAMBIO - Varias cosas ahora dependen del # de pozo
+
       if(graphicAttributes.upperReference)
       {
         let rectGroup1 = createVerticalRectangle(g, lineasVerticales1, nombresDeEras, coloresDeEras, mt *.2,mt, proportion);
@@ -377,6 +459,51 @@ function _4(d3, DOM) {
         .on('mouseout', () => d3.select("#tooltip").style("visibility", "hidden"));
   }
 
+  function drawRanges(g,randos,x,y,proportion) {
+    // Línea horizontal
+    g.selectAll('line.horizontal-plus')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'horizontal-plus')
+      .attr('x1', d => x(d.C1) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('x2', d => x(d.C2) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y1', d => y(d.m))
+      .attr('y2', d => y(d.m))
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`) // grosor de la línea
+      .attr("clip-path", "url(#clip)")      
+
+  
+    // Líneas verticales del primer y segundo valor
+    g.selectAll('line.vertical-r1')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'vertical-r1')
+      .attr('x1', d => x(d.C1))
+      .attr('x2', d => x(d.C1))
+      .attr('y1', d => y(d.m) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y2', d => y(d.m) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`)  // grosor de la línea
+      .attr("clip-path", "url(#clip)")
+
+      g.selectAll('line.vertical-r2')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'vertical-r2')
+      .attr('x1', d => x(d.C2))
+      .attr('x2', d => x(d.C2))
+      .attr('y1', d => y(d.m) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y2', d => y(d.m) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`)  // grosor de la línea
+      .attr("clip-path", "url(#clip)")
+
+      g.selectAll('line.vertical-r1, line.vertical-r2,line.horizontal-plus')
+        .on('mouseover', onMouseOverRange)
+        .on('mouseout', () => d3.select("#tooltip").style("visibility", "hidden"));
+  }
+
   function drawReferenceBox(g)
   {
     const rectContainer = g
@@ -473,6 +600,19 @@ function _4(d3, DOM) {
       .text("(" +  event.C.toFixed(2) + " , " + event.m.toFixed(2)+")");
   }
 
+  function onMouseOverRange(event, d) {
+    let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
+  
+    d3.select("#tooltip")
+      .style("left", (mx - width/10) + "px")
+      .style("top", (my - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .text("(" +  event.C1.toFixed(2) + " - " + event.C2.toFixed(2) + ", " + event.m.toFixed(2)+")");
+  }
+
   function onMouseOut(event, d) {
     d3.select("#tooltip").style("visibility", "hidden");  // Oculta el tooltip
   }
@@ -566,11 +706,11 @@ function interpolateYValue(data, xValue) {
 
 function findPattern(capa) {
   // Encuentra el índice de la capa en la lista de nombres de capas
-  let index = nombresDeCapas.indexOf(capa);
+  let index = nombresDeCapas[graphicAttributes.well].indexOf(capa);//CAMBIO - nombres de capas depende del #de pozo
 
   // Si la capa se encuentra en la lista, devuelve la textura correspondiente
   if (index !== -1) {
-    return texturasDeCapas[index];
+    return texturasDeCapas[graphicAttributes.well][index];//CAMBIO - texturas de capas depende del # de pozo
   }
 
   // Si la capa no se encuentra en la lista, devuelve una textura predeterminada o null
@@ -667,6 +807,8 @@ export default function define(runtime, observer) {
   return main;
 }
 
+
+ 
 
 
 

@@ -1,11 +1,12 @@
-﻿//this file is equal to tempDepth
+﻿//this chart is equal to tempDepth
 export const graphicAttributes = {
     upperReference: false,
     sideReference: true,
     horizontalLines: true,
     colorMap: false,
     fillPatterns: true,
-    additionalPoints: true
+    additionalPoints: true,
+    well: 0
 }
 
 const proportion = 1.05;

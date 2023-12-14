@@ -5,7 +5,7 @@
     colorMap: false,
     fillPatterns: true,
     extraPoligons: true,
-    well1: true
+    well: 0
 }
 
 const proportion = 0.8;
