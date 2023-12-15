@@ -623,7 +623,7 @@
                 {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat','idChartsMenu':'1'},
                 {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1'},
                 {'id':3,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Petróleo (Shaleblack-Sand-clay-rich)','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSat','chartTitle':'Sat de Petróleo-Sepultamiento (Shale-black)'},
+                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Sat de Petróleo-Sepultamiento (Shale-black)'},
                     {'id':2,'name':'oilBurialSatSandstone','chartTitle':'Sat de Petróleo-Sepultamiento (Sandstone-clay-rich)'},
                 ]},
                 {'id':4,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Gas (Shaleblack-Sand-clay-ric)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[

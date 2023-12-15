@@ -32,11 +32,15 @@ app.set('view engine','ejs')
 app.use(session({
     secret:'secret',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true,
+    cookie: { secure: false } // Cambia a true si usas HTTPS
 }))
 
 //middlewares
 app.use(userLoggedMiddleware)
+
+//define user to login
+const userLogged = null
 
 //Declare and listen port
 const APP_PORT = 3002

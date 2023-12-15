@@ -26,7 +26,9 @@ const dataAndSensibilityController = {
       const title = stepData.title
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
+
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       const exerciseName = data.processData.exercisesData.exerciseName
       let confirmLogout = true
@@ -86,14 +88,17 @@ const dataAndSensibilityController = {
       const title = stepData.title
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       const exerciseName = data.processData.exercisesData.exerciseName
       let confirmLogout = true
       const type = 'validation'
 
       //get validation info
-      const token = req.session.userLogged.tokenHashed
+      //const token = req.session.userLogged.tokenHashed
+      const token = userLogged.tokenHashed
+
 
       //get correct info from db tables or validations.js
       const dataToCompare = getDataToCompare(ejsTable,data,processName)
@@ -215,7 +220,8 @@ const dataAndSensibilityController = {
       const idIndexData = processData.routes[idRoute - 1].idIndexData
       let confirmLogout = false
       const exerciseName = processData.exercisesData.exerciseName
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
 
       const data = {well,processData,routes,idIndexData,idRoute,chartData}
 

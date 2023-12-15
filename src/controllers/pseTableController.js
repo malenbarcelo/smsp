@@ -17,7 +17,7 @@ const pseTableController = {
       const idWell = req.params.idWell
       const idRoute = 2
       let validation = 'fail'
-      idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
       const idIndexData = 7
       const routeParam = 'pse-table'
       const processName = 'pse-table'
@@ -104,8 +104,10 @@ const pseTableController = {
       const pseWellData = pseData.filter(data => data.idWell == idWell)[0]
       const data = await getResumedData(idWell,processName)
       const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
-      const idUser = req.session.userLogged.id_user
-      const token = req.session.userLogged.tokenHashed
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
+      //const token = req.session.userLogged.tokenHashed
+      const token = userLogged.tokenHashed
       const stepName = data.processData.exercisesData.steps[0].stepName
       const exerciseName = data.processData.exercisesData.exerciseName
       const idIndexData = 7
@@ -233,7 +235,8 @@ const pseTableController = {
       const routeParam = 'pse-table'
       let confirmLogout = false
       const exerciseName = processData.exercisesData.exerciseName
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
 
       //findout if step has already been done      
       const findExercise = await exercisesAnswersQueries.findExercise(idWell, idUser, exerciseName)

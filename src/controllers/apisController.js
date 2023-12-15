@@ -6,7 +6,8 @@ const apisController = {
   getData: async(req,res) =>{
     try{
       const idWell = req.params.idWell
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
       
       const pseInputsData = await pseQueries.pseInputsData(idWell,idUser)
 
@@ -22,7 +23,8 @@ const apisController = {
 
       const idWell = req.params.idWell
       const newData = []
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
 
       const pseInputsData = await pseQueries.pseInputsData(idWell,idUser)
 

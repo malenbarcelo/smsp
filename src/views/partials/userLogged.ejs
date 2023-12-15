@@ -1,13 +1,13 @@
 
-<div class="userLogged">
-    <% if (locals.isLogged) { %>
-        <div class="userLoggedName">
-            <%= userLogged.first_name + ' ' + userLogged.last_name %>
-        </div>
-        <% if (!confirmLogout) { %>
-            <a href="<%= '/logout/' + processName + '/' + idWell %>" class="logout">Cerrar sesión</a>
-            <% } else { %>
-                <div class="logout" id="logout">Cerrar sesión</div>
-        <% } %>
-    <% } %>
+<div class="userLogged">    
+    <div class="userLoggedName">
+        <%= userLogged.first_name + ' ' + userLogged.last_name %>
+    </div>
+    <% if (!confirmLogout) { %>
+        <a href="<%= '/logout/' + processName + '/' + idWell %>" class="logout">Cerrar sesión</a>
+        <% } else { %>
+            <div class="logout" id="logout">Cerrar sesión</div>
+    <% } %>    
 </div>
+
+

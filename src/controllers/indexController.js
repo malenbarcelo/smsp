@@ -52,9 +52,10 @@ const indexController = {
       const postResponse = await response.json()
 
       let userToLogin = postResponse
-      userToLogin.email = req.body.email
+      /*userToLogin.email = req.body.email
+      req.session.userLogged = userToLogin*/
 
-      req.session.userLogged = userToLogin
+      userLogged = userToLogin
 
       //get process data
       const processData = processesData.filter(process => process.name == processName)[0]      
@@ -115,7 +116,7 @@ const indexController = {
       
       const idIndexData = data.processData.routes[idRoute - 1].idIndexData
 
-      return res.render('well',{title,data,idIndexData,routes,processName,idWell,confirmLogout})
+      return res.render('well',{title,data,idIndexData,routes,processName,idWell,confirmLogout,userLogged})
 
     }catch(error){
       console.log(error)
@@ -133,7 +134,8 @@ const indexController = {
       const idWell = req.params.idWell
       const processName = req.params.processName
       const processDesc = req.params.processDesc
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user      
       const data = await getResumedData(idWell,processName)
       const exerciseName = data.processData.exercisesData.exerciseName
 
@@ -166,7 +168,8 @@ const indexController = {
       const processData = processesData.filter(process => process.name === processName)[0]
       const idRoute = processData.idEndProcessRoute
       const idBackRoute = idRoute - 1 
-      const idUser = req.session.userLogged.id_user
+      //const idUser = req.session.userLogged.id_user
+      const idUser = userLogged.id_user
       const exerciseName = processData.exercisesData.exerciseName
       const confirmLogout = false
 

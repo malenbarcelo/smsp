@@ -8,11 +8,12 @@ window.addEventListener('load',async()=>{
     const myChart2 = document.getElementById('myChart2')
     
     const idWell = document.getElementById('idWell').innerText
-    const chartName = document.getElementById('chartName2').innerText
+    const chartName2 = document.getElementById('chartName2').innerText
     
     const runtime = new Runtime()
 
-    const rutaArchivo = './chartsData/well' + idWell + '/' + chartName + '.js'
+    const rutaArchivo = './chartsData/well' + idWell + '/' + chartName2 + '.js'
+
     const module = await import(rutaArchivo)
 
     //var {proportion,width,height,mb,ml,mt,mr,graphicAttributes,ejeXConfig,ejeYConfig,colorPalette,datosCapas,puntos,poligono1, lineaY0,alphaName} = module
@@ -76,11 +77,11 @@ function _4(d3, DOM) {
   window.xNew = xNew;
   window.yNew = yNew;
 
-  //Crear los gradientes para las capas
+  //Crear los gradientes para las capas ////ACA CAMBIA CHART 2!!!!!!!!
   if(graphicAttributes.colorMap)
   {
     datosCapas.forEach((capa, index) => {
-      const gradientId = `gradientFor${capa.nombre.replace(/\s+/g, '')}`; // Esto genera un ID único basado en el nombre de la capa
+      const gradientId = `secondGradientFor${capa.nombre.replace(/\s+/g, '')}`; //CAMBIO CHARTS 2
       const gradientDefinition = createDiscreteGradientForLayer(capa.datos, gradientId);
       defs.html(defs.html() + gradientDefinition); // Añadimos la definición del gradiente al contenedor <defs>
     });
@@ -274,7 +275,7 @@ function _4(d3, DOM) {
 
           const [interpolatedData1, interpolatedData2] = interpolateData(item.datos, nextData);
           if(graphicAttributes.colorMap)
-          drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `gradientFor${item.nombre.replace(/\s+/g, '')}`, 'gradientArea' + (index + 1), area);//CAMBIO - Para poder ver las capas con nombres que tienen espacios
+          drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `secondGradientFor${item.nombre.replace(/\s+/g, '')}`, 'gradientArea' + (index + 1), area);//CAMBIO CHARTS 2
           if(graphicAttributes.fillPatterns)
             texturizeAreaBetweenLines(g, interpolatedData1, interpolatedData2, findPattern(item.nombre), 'textureArea' + (index + 1), area);
         }
@@ -415,7 +416,7 @@ function _4(d3, DOM) {
 
       g.selectAll('line.horizontal-plus, line.vertical-plus')
         .on('mouseover', onMouseOverPlus)
-        .on('mouseout', () => d3.select("#tooltip").style("visibility", "hidden"));
+        .on('mouseout', () => d3.select("#tooltip2").style("visibility", "hidden"));
   }
 
   function drawReferenceBox(g)
@@ -494,9 +495,9 @@ function _4(d3, DOM) {
     let xValue = xNew.invert(mx);
     let yValue = yNew.invert(my);
 
-    d3.select("#tooltip")
-      .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
-      .style("top", (my + myChart1.offsetTop - height/30) + "px")
+    d3.select("#tooltip2")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px") //CAMBIO CHART 2
+      .style("top", (my + myChart2.offsetTop - height/30) + "px") //CAMBIO CHART 2
       .style("visibility", "visible")
       .style('background-color', 'white')
       .style('font-size', `${proportion*12}px`)
@@ -508,7 +509,7 @@ function _4(d3, DOM) {
   function onMouseOverPlus(event, d) {
     let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
   
-    d3.select("#tooltip")
+    d3.select("#tooltip2")
       .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
       .style("top", (my + myChart1.offsetTop - height/30) + "px")
       .style("visibility", "visible")
@@ -519,7 +520,7 @@ function _4(d3, DOM) {
   }
 
   function onMouseOut(event, d) {
-    d3.select("#tooltip").style("visibility", "hidden");  // Oculta el tooltip
+    d3.select("#tooltip2").style("visibility", "hidden");  // Oculta el tooltip2
   }
 
   function onMouseOverCircle(event, d) {
@@ -533,7 +534,7 @@ function _4(d3, DOM) {
     let xValue = x.invert(mx);  // Invierte la escala x para obtener el valor de x
     let yValue = y.invert(my);  // Invierte la escala y para obtener el valor de y
 
-    d3.select("#tooltip")
+    d3.select("#tooltip2")
       .style("left", (mx - width/10) + "px")
       .style("top", (my - height/30) + "px")
       .style("visibility", "visible")
@@ -545,7 +546,7 @@ function _4(d3, DOM) {
       //.attr('fill', 'blue')  // Cambia el color de vuelta a azul
       .attr('r', '5');
 
-    d3.select("#tooltip").style("visibility", "hidden");  // Oculta el tooltip
+    d3.select("#tooltip2").style("visibility", "hidden");  // Oculta el tooltip2
   }
 
   if (graphicAttributes.colorMap)
@@ -725,5 +726,5 @@ function define(runtime, observer) {
 
     //console.log(positionX)
 
-    const main = runtime.module(define, Inspector.into(myChart2))
+    const main2 = runtime.module(define, Inspector.into(myChart2))
 })

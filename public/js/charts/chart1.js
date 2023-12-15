@@ -8,11 +8,12 @@ window.addEventListener('load',async()=>{
     const myChart1 = document.getElementById('myChart1')
     
     const idWell = document.getElementById('idWell').innerText
-    const chartName = document.getElementById('chartName1').innerText
+    const chartName1 = document.getElementById('chartName1').innerText
     
     const runtime = new Runtime()
 
-    const rutaArchivo = './chartsData/well' + idWell + '/' + chartName + '.js'
+    const rutaArchivo = './chartsData/well' + idWell + '/' + chartName1 + '.js'
+    
     const module = await import(rutaArchivo)
 
     //var {proportion,width,height,mb,ml,mt,mr,graphicAttributes,ejeXConfig,ejeYConfig,colorPalette,datosCapas,puntos,poligono1, lineaY0,alphaName} = module
