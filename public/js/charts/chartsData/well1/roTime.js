@@ -7,7 +7,7 @@
     additionalPoints: false
 }
 
-const proportion = 0.9;
+const proportion = 0.7;
 const width = proportion*800;
 const height = proportion*500;
 
