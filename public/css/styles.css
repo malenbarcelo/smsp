@@ -386,6 +386,7 @@ animation: fill-progress 8s ease-in-out forwards;
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
+    width: 400px;
 }
 
 .divChartsMenu{
