@@ -1,5 +1,4 @@
 <%- include('./partials/head') %>
-<%- include('./partials/userLogged') %>
 
 <body class="gridBody">
     <div class="gridContainer1">
@@ -17,7 +16,7 @@
         <% if (!data.chartData.pageChartsInfo) { %>
             <div class="gridItem1 divCharts">
                 <div class="divChart">
-                    <div class="chartTitle"><%= data.chartData.chartTitle %></div>
+                    <div class="chartTitle"><%= data.chartData.chartTitle + idWell %></div>
                     <div class="chart" id="myChart1"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
                         <div id="tooltip" style="position: absolute; visibility: hidden;"></div>
                     </div>                
@@ -30,13 +29,14 @@
         <% if (data.chartData.pageChartsInfo) { %>
             <div class="gridItem1 divCharts">
                 <div class="divChart">                
-                        <div class="chartTitle"><%= data.chartData.pageChartsInfo[0].chartTitle %></div>
+                        <div class="chartTitle"><%= data.chartData.pageChartsInfo[0].chartTitle + idWell %></div>
+                        
                         <div class="chart" id="myChart1"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
                             <div id="tooltip" style="position: absolute; visibility: hidden;"></div>
                         </div>                
                 </div>
                 <div class="divChart">                
-                    <div class="chartTitle"><%= data.chartData.pageChartsInfo[1].chartTitle %></div>
+                    <div class="chartTitle"><%= data.chartData.pageChartsInfo[1].chartTitle + idWell %></div>
                     <div class="chart" id="myChart2"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
                         <div id="tooltip2" style="position: absolute; visibility: hidden;"></div>
                     </div>                

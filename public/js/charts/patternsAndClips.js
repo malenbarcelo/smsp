@@ -111,7 +111,7 @@ export function definePatterns(svg) {
           limestone.append("path")
 //          .attr("d", "M2,0 v3 M0,2 h6 M2,5 v5 M0,6 h6 M2,6 v2")
             .attr("d", "M0,0.5 h12 M0,6.5 h12 M0.5,0 v7 M6.5,6 v8")
-          .attr("stroke", "blue")
+          .attr("stroke", "black")
           .attr("stroke-width", 1);
 
           let limestoneChalk = defs.append("pattern")
@@ -123,7 +123,7 @@ export function definePatterns(svg) {
                      
            limestoneChalk.append("path")
             .attr("d", "M0,0 A5,5 0 0,0 10,0  M5,5 A5,5 0 0,0 10,10 M0,10 A5,5 0 0,0 5,5 ") // Medio círculo inferior
-            .attr("stroke", "#00B0F0")
+            .attr("stroke", "black")
             .attr("stroke-width", 1)
             .attr("fill", "none");
 
@@ -136,7 +136,7 @@ export function definePatterns(svg) {
                        
              siltAndSand.append("path")
               .attr("d", "M0,10 L3,7 M5,5 L8,2 M2,4 v1 M7,9 v1") // Medio círculo inferior
-              .attr("stroke", "#FF9933")
+              .attr("stroke", "black")
               .attr("stroke-width", 1)
               .attr("fill", "none");
       

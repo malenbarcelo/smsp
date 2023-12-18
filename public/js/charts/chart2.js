@@ -446,7 +446,8 @@ function _4(d3, DOM) {
         const rectSpacing = containerHeight/30; // Espacio entre cada rectángulo
       
         const refColor = ["#00FF00","#FFFF00","#F0AA23","#FF5F30","#919191"];
-        const Text = ["Inmaduro","Aceite y Gas","Gas húmedo","Gas seco","Sobremaduro"];
+        //const Text = ["Inmaduro","Aceite y Gas","Gas húmedo","Gas seco","Sobremaduro"];
+        const Text = ["Inmaduro [0 - 0.55]","Aceite y Gas [0.55 - 0.8]","Gas húmedo [0.8 - 1]","Gas seco [1 - 2.5]","Sobremaduro [>2.5]"]
 
         rectContainer
         .append('text')

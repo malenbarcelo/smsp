@@ -185,14 +185,14 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'tempDepth','marginLeft':'20%','marginTop':'-2%','title':'Temp-Prof','chartTitle':'Temperatura, Chambira 1X-original','routeParam':'temp-depth','idChartsMenu':'1'},
-                {'id':2,'name':'roDepth','marginLeft':'20%','marginTop':'-2%','title':'Ro-Prof','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original','routeParam':'ro-depth','idChartsMenu':'1'},
-                {'id':3,'name':'roTime','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original','routeParam':'ro-time','idChartsMenu':'1'},
-                {'id':4,'name':'trTime','marginLeft':'22%','marginTop':'3%','title':'TR-Tiempo','chartTitle':'ALL, Chambira 1X-orig','routeParam':'tr-time','idChartsMenu':'1'},
-                {'id':5,'name':'roBurial','marginLeft':'20%','marginTop':'5%','title':'Ro-Sepultamiento','chartTitle':'Gráfico Ro-Sepultamiento, Chambira 1X-orig','routeParam':'ro-burial','idChartsMenu':'1'},
-                {'id':6,'name':'trBurial','marginLeft':'15%','marginTop':'5%','title':'TR-Sepultamiento','chartTitle':'Gráfico TR-Sepultamiento, Chambira 1X-orig','routeParam':'tr-burial','idChartsMenu':'1'},
-                {'id':7,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat','idChartsMenu':'1'},
-                {'id':8,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1'},
+                {'id':1,'name':'tempDepth','marginLeft':'20%','marginTop':'-2%','title':'Temp-Prof','chartTitle':'Temperatura, Pozo ','routeParam':'temp-depth','idChartsMenu':'1'},
+                {'id':2,'name':'roDepth','marginLeft':'20%','marginTop':'-2%','title':'Ro-Prof','chartTitle':'Reflectancia Vitrinita, Pozo ','routeParam':'ro-depth','idChartsMenu':'1'},
+                {'id':3,'name':'roTime','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','chartTitle':'Reflectancia Vitrinita, Pozo ','routeParam':'ro-time','idChartsMenu':'1'},
+                {'id':4,'name':'trTime','marginLeft':'22%','marginTop':'3%','title':'TR-Tiempo','chartTitle':'ALL, Pozo ','routeParam':'tr-time','idChartsMenu':'1'},
+                {'id':5,'name':'roBurial','marginLeft':'20%','marginTop':'5%','title':'Ro-Sepultamiento','chartTitle':'Gráfico Ro-Sepultamiento, Pozo ','routeParam':'ro-burial','idChartsMenu':'1'},
+                {'id':6,'name':'trBurial','marginLeft':'15%','marginTop':'5%','title':'TR-Sepultamiento','chartTitle':'Gráfico TR-Sepultamiento, Pozo ','routeParam':'tr-burial','idChartsMenu':'1'},
+                {'id':7,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat','idChartsMenu':'1'},
+                {'id':8,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Pozo ','routeParam':'gas-burial-sat','idChartsMenu':'1'},
             ],
             'routes':[
                 {'id':1,'route':'/simulation/well','idIndexData':1},
@@ -302,40 +302,40 @@
             },
             'charts':[
                 {'id':1,'name':'pwdSwitDepth','marginLeft':'15%','marginTop':'-3%','title':'PWD-SWIT-Prof.','routeParam':'cali-pwd-swit','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'pwdSwitDepth','chartTitle':'Temperatura, Chambira 1X-original - Sin Calibración'},
-                    {'id':2,'name':'pwdSwitDepthCalibrated','chartTitle':'Temperatura, Chambira 1X-original - Con Calibración'}
+                    {'id':1,'name':'pwdSwitDepth','chartTitle':'Temperatura - Sin Calibración, Pozo '},
+                    {'id':2,'name':'pwdSwitDepthCalibrated','chartTitle':'Temperatura - Con Calibración PWD-SWIT, Pozo '}
                 ]},
                 {'id':2,'name':'tempDepth','idChartsMenu':'2','marginLeft':'18%','marginTop':'-2%','title':'Temp-Prof','routeParam':'temp-depth','pageChartsInfo':[
-                    {'id':1,'name':'tempDepth','chartTitle':'Temperatura, Chambira 1X-original - Sin Calibración'},
-                    {'id':2,'name':'tempDepthCalibrated','chartTitle':'Temperatura, Chambira 1X-original - Con Calibración'}
+                    {'id':1,'name':'tempDepth','chartTitle':'Temperatura - Sin Calibración, Pozo '},
+                    {'id':2,'name':'tempDepthCalibrated','chartTitle':'Temperatura - Con Calibración, Pozo'}
                 ]},
                 {'id':3,'name':'roDepth','idChartsMenu':'2','marginLeft':'12%','marginTop':'-2%','title':'Ro-Prof','routeParam':'ro-depth','pageChartsInfo':[
-                    {'id':1,'name':'roDepth','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Sin Calibración'},
-                    {'id':2,'name':'roDepthCalibrated','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Con Calibración'}
+                    {'id':1,'name':'roDepth','chartTitle':'Reflectancia Vitrinita - Sin Calibración, Pozo '},
+                    {'id':2,'name':'roDepthCalibrated','chartTitle':'Reflectancia Vitrinita - Con Calibración, Pozo '}
                 ]},
                 {'id':4,'name':'roTime','idChartsMenu':'2','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','routeParam':'ro-time','pageChartsInfo':[
-                    {'id':1,'name':'roTime','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Sin Calibración'},
-                    {'id':2,'name':'roTimeCalibrated','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Con Calibración'}
+                    {'id':1,'name':'roTime','chartTitle':'Reflectancia Vitrinita - Sin Calibración, Pozo '},
+                    {'id':2,'name':'roTimeCalibrated','chartTitle':'Reflectancia Vitrinita - Con Calibración, Pozo '}
                 ]},
                 {'id':5,'name':'trTime','idChartsMenu':'2','marginLeft':'22%','marginTop':'3%','title':'TR-Tiempo','routeParam':'tr-time','pageChartsInfo':[
-                    {'id':1,'name':'trTime','chartTitle':'ALL, Chambira 1X-orig - Sin Calibración'},
-                    {'id':2,'name':'trTimeCalibrated','chartTitle':'ALL, Chambira 1X-orig - Con Calibración'}
+                    {'id':1,'name':'trTime','chartTitle':'ALL - Sin Calibración, Pozo'},
+                    {'id':2,'name':'trTimeCalibrated','chartTitle':'ALL - Con Calibración, Pozo'}
                 ]},
                 {'id':6,'name':'roBurial','idChartsMenu':'2','marginLeft':'10%','marginTop':'8%','title':'Ro-Sepultamiento','routeParam':'ro-burial','pageChartsInfo':[
-                    {'id':1,'name':'roBurial','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Sin Calibración'},
-                    {'id':2,'name':'roBurialCalibrated','chartTitle':'Reflectancia Vitrinita, Chambira 1X-original - Con Calibración'}
+                    {'id':1,'name':'roBurial','chartTitle':'Reflectancia Vitrinita - Sin Calibración, Pozo'},
+                    {'id':2,'name':'roBurialCalibrated','chartTitle':'Reflectancia Vitrinita - Con Calibración, Pozo'}
                 ]},
                 {'id':7,'name':'trBurial','idChartsMenu':'2','marginLeft':'10%','marginTop':'5%','title':'TR-Sepultamiento','routeParam':'tr-burial','pageChartsInfo':[
-                    {'id':1,'name':'trBurial','chartTitle':'Gráfico TR-Sepultamiento, Chambira 1X-orig - Sin Calibración'},
-                    {'id':2,'name':'trBurialCalibrated','chartTitle':'Gráfico TR-Sepultamiento, Chambira 1X-orig - Con Calibración'}
+                    {'id':1,'name':'trBurial','chartTitle':'Gráfico TR-Sepultamiento - Sin Calibración, Pozo '},
+                    {'id':2,'name':'trBurialCalibrated','chartTitle':'Gráfico TR-Sepultamiento - Con Calibración, Pozo'}
                 ]},
                 {'id':8,'name':'oilBurialSat','idChartsMenu':'2','marginLeft':'10%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','routeParam':'oil-burial-sat','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSat','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig - Sin Calibración'},
-                    {'id':2,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig - Con Calibración'}
+                    {'id':1,'name':'oilBurialSat','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento - Sin Calibración, Pozo'},
+                    {'id':2,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento - Con Calibración, Pozo'}
                 ]},
                 {'id':9,'name':'gasBurialSat','idChartsMenu':'2','marginLeft':'10%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','routeParam':'gas-burial-sat','pageChartsInfo':[
-                    {'id':1,'name':'gasBurialSat','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Sin Calibración'},
-                    {'id':2,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Con Calibración'}
+                    {'id':1,'name':'gasBurialSat','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Sin Calibración, Pozo'},
+                    {'id':2,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Con Calibración, Pozo'}
                 ]},
             ],
             'routes':[
@@ -393,7 +393,7 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'roTime','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','title':"Ro-Tiempo form's Raya, Pozo Shale y Chonta",'routeParam':'ro-time','chartTitle':'Temperatura, Chambira 1X-original - Sin Calibración','idChartsMenu':'1'},
+                {'id':1,'name':'roTime','marginLeft':'22%','marginTop':'3%','title':'Ro-Tiempo','title':"Ro-Tiempo form's Raya, Pozo Shale y Chonta",'routeParam':'ro-time','chartTitle':'Temperatura - Sin Calibración, Pozo ','idChartsMenu':'1'},
                 {'id':2,'name':'pseTable','title':'Tabla Resumen PSE','routeParam':'pse-table','idChartsMenu':'1'}
             ],
             'routes':[
@@ -443,13 +443,13 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig - Calibrado'},
-                    {'id':2,'name':'oilBurialSatCot','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig - Sensibilidad COT'}
+                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento - Calibrado, Pozo  '},
+                    {'id':2,'name':'oilBurialSatCot','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento - Sensibilidad COT, Pozo '}
                 ]},
-                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Calibrado'},
-                    {'id':2,'name':'gasBurialSatCot','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Sensibilidad COT'}
+                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Pozo ','routeParam':'gas-burial-sat','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Calibrado, Pozo'},
+                    {'id':2,'name':'gasBurialSatCot','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Sensibilidad COT, Pozo'}
                 ]},
             ],
             'routes':[
@@ -502,13 +502,13 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig - Calibrado'},
-                    {'id':2,'name':'oilBurialSatHi','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig - Sensibilidad HI'}
+                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento - Calibrado, Pozo'},
+                    {'id':2,'name':'oilBurialSatHi','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento - Sensibilidad HI, Pozo'}
                 ]},
-                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Calibrado'},
-                    {'id':2,'name':'gasBurialSatHi','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig - Sensibilidad HI'}
+                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento','routeParam':'gas-burial-sat','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'gasBurialSatCalibrated','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Calibrado, Pozo'},
+                    {'id':2,'name':'gasBurialSatHi','chartTitle':'Gráfico Sat de Gas-Sepultamiento - Sensibilidad HI, Pozo'}
                 ]},
             ],
             'routes':[
@@ -559,15 +559,15 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento (Tissot in Waples)','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig (Tissot in Waples)','routeParam':'oil-burial-sat','idChartsMenu':'1'},
-                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento (Tissot in Waples)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig (Tissot in Waples)','routeParam':'gas-burial-sat','idChartsMenu':'1'},
-                {'id':3,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Petróleo (Burnham-Tissot)','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSat','chartTitle':'Sat de Petróleo-Sepultamiento (Burnham(1989)-TII)'},
-                    {'id':2,'name':'oilBurialSatTissot','chartTitle':'Sat de Petróleo-Sepultamiento (Tissot in Waples)'}
+                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento (Tissot in Waples)','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento (Tissot in Waples), Pozo ','routeParam':'oil-burial-sat','idChartsMenu':'1'},
+                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento (Tissot in Waples)','chartTitle':'Gráfico Sat de Gas-Sepultamiento (Tissot in Waples), Pozo ','routeParam':'gas-burial-sat','idChartsMenu':'1'},
+                {'id':3,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Petróleo (Burnham-Tissot)','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'oilBurialSat','chartTitle':'Sat de Petróleo-Sepultamiento (Burnham(1989)-TII), Pozo '},
+                    {'id':2,'name':'oilBurialSatTissot','chartTitle':'Sat de Petróleo-Sepultamiento (Tissot in Waples), Pozo '}
                 ]},
-                {'id':4,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Gas (Burnham-Tissot)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'gasBurialSat','chartTitle':'Sat de Gas-Sepultamiento (Burnham(1989)-TII)'},
-                    {'id':2,'name':'gasBurialSatTissot','chartTitle':'Sat de Gast-Sepultamiento (Tissot in Waples)'},
+                {'id':4,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Gas (Burnham-Tissot)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Pozo ','routeParam':'gas-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'gasBurialSat','chartTitle':'Sat de Gas-Sepultamiento (Burnham(1989)-TII), Pozo '},
+                    {'id':2,'name':'gasBurialSatTissot','chartTitle':'Sat de Gast-Sepultamiento (Tissot in Waples), Pozo '},
                 ]},
             ],
             'routes':[
@@ -620,15 +620,15 @@
                 ]
             },
             'charts':[
-                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat','idChartsMenu':'1'},
-                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat','idChartsMenu':'1'},
-                {'id':3,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Petróleo (Shaleblack-Sand-clay-rich)','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Chambira 1X-orig','routeParam':'oil-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Sat de Petróleo-Sepultamiento (Shale-black)'},
-                    {'id':2,'name':'oilBurialSatSandstone','chartTitle':'Sat de Petróleo-Sepultamiento (Sandstone-clay-rich)'},
+                {'id':1,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Petroleo-Sepultamiento','chartTitle':'Gráfico Sat de Petroleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat','idChartsMenu':'1'},
+                {'id':2,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Sat de Gas-Sepultamiento','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Pozo ','routeParam':'gas-burial-sat','idChartsMenu':'1'},
+                {'id':3,'name':'oilBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Petróleo (Shaleblack-Sand-clay-rich)','chartTitle':'Gráfico Sat de Petróleo-Sepultamiento, Pozo ','routeParam':'oil-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'oilBurialSatCalibrated','chartTitle':'Sat de Petróleo-Sepultamiento (Shale-black), Pozo '},
+                    {'id':2,'name':'oilBurialSatSandstone','chartTitle':'Sat de Petróleo-Sepultamiento (Sandstone-clay-rich), Pozo '},
                 ]},
-                {'id':4,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Gas (Shaleblack-Sand-clay-ric)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Chambira 1X-orig','routeParam':'gas-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
-                    {'id':1,'name':'gasBurialSat','chartTitle':'Sat de Gas-Sepultamiento (Shale-black)'},
-                    {'id':2,'name':'gasBurialSatSandstone','chartTitle':'Sat de Gas-Sepultamiento (Sandstone-clay-rich)'},
+                {'id':4,'name':'gasBurialSat','marginLeft':'15%','marginTop':'5%','title':'Comparativo Sat de Gas (Shaleblack-Sand-clay-ric)','chartTitle':'Gráfico Sat de Gas-Sepultamiento, Pozo ','routeParam':'gas-burial-sat-comp','idChartsMenu':'1','pageChartsInfo':[
+                    {'id':1,'name':'gasBurialSat','chartTitle':'Sat de Gas-Sepultamiento (Shale-black), Pozo '},
+                    {'id':2,'name':'gasBurialSatSandstone','chartTitle':'Sat de Gas-Sepultamiento (Sandstone-clay-rich), Pozo '},
                 ]},
             ],
             'routes':[

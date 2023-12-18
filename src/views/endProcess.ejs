@@ -1,5 +1,4 @@
 <%- include('./partials/head') %>
-<%- include('./partials/userLogged') %>
 
 <body class="endProcessBody">
     <div class="divLogoEndProcess">
@@ -17,7 +16,7 @@
             </div>
     
             <div class="div3">
-                Tu nota: <%= grade + '%' %>
+                Tu nota: <%= grade.toFixed(1) + '%' %>
             </div>
 
             <div class="divDetails">

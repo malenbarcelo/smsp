@@ -116,7 +116,7 @@ const ejeXConfig = {
 };
 
 const ejeYConfig = {
-    dominio: [0.85, 0.1],
+    dominio: [0.85, 0.23],
     ticksMajor: d3.range(0, 1, 0.1),
     ticksMinor: d3.range(0, 1, 0.01),
     titulo: "Reflectancia de Vitrinita [%Ro]"

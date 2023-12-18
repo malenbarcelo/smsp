@@ -27,14 +27,14 @@
     <!---continue--->
     <% if (locals.validation && validation == 'fail') { %>
         <div class="button2 unabledButton">
-            <div>Cotinuar</div>
+            <div>Continuar</div>
             <div><i class="fa-solid fa-chevron-right"></i></div>
         </div>
     <% } %>
     <% if (locals.validation && validation == 'passed' || !locals.validation) { %>
         <div class="button2">
             <a href="<%= routes.continueRoute %>" class="hrefButton2">
-                <div>Cotinuar</div>
+                <div>Continuar</div>
                 <div><i class="fa-solid fa-chevron-right"></i></div>
             </a>
         </div>
