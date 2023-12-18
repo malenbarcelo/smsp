@@ -7,11 +7,32 @@
     --lengthPseTable: 600px
 }
 
+.gridContainerPse{
+    display: grid;
+    grid-template-rows: 20vh auto 5vh;
+    grid-template-columns: 15vw 85vw;
+}
+
+.gridItem1{
+    position: relative;
+}
+
 .divPseTable{
+    width: 100%;
+    min-height: 75vh;
+    height: max-content;
+    margin-right: 0px;
+    background-color: var(--color2);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
     flex-direction: column;
     row-gap: 20px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    column-gap: 0px;
+    padding-top: 20px;
+    padding-left: 8px;
 }
 
 .pseTable2{

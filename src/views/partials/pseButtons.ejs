@@ -1,0 +1,28 @@
+<div class="divPseButtons">
+
+    <!---back button--->
+    <% if (routes.backRoute != 'NA') { %>
+        <a href="<%= routes.backRoute %>" id="<%= data.idBackButton %>">
+            <div class="buttonPse">
+                <div><i class="fa-solid fa-chevron-left"></i></div>
+                <div>Volver</div>
+            </div>
+        </a>
+    <% } %>    
+
+    <!---continue--->
+    <% if (locals.validation && validation == 'fail') { %>
+        <div class="buttonPse unabledButton2">
+            <div>Continuar</div>
+            <div><i class="fa-solid fa-chevron-right"></i></div>
+        </div>
+        <% } else { %>
+            <div class="buttonPse">
+                <div><a href="<%= routes.continueRoute %>">Continuar</a></div>
+                <div><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+         
+     
+    <% } %>
+    
+</div>

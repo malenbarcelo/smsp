@@ -18,7 +18,7 @@ window.addEventListener('load',async()=>{
 
     //var {proportion,width,height,mb,ml,mt,mr,graphicAttributes,ejeXConfig,ejeYConfig,colorPalette,datosCapas,puntos,poligono1, lineaY0,alphaName} = module
 
-    var {proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0,puntos} = module
+    var {proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0,puntos,rangos} = module
 
     const widthResolution = window.screen.width
     const heightResolution = window.screen.height
@@ -234,8 +234,10 @@ function _4(d3, DOM) {
       if (graphicAttributes.additionalPoints) {
         drawPlusSigns(g,puntos,x,y,proportion)
       }
-    
-      
+
+      if (graphicAttributes.additionalRanges) {
+        drawRanges(g,rangos,x,y,proportion)
+      }
       
       // Dibujar líneas y area 
       let line = d3.line()
@@ -419,6 +421,51 @@ function _4(d3, DOM) {
         .on('mouseout', () => d3.select("#tooltip2").style("visibility", "hidden"));
   }
 
+  function drawRanges(g,randos,x,y,proportion) {
+    // Línea horizontal
+    g.selectAll('line.horizontal-plus')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'horizontal-plus')
+      .attr('x1', d => x(d.C1) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('x2', d => x(d.C2) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y1', d => y(d.m))
+      .attr('y2', d => y(d.m))
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`) // grosor de la línea
+      .attr("clip-path", "url(#clip)")      
+
+  
+    // Líneas verticales del primer y segundo valor
+    g.selectAll('line.vertical-r1')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'vertical-r1')
+      .attr('x1', d => x(d.C1))
+      .attr('x2', d => x(d.C1))
+      .attr('y1', d => y(d.m) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y2', d => y(d.m) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`)  // grosor de la línea
+      .attr("clip-path", "url(#clip)")
+
+      g.selectAll('line.vertical-r2')
+      .data(rangos)
+      .join('line')
+      .attr('class', 'vertical-r2')
+      .attr('x1', d => x(d.C2))
+      .attr('x2', d => x(d.C2))
+      .attr('y1', d => y(d.m) - width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('y2', d => y(d.m) + width/150)  // Ajusta el valor "5" para cambiar el tamaño del signo más
+      .attr('stroke', 'black')  // color de la línea
+      .attr('stroke-width', `${proportion*2}px`)  // grosor de la línea
+      .attr("clip-path", "url(#clip)")
+
+      g.selectAll('line.vertical-r1, line.vertical-r2,line.horizontal-plus')
+        .on('mouseover', onMouseOverRange)
+        .on('mouseout', () => d3.select("#tooltip").style("visibility", "hidden"));
+  }
+
   function drawReferenceBox(g)
   {
     const rectContainer = g
@@ -518,6 +565,19 @@ function _4(d3, DOM) {
       .style('font-size', `${proportion*12}px`)
       .style('font-family', 'Arial')
       .text("(" +  event.C.toFixed(2) + " , " + event.m.toFixed(2)+")");
+  }
+
+  function onMouseOverRange(event, d) {
+    let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
+  
+    d3.select("#tooltip")
+      .style("left", (mx - width/10) + "px")
+      .style("top", (my - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .text("(" +  event.C1.toFixed(2) + " - " + event.C2.toFixed(2) + ", " + event.m.toFixed(2)+")");
   }
 
   function onMouseOut(event, d) {

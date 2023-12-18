@@ -341,7 +341,7 @@ animation: fill-progress 8s ease-in-out forwards;
     /*grid-template-rows: 20vh 75vh 5vh;*/
     grid-template-rows: 20vh auto 5vh;
     /*grid-template-columns: 22vw 78vw;*/
-    grid-template-columns: 22vw 78vw
+    grid-template-columns: 22vw 78vw;
 }
 
 .gridItem1:nth-child(1) {
@@ -397,6 +397,15 @@ animation: fill-progress 8s ease-in-out forwards;
 
 .chartsMenu{
     width: max-content;
+    position: absolute;
+    margin: auto;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.chartsMenuPse{
+    width: 85%;
     position: absolute;
     margin: auto;
     bottom: 3%;

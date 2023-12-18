@@ -1,21 +1,21 @@
 <%- include('./partials/head') %>
 
 <body class="gridBody">
-    <div class="gridContainer1">
+    <div class="gridContainerPse">
         <div class="gridItem1">
             <%- include('./partials/header') %>
         </div>
 
         <div class="gridItem1">
-            <div class="chartsMenu">
+            <div class="chartsMenuPse">
                 <%- include('./partials/chartsMenu') %>
-                <%- include('./partials/chartsButtons') %>
+                <%- include('./partials/pseButtons') %>
             </div>
         </div>
 
         <form action="/pse-table/<%= data.idWell %>/pse-summary-table" method="POST">
 
-            <div class="gridItem1 divCharts divPseTable">
+            <div class="gridItem1 divPseTable">
                 <div class="pseTable1">
                     <table class="pseTable">
                         <thead>
