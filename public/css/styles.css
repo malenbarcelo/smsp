@@ -386,7 +386,8 @@ animation: fill-progress 8s ease-in-out forwards;
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
-    width: 400px;
+    width: 380px;
+    height: 2em;
 }
 
 .divChartsMenu{
@@ -603,7 +604,6 @@ animation: fill-progress 8s ease-in-out forwards;
   }
 
 
-
 @media (max-width:1350px){
     .maxWidth1{
         width: 45px;
@@ -614,6 +614,7 @@ animation: fill-progress 8s ease-in-out forwards;
     .thWidth{
         width: 40px;
     }
+    
 }
 @media (max-width:1140px){
     .thWidth{

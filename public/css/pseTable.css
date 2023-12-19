@@ -18,6 +18,13 @@
 }
 
 .divPseTable{
+    flex-direction: column;
+    row-gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.divPseTable{
     width: 100%;
     min-height: 75vh;
     height: max-content;
@@ -33,7 +40,7 @@
     column-gap: 0px;
     padding-top: 20px;
     padding-left: 8px;
-}
+}*/
 
 .pseTable2{
     width: 100%;

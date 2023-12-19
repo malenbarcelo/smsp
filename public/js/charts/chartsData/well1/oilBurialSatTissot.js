@@ -7,7 +7,7 @@
     well: 0
 }
 
-const proportion = 0.65;
+const proportion = 0.8;
 const width = proportion*800;
 const height = proportion*600;
 

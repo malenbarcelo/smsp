@@ -24,6 +24,8 @@ window.addEventListener('load',async()=>{
     const heightResolution = window.screen.height
 
     proportion = proportion * (widthResolution / 1700)
+
+    
     width = width * (widthResolution / 1700)
     height = height * (widthResolution / 1700)
     ml = ml * (widthResolution / 1700)
@@ -791,3 +793,39 @@ function define(runtime, observer) {
 
     const main = runtime.module(define, Inspector.into(myChart1))
 })
+
+/*let previousWidth = document.documentElement.clientWidth;
+
+
+const resizeObserver = new ResizeObserver(entries => {
+    for (const entry of entries) {
+        const { width } = entry.contentRect;
+
+        // Verificar si el tamaño ha cambiado significativamente
+        if (Math.abs(width - previousWidth) > 20) {
+
+            console.log('Ancho:', width);
+            
+            // Realizar acciones adicionales según sea necesario
+            location.reload();
+        }
+
+        // Actualizar los tamaños anteriores
+        previousWidth = width;
+    }
+});
+
+resizeObserver.observe(document.documentElement);*/
+
+
+
+
+/*window.addEventListener('resize',async()=>{
+
+  console.log(window.innerWidth)
+  console.log('recarga')
+  setTimeout(() => {
+    location.reload();
+}, 1500);
+
+})*/
