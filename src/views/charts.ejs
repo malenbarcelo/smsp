@@ -19,6 +19,7 @@
                     <div class="chartTitle"><%= data.chartData.chartTitle + idWell %></div>
                     <div class="chart" id="myChart1"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
                         <div id="tooltip" style="position: absolute; visibility: hidden;"></div>
+                        <div id="tooltip2" style="position: absolute; visibility: hidden;"></div>
                     </div>                
                 </div>
             </div>
@@ -29,19 +30,22 @@
         <% if (data.chartData.pageChartsInfo) { %>
             <div class="gridItem1 divCharts">
                 <div class="divChart">                
-                        <div class="chartTitle"><%= data.chartData.pageChartsInfo[0].chartTitle + idWell %></div>
-                        
+                        <div class="chartTitle"><%= data.chartData.pageChartsInfo[0].chartTitle + idWell %></div>                        
                         <div class="chart" id="myChart1"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
                             <div id="tooltip" style="position: absolute; visibility: hidden;"></div>
+                            <div id="tooltip2" style="position: absolute; visibility: hidden;"></div>
                         </div>                
                 </div>
+
                 <div class="divChart">                
                     <div class="chartTitle"><%= data.chartData.pageChartsInfo[1].chartTitle + idWell %></div>
                     <div class="chart" id="myChart2"style="margin-left: <%= data.chartData.marginLeft %>; margin-top: <%= data.chartData.marginTop %>">
-                        <div id="tooltip2" style="position: absolute; visibility: hidden;"></div>
+                        <div id="tooltip3" style="position: absolute; visibility: hidden;"></div>
+                        <div id="tooltip4" style="position: absolute; visibility: hidden;"></div>
                     </div>                
                 </div>
             </div>
+
             <div class="notVisible" id="chartName1"><%= data.chartData.pageChartsInfo[0].name %></div>
             <div class="notVisible" id="chartName2"><%= data.chartData.pageChartsInfo[1].name %></div>
         <% } %>

@@ -37,25 +37,29 @@
                         'processName':'RAYA Gen',
                         'from':18.16,
                         'to':0,
-                        'margin':1.82
+                        'margin_from':1.27,
+                        'margin_to':0,
                     },
                     {
                         'processName':'CHONTA Gen',
-                        'from':11.6,
+                        'from':11.59,
                         'to':0,
-                        'margin':1.16
+                        'margin_from':0.81,
+                        'margin_to':0,
                     },
                     {
                         'processName':'POZO SHALE Gen',
-                        'from':1.1,
+                        'from':1.13,
                         'to':0,
-                        'margin':0.11
+                        'margin_from':0.08,
+                        'margin_to':0,
                     },
                     {
                         'processName':'Momento Crítico',
                         'from':0.5,
                         'to':0,
-                        'margin':0.05
+                        'margin_from':0.1,
+                        'margin_to':0,
                     }
                 ]
             },
@@ -64,15 +68,17 @@
                 validations:[
                     {
                         'processName':'Titoniano Gen',
-                        'from':30,
-                        'to':25,
-                        'margin':2.5
+                        'from':54.58,
+                        'to':0,
+                        'margin_from':3.82,
+                        'margin_to':0,
                     },
                     {
                         'processName':'Momento Crítico',
-                        'from':10,
-                        'to':0,
-                        'margin':1
+                        'from':31,
+                        'to':30,
+                        'margin_from':6.2,
+                        'margin_to':6,
                     }
                 ]
             }

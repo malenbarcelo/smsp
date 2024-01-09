@@ -26,6 +26,60 @@ src/controllers/data/schemasimData.js
 src/controllers/data/domains.js
 
 
+CHANGES IN ZOOMEDGRAPHS 
+- export default function define(runtime, observer) --> function define(runtime, observer)
+
+- document.documentElement.querySelector('.observablehq--inspect').style.display = 'none' -->
+    //hide d3 bar with info
+    document.documentElement.querySelectorAll('.observablehq--inspect').forEach(function(element) {
+        element.style.display = 'none';
+    })
+
+-function onMOuseOverLine()
+-function onMOuseOverPlus()
+
+CHANGES IN chart2.js
+- const myChart1 = document.getElementById('myChart1')
+- const chartName1 = document.getElementById('chartName1').innerText
+- const rutaArchivo = './chartsData/well' + idWell + '/' + chartName1 + '.js'
+-  d3.select("#tooltip")
+      .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart1.offsetTop - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .text("(" + xValue.toFixed(2) + " , " + yValue.toFixed(2)+")");
+- d3.select("#tooltip2")
+      .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart1.offsetLeft - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .style('width','auto')
+      .style('height', 'auto')//nombresDeCapas[graphicAttributes.well].length*proportion*13 +"px")
+      .style('stroke', 'blue')
+      .style('border', `${proportion*2}px solid blue`)
+      .style('border-radius', `${proportion*5}px`)
+      .html(nombresConcatenados);
+- d3.select("#tooltip")
+      .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart1.offsetTop - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .text("(" +  event.C.toFixed(2) + " , " + event.m.toFixed(2)+")");      
+- tooltip: tooltip3
+- tooltip2: tooltip4
+- const main = runtime.module(define, Inspector.into(myChart1))
+- const gradientId = `gradientFor${capa.nombre.replace = const gradientId = `secondGradientFor${capa.nombre.replace
+- drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `gradientFor = drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `secondGradientFor
+
+
+
+
 
 
 

@@ -4,7 +4,8 @@
     horizontalLines: false,
     colorMap: true,
     fillPatterns: true,
-    well: 0
+    well: 0,
+    graphType: "gasSepult"
 }
 
 const proportion = 0.8;
@@ -172,29 +173,29 @@ const datosIniciales = [
 ["RAYA",7.35,3090,0,"black","black"],
 ["RAYA",5.33,3990,0,"black","black"],
 ["RAYA",0,4221,0,"black","black"],
-["RAYABASE",100,472,0,"black","black"],
-["RAYABASE",99.5,488,0,"black","black"],
-["RAYABASE",90,494,0,"black","black"],
-["RAYABASE",89.3,495,0,"black","black"],
-["RAYABASE",86,516,0,"black","black"],
-["RAYABASE",83.5,977,0,"black","black"],
-["RAYABASE",80,1041,0,"black","black"],
-["RAYABASE",70.6,1356,0,"black","black"],
-["RAYABASE",70,1362,0,"black","black"],
-["RAYABASE",65.5,1399,0,"black","black"],
-["RAYABASE",60,1441,0,"black","black"],
-["RAYABASE",55.8,1472,0,"black","black"],
-["RAYABASE",50,1512,0,"black","black"],
-["RAYABASE",40,1576,0,"black","black"],
-["RAYABASE",33.9,1610,0,"black","black"],
-["RAYABASE",30,1652,0,"black","black"],
-["RAYABASE",28.4,1753,0,"black","black"],
-["RAYABASE",20,2471,0,"black","black"],
-["RAYABASE",13.65,3007,0,"black","black"],
-["RAYABASE",10,3196,0,"black","black"],
-["RAYABASE",7.35,3316,0,"black","black"],
-["RAYABASE",5.33,4221,0,"black","black"],
-["RAYABASE",0,4450,0,"black","black"]
+["RAYABASE",100,315,0,"black","black"],
+    ["RAYABASE",99.5,327,0,"black","black"],
+    ["RAYABASE",90,352,0,"black","black"],
+    ["RAYABASE",89.3,354,0,"black","black"],
+    ["RAYABASE",86,403,0,"black","black"],
+    ["RAYABASE",83.5,768,0,"black","black"],
+    ["RAYABASE",80,957,0,"black","black"],
+    ["RAYABASE",70.6,1405,0,"black","black"],
+    ["RAYABASE",70,1409,0,"black","black"],
+    ["RAYABASE",65.5,1446,0,"black","black"],
+    ["RAYABASE",60,1488,0,"black","black"],
+    ["RAYABASE",55.8,1517,0,"black","black"],
+    ["RAYABASE",50,1556,0,"black","black"],
+    ["RAYABASE",40,1616,0,"black","black"],
+    ["RAYABASE",33.9,1652,0,"black","black"],
+    ["RAYABASE",30,1693,0,"black","black"],
+    ["RAYABASE",28.4,1790,0,"black","black"],
+    ["RAYABASE",20,2485,0,"black","black"],
+    ["RAYABASE",13.65,3014,0,"black","black"],
+    ["RAYABASE",10,3202,0,"black","black"],
+    ["RAYABASE",7.35,3322,0,"black","black"],
+    ["RAYABASE",5.33,4222,0,"black","black"],
+    ["RAYABASE",0,4450,0,"black","black"]
 
 
 

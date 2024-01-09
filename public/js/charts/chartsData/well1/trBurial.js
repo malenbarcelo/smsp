@@ -4,11 +4,12 @@
     horizontalLines: false,
     colorMap: true,
     fillPatterns: true,
-    well: 0
+    well: 0,
+    graphType: "gasSepult"
 }
 
 const proportion = 0.8;
-const width = proportion*800;
+const width = proportion*700;
 const height = proportion*600;
 
 const ml = width*50/800;

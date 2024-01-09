@@ -140,6 +140,11 @@ const dataAndSensibilityController = {
             errors.push(key)
           }
         }
+        if (correctData == '') {
+          if (enteredData != '') {
+            errors.push(key)
+          }
+        }
       })
 
       if (errors.length == 0) {

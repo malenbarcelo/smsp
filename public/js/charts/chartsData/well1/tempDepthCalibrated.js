@@ -5,10 +5,11 @@
     colorMap: false,
     fillPatterns: true,
     additionalPoints: true,
-    well: 0
+    well: 0,
+    graphType: "tempProf"
 }
 
-const proportion = 1.05;
+const proportion = 1;
 const width = proportion*500;
 const height = proportion*500;
 

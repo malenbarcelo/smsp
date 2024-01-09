@@ -144,11 +144,12 @@ const pseTableController = {
       body.forEach(element => {
         const process = dataToCompare.filter( data => data.processName == element.process)[0]
 
-        if (!(element.from_value > process.from - process.margin && element.from_value < process.from  + process.margin)) {
+        if (!(element.from_value >= process.from - process.margin_from && element.from_value <= process.from  + process.margin_from)) {
           errors.push('from_' + element.input)
           fromObservations += fromObservations == '' ? ('Desde = [' + element.process) : (', ' + element.process)
+          
         }
-        if (!(element.to_value > process.to - process.margin && element.to_value < process.to  + process.margin)) {
+        if (!(element.to_value >= process.to - process.margin_to && element.to_value <= process.to  + process.margin_to)) {
           errors.push('to_' + element.input)
           toObservations += toObservations == '' ? (' - Hasta = [' + element.process) : (', ' + element.process)
         }        
@@ -249,7 +250,16 @@ const pseTableController = {
 
       const data = {well,processData,chartData}
 
-      const idIndexData = indexData.id
+      //get pse chart name
+      if (chartData.id == 1) {
+        if (idWell == 1) {
+          chartData.title = 'Ro-Tiempo formación Raya, Pozo Shale y Chonta'
+        }else{
+          chartData.title = 'Ro-Tiempo formación Titoniano'
+        }
+      }
+
+      const idIndexData = 7
 
       return res.render('charts',{title:chartData.title,data,routes,idIndexData,processName,idWell,confirmLogout,exerciseName})
 

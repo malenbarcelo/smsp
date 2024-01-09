@@ -4,7 +4,8 @@
     horizontalLines: false,
     colorMap: true,
     fillPatterns: true,
-    well: 0
+    well: 0,
+    graphType: "gasSepult"
 }
 
 const proportion = 0.8;

@@ -5,7 +5,8 @@
     colorMap: true,
     fillPatterns: true,
     extraPoligons: false,
-    well: 1
+    well: 1,
+    graphType: "gasSepult"
 }
 
 const proportion = 0.8;

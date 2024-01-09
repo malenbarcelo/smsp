@@ -1,56 +1,64 @@
 
 
 // TR-Tiempo
-//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Tiempo-1.js';
-//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Tiempo-1-C.js';
-//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Tiempo-2.js';
-//import { proportion,width, height, mb, ml, mt, mr, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Tiempo-2-C.js';
+//import { proportion,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Tiempo-1.js';
+//import { proportion,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Tiempo-1-C.js';
+//import { proportion,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Tiempo-2.js';
+//import { proportion,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Tiempo-2-C.js';
 
 // rho-tiempo
-// import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Rho-Tiempo-1.js';
-// import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Rho-Tiempo-1-C.js';
-//import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Rho-Tiempo-2.js';
-//import { proportion,width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Rho-Tiempo-2-C.js';
+//import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Rho-Tiempo-1.js';
+//import { proportion,raphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Rho-Tiempo-1-C.js';
+//import { proportion,raphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Rho-Tiempo-2.js';
+//import { proportion,raphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Rho-Tiempo-2-C.js';
 
 // Gas-Sepultamient0
-// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Gas-Sepult-1.js';
-// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Gas-Sepult-1-C.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Gas-Sepult-2.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Gas-Sepult-2-C.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Gas-Sepult-1.js';
+// import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Gas-Sepult-1-C.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Gas-Sepult-2.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Gas-Sepult-2-C.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Gas-Sepult-1-COT.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Gas-Sepult-1-HI.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Gas-Sepult-1-TISSOT.js';
+//import { proportion,alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Gas-Sepult-1-SAND.js';
 
  // Petroleo-Sepultamiento
-// import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Petroleo-Sepult-1.js';
-// import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Petroleo-Sepult-1-C.js';
-//import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Petroleo-Sepult-2.js';
-//import { proportion, width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Petroleo-Sepult-2-C.js';
+// import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/Petroleo-Sepult-1.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/Petroleo-Sepult-1-C.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/Petroleo-Sepult-2.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/Petroleo-Sepult-2-C.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Petroleo-Sepult-1-COT.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Petroleo-Sepult-1-HI.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Petroleo-Sepult-1-TISSOT.js';
+//import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-E/Petroleo-Sepult-1-SAND.js';
 
 //Rho-Prof
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-O/Rho-Prof-1.js';
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-C/Rho-Prof-1-C.js';
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Rho-Prof-2.js';
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Rho-Prof-2-C.js';
+//import { proportion,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-O/Rho-Prof-1.js';
+//import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, rangos} from './Pozo1-C/Rho-Prof-1-C.js';
+//import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Rho-Prof-2.js';
+//import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Rho-Prof-2-C.js';
 
 // Temp-Prof
-// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-O/Temp-Prof-1.js';
-// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-C.js';
-// import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-SWIT-C.js';
-//import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Temp-Prof-2.js';
- //import { proportion, width, height, mb, ml, mt, mr,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Temp-Prof-2-C.js';
+// import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-O/Temp-Prof-1.js';
+// import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-C.js';
+// import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo1-C/Temp-Prof-1-SWIT-C.js';
+//import { proportion,  graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-O/Temp-Prof-2.js';
+ //import { proportion, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, puntos} from './Pozo2-C/Temp-Prof-2-C.js';
 
  // Rho-Sepultamiento
-// import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos, coloresPoligonos, lineaY0} from './Pozo1-O/Ro-Sepult-1.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo1-C/Ro-Sepult-1-C.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-O/Ro-Sepult-2.js';
-import { proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-C/Ro-Sepult-2-C.js';
+// import { proportion, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos, coloresPoligonos, lineaY0} from './Pozo1-O/Ro-Sepult-1.js';
+//import { proportion,  alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo1-C/Ro-Sepult-1-C.js';
+import { proportion,  alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-O/Ro-Sepult-2.js';
+//import { proportion,  alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0} from './Pozo2-C/Ro-Sepult-2-C.js';
 
 // TR-Sepultamiento
-// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Sepult-1.js';
-// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Sepult-1-C.js';
-// import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Sepult-2.js';
-//import { proportion,width, height, mb, ml, mt, mr, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Sepult-2-C.js';
+// import { proportion, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-O/TR-Sepult-1.js';
+// import { proportion, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo1-C/TR-Sepult-1-C.js';
+// import { proportion, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-O/TR-Sepult-2.js';
+//import { proportion, alphaName,graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas} from './Pozo2-C/TR-Sepult-2-C.js';
 
 
- import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2, nombresDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js';
+ import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2, nombresDeCapas, nombresAbreviadosDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js';
 
 
 import { definePatterns, defineClips } from './patternsAndClips.js';
@@ -77,6 +85,48 @@ function _d3(require) {
 
 function _4(d3, DOM) {
   // viwBox
+
+  let width = proportion*600;////20231221
+  let height = proportion*500;//20231221
+
+  let ml = width*0.13;//20231221
+  let mr = width*0.05;//20231221
+  let mt = height*0.1;//20231221
+  let mb = height*0.15;//20231221
+
+  switch (graphicAttributes.graphType)//20231221
+  {
+    case "rhoTiempo":
+     break;
+    case "trTiempo":
+     ml = width*0.1;
+     break;
+    case "gasSepult":
+      width = proportion*700;
+      height = proportion*700;
+      ml = width*0.12;
+      mr = width*0.14;
+      mt = height*0.1;
+      mb = height*0.25;
+      break;
+    case "rhoSepult":
+      width = proportion*700;
+      height = proportion*500;
+      ml = width*0.12;
+      mr = width*0.14;
+      mt = height*0.1;
+      mb = height*0.15;
+      break;
+    case "rhoProf":
+      width = proportion*500;
+      ml = width*0.18;
+      mr = width*0.2;
+      break;
+    case "tempProf":
+      width = proportion*500;
+      ml = width*0.18;
+      mr = width*0.2;
+  }
   
   let svg = d3.select(DOM.svg(width, height))
 
@@ -190,13 +240,15 @@ function _4(d3, DOM) {
       let XticksMajor = ejeXConfig.ticksMajor;
       let XticksMinor = ejeXConfig.ticksMinor;
 
+      //--------20231221----CAMBIE TODA LA CONFIGURACION DE LOS EJES-------------------------------------//
+
       let xAxis = g => g.append('g')
         .attr('transform', `translate(0, ${height - mb})`)
         //.call(d3.axisBottom(x).tickValues(XticksMinor.concat(XticksMajor)))
         .call(d3.axisBottom(x).tickFormat(d => d))//d => XticksMajor.includes(d) ? d : ""))
         .call(g => {
           g.selectAll(".tick text")
-              .style("font-size", `${proportion * 10}px`)
+              .style("font-size", `${proportion * 15}px`)
               .style("font-family", "Arial");
           g.selectAll(".tick line")
             .style("stroke-width", `${proportion*1}px`)
@@ -207,10 +259,10 @@ function _4(d3, DOM) {
         .attr("clip-path", "url(#clipX)")
         .append('text')  // Añade un elemento text
         .attr('x', (width - ml - mr) / 2 + ml)  // Posición en x (centrado)
-        .attr('y', proportion*40)  // Posición en y (ajústalo según lo necesites)
+        .attr('y', proportion*45)  // Posición en y (ajústalo según lo necesites)
         .attr('fill', 'black')  // Color del texto
         .attr('text-anchor', 'middle')  // Alineación del texto
-        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-size', `${proportion * 15}px`)
         .text(ejeXConfig.titulo);  // Título del eje X
 
       let YticksMajor = ejeYConfig.ticksMajor;
@@ -223,7 +275,7 @@ function _4(d3, DOM) {
         .call(d3.axisLeft(y).tickFormat(d => d))//d => XticksMajor.includes(d) ? d : ""))
         .call(g => {
           g.selectAll(".tick text")
-              .style("font-size", `${proportion * 10}px`)
+              .style("font-size", `${proportion * 15}px`)
               .style("font-family", "Arial");
               g.selectAll(".tick line")
               .style("stroke-width", `${proportion*1}px`)
@@ -234,11 +286,11 @@ function _4(d3, DOM) {
         .attr("clip-path", "url(#clipY)")
         .append('text')  // Añade un elemento text
         .attr('x', - (height - mt - mb) / 2 - mt)  // Posición en x (ajústalo según lo necesites)
-        .attr('y', -ml + proportion*8)  // Posición en y (ajústalo según lo necesites)
+        .attr('y', -ml + proportion*20)  // Posición en y (ajústalo según lo necesites)
         .attr('fill', 'black')  // Color
         .attr('text-anchor', 'middle')  // Alineación del texto
         .attr("transform", "rotate(-90)")  // Rota el título 90 grados
-        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-size', `${proportion * 15}px`)
         .text(ejeYConfig.titulo);
 
 
@@ -247,6 +299,8 @@ function _4(d3, DOM) {
         .call(xAxis)
         .call(yAxis)
       //#endregion
+
+      ////////////////////////////////// 20231221 - fin de modificacion de los ejes/////////////////////////////////////////////////////////
 
       //añadir linea derecha
       g.append("line")      // agregar un elemento line al SVG
@@ -335,10 +389,16 @@ function _4(d3, DOM) {
         });
       }
 
-
-
+      //-------------20231221----------------//
+      let horRectGroup;
       if(graphicAttributes.sideReference)
-        createHorizontalRectangle(g, lineasHorizontales[graphicAttributes.well], nombresDeCapas[graphicAttributes.well], coloresDeCapas[graphicAttributes.well], texturasDeCapas[graphicAttributes.well], width, mr, mt, height, mb, y, proportion);//CAMBIO - Varias cosas ahora dependen del # de pozo
+      {
+        horRectGroup = createHorizontalRectangle(g, lineasHorizontales[graphicAttributes.well], nombresAbreviadosDeCapas[graphicAttributes.well], coloresDeCapas[graphicAttributes.well], texturasDeCapas[graphicAttributes.well], width, mr, mt, height, mb, y, proportion);//CAMBIO - Varias cosas ahora dependen del # de pozo
+        horRectGroup
+          .on('mouseover', onMouseOverHorRectGroup)
+          //.on('mouseout', onMouseOut)
+      }
+      ////////////////////////////////////////
 
       if(graphicAttributes.upperReference)
       {
@@ -360,7 +420,7 @@ function _4(d3, DOM) {
       .attr('fill', 'none')
       .attr('stroke', color) // Condición para el color
       .attr('stroke-dasharray', dashed ? '3 3' : 'none') // Condición para el patrón punteado
-      .attr('stroke-width', `${proportion*1}px`)
+      .attr('stroke-width', `${proportion*1.5}px`)
       .attr('d', line)
       .attr("clip-path", "url(#clip)")  // Aplica el clip-path
       .on('mouseover', onMouseOverLine)
@@ -531,7 +591,7 @@ function _4(d3, DOM) {
         const rectSpacing = containerHeight/30; // Espacio entre cada rectángulo
       
         const refColor = ["#00FF00","#FFFF00","#F0AA23","#FF5F30","#919191"];
-        const Text = ["Inmaduro","Aceite y Gas","Gas húmedo","Gas seco","Sobremaduro"];
+        const Text = ["Inmaduro [0 - 0.55]","Aceite y Gas [0.55 - 0.8]","Gas húmedo [0.8 - 1]","Gas seco [1 - 2.5]","Sobremaduro [>2.5]"];
 
         rectContainer
         .append('text')
@@ -587,6 +647,34 @@ function _4(d3, DOM) {
       
   }
 
+  //------------------------------------20231221--------------------------------------//
+  function onMouseOverHorRectGroup(event, d) {
+    // Código a ejecutar cuando el mouse se coloca sobre el grupo de rectángulos
+    // Puedes acceder a 'event' y 'd' si es necesario
+    let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
+
+    let nombresConcatenados = "";
+    for (var i = 0; i < nombresDeCapas[graphicAttributes.well].length-1; i++) {
+      nombresConcatenados += "* " + nombresAbreviadosDeCapas[graphicAttributes.well][i] + ": &nbsp;" + nombresDeCapas[graphicAttributes.well][i]  + "<br>";
+    }
+  
+    d3.select("#tooltip2")
+      .style("left", (mx - width/10) + "px")
+      .style("top", (my - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .style('width','auto')
+      .style('height', 'auto')//nombresDeCapas[graphicAttributes.well].length*proportion*13 +"px")
+      .style('stroke', 'blue')
+      .style('border', `${proportion*2}px solid blue`)
+      .style('border-radius', `${proportion*5}px`)
+      .html(nombresConcatenados);
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////
+
+
   function onMouseOverPlus(event, d) {
     let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
   
@@ -615,6 +703,7 @@ function _4(d3, DOM) {
 
   function onMouseOut(event, d) {
     d3.select("#tooltip").style("visibility", "hidden");  // Oculta el tooltip
+    d3.select("#tooltip2").style("visibility", "hidden");
   }
 
   function onMouseOverCircle(event, d) {

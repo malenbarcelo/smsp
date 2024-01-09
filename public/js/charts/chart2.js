@@ -1,5 +1,5 @@
 import { Runtime, Library, Inspector } from "./runtime.js"
-import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2, nombresDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js';
+import { texturasDeCapas, coloresDeCapas, lineasHorizontales, lineasVerticales1, lineasVerticales2,lineasVerticales3,lineasVerticales4,lineasVerticales5, lineasVerticales6, nombresDeCapas, nombresAbreviadosDeCapas, nombresDeEras, nombresDeEpocas, coloresDeEras, coloresDeEpocas} from './lists.js'
 import { definePatterns, defineClips } from './patternsAndClips.js';
 import { createHorizontalRectangle, createVerticalRectangle, drawHorizontalLines, drawColorScale} from './graphAttributes.js';
 
@@ -13,24 +13,23 @@ window.addEventListener('load',async()=>{
     const runtime = new Runtime()
 
     const rutaArchivo = './chartsData/well' + idWell + '/' + chartName2 + '.js'
-
+    
     const module = await import(rutaArchivo)
 
-    //var {proportion,width,height,mb,ml,mt,mr,graphicAttributes,ejeXConfig,ejeYConfig,colorPalette,datosCapas,puntos,poligono1, lineaY0,alphaName} = module
+    var { proportion,  alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0,puntos,rangos} = module
 
-    var {proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0,puntos,rangos} = module
+    //var {proportion,width, height, mb, ml, mt, mr, alphaName, graphicAttributes, ejeXConfig, ejeYConfig, colorPalette, datosCapas, poligonos,coloresPoligonos, lineaY0,puntos,rangos} = module
 
-    const widthResolution = window.screen.width
-    const heightResolution = window.screen.height
+    //const widthResolution = window.screen.width
 
-    proportion = proportion * (widthResolution / 1700)
-    width = width * (widthResolution / 1700)
+    //proportion = proportion * (widthResolution / 1700)
+    
+    /*width = width * (widthResolution / 1700)
     height = height * (widthResolution / 1700)
     ml = ml * (widthResolution / 1700)
     mr = mr * (widthResolution / 1700)
     mt = mt * (widthResolution / 1700)
-    mb = mb * (widthResolution / 1700)
-
+    mb = mb * (widthResolution / 1700)*/
     
 
     //////ZommedGraphs//////////////////////////////////////////
@@ -39,11 +38,11 @@ window.addEventListener('load',async()=>{
 
 
 // https://observablehq.com/@wsygzn/zoom-candlesticks@36
-function _1(md) {
-  return (
-    md`# hola`
-  )
-}
+// function _1(md) {
+//   return (
+//     md`# hola`
+//   )
+// }
 
 function _d3(require) {
   return (
@@ -53,11 +52,79 @@ function _d3(require) {
 
 
 function _4(d3, DOM) {
+  // viwBox
 
-  let svg = d3.select(DOM.svg(width, height))
+  let width = proportion*600;////20231221
+  let height = proportion*500;//20231221
+
+  let ml = width*0.13;//20231221
+  let mr = width*0.05;//20231221
+  let mt = height*0.1;//20231221
+  let mb = height*0.15;//20231221
+
+  switch (graphicAttributes.graphType)//20231221
+  {
+    case "rhoTiempo":
+      height = proportion*550;      
+     break;
+    case "trTiempo":
+      ml = width*0.1;
+      height = proportion*550;
+     break;
+    case "gasSepult":
+      width = proportion*700;
+      height = proportion*700;
+      ml = width*0.12;
+      mr = width*0.14;
+      mt = height*0.1;
+      mb = height*0.25;
+      break;
+    case "rhoSepult":
+      width = proportion*700;
+      height = proportion*700;
+      ml = width*0.12;
+      mr = width*0.14;
+      mt = height*0.1;
+      mb = height*0.15;
+      break;
+    case "rhoProf":
+      width = proportion*500;
+      height = proportion*550;
+      ml = width*0.18;
+      mr = width*0.2;
+      break;
+    case "tempProf":
+      width = proportion*500;
+      height = proportion*600
+      ml = width*0.18;
+      mr = width*0.2;
+  }
   
-  let defs
+  let svg = d3.select(DOM.svg(width, height))
 
+  
+  //ESTE BLOQUE PERMITE VER EL AREA DE GRÁFICO Y LOS MÁRGENES
+  // svg.append('rect')
+  // .attr('x', 0)
+  // .attr('y', 0)
+  // .attr('width', width)
+  // .attr('height', height)
+  // .attr('fill', "none")
+  // .attr("stroke", "red")  // color de la línea
+  // .attr("stroke-width", 2); // grosor de la línea
+
+  // svg.append('rect')
+  // .attr('x', ml)
+  // .attr('y', mt)
+  // .attr('width', width-ml-mr)
+  // .attr('height', height-mt-mb)
+  // .attr('fill', "none")
+  // .attr("stroke", "blue")  // color de la línea
+  // .attr("stroke-width", 2); // grosor de la línea
+  
+  
+  
+  let defs;
   // Llama a la función para definir los patrones
   if(graphicAttributes.fillPatterns)
   {
@@ -77,11 +144,12 @@ function _4(d3, DOM) {
   window.xNew = xNew;
   window.yNew = yNew;
 
-  //Crear los gradientes para las capas ////ACA CAMBIA CHART 2!!!!!!!!
+  //Crear los gradientes para las capas
   if(graphicAttributes.colorMap)
   {
     datosCapas.forEach((capa, index) => {
-      const gradientId = `secondGradientFor${capa.nombre.replace(/\s+/g, '')}`; //CAMBIO CHARTS 2
+      const gradientId = `secondGradientFor${capa.nombre.replace(/\s+/g, '')}`; // Esto genera un ID único basado en el nombre de la capa
+      //const gradientId = `gradientFor${capa.nombre.replace(/[^\w]+/g, '')}`;
       const gradientDefinition = createDiscreteGradientForLayer(capa.datos, gradientId);
       defs.html(defs.html() + gradientDefinition); // Añadimos la definición del gradiente al contenedor <defs>
     });
@@ -133,7 +201,7 @@ function _4(d3, DOM) {
     ax.call(draw, datosCapas, xNew, yNew);
   }
 
-
+  
   function draw(g, data, x, y) {
     if (data[0] && data[data.length - 1]) {
       //#region Preparacion de area del gràfico
@@ -142,8 +210,11 @@ function _4(d3, DOM) {
 
       defineClips(svg,ml,mr,mt,mb,width,height);
 
+
       let XticksMajor = ejeXConfig.ticksMajor;
       let XticksMinor = ejeXConfig.ticksMinor;
+
+      //--------20231221----CAMBIE TODA LA CONFIGURACION DE LOS EJES-------------------------------------//
 
       let xAxis = g => g.append('g')
         .attr('transform', `translate(0, ${height - mb})`)
@@ -151,7 +222,7 @@ function _4(d3, DOM) {
         .call(d3.axisBottom(x).tickFormat(d => d))//d => XticksMajor.includes(d) ? d : ""))
         .call(g => {
           g.selectAll(".tick text")
-              .style("font-size", `${proportion * 10}px`)
+              .style("font-size", `${12}px`)
               .style("font-family", "Arial");
           g.selectAll(".tick line")
             .style("stroke-width", `${proportion*1}px`)
@@ -162,10 +233,10 @@ function _4(d3, DOM) {
         .attr("clip-path", "url(#clipX)")
         .append('text')  // Añade un elemento text
         .attr('x', (width - ml - mr) / 2 + ml)  // Posición en x (centrado)
-        .attr('y', proportion*40)  // Posición en y (ajústalo según lo necesites)
+        .attr('y', proportion*45)  // Posición en y (ajústalo según lo necesites)
         .attr('fill', 'black')  // Color del texto
         .attr('text-anchor', 'middle')  // Alineación del texto
-        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-size', `${12}px`)
         .text(ejeXConfig.titulo);  // Título del eje X
 
       let YticksMajor = ejeYConfig.ticksMajor;
@@ -178,7 +249,7 @@ function _4(d3, DOM) {
         .call(d3.axisLeft(y).tickFormat(d => d))//d => XticksMajor.includes(d) ? d : ""))
         .call(g => {
           g.selectAll(".tick text")
-              .style("font-size", `${proportion * 10}px`)
+              .style("font-size", `${12}px`)
               .style("font-family", "Arial");
               g.selectAll(".tick line")
               .style("stroke-width", `${proportion*1}px`)
@@ -189,11 +260,11 @@ function _4(d3, DOM) {
         .attr("clip-path", "url(#clipY)")
         .append('text')  // Añade un elemento text
         .attr('x', - (height - mt - mb) / 2 - mt)  // Posición en x (ajústalo según lo necesites)
-        .attr('y', -ml + proportion*8)  // Posición en y (ajústalo según lo necesites)
+        .attr('y', -ml + proportion*20)  // Posición en y (ajústalo según lo necesites)
         .attr('fill', 'black')  // Color
         .attr('text-anchor', 'middle')  // Alineación del texto
         .attr("transform", "rotate(-90)")  // Rota el título 90 grados
-        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-size', `${12}px`)
         .text(ejeYConfig.titulo);
 
 
@@ -202,6 +273,8 @@ function _4(d3, DOM) {
         .call(xAxis)
         .call(yAxis)
       //#endregion
+
+      ////////////////////////////////// 20231221 - fin de modificacion de los ejes/////////////////////////////////////////////////////////
 
       //añadir linea derecha
       g.append("line")      // agregar un elemento line al SVG
@@ -225,10 +298,14 @@ function _4(d3, DOM) {
       if (graphicAttributes.extraPoligons) {
         drawReferenceBox(g)
       }
+
+      if (graphicAttributes.graphType == "trTiempo" || graphicAttributes.graphType == "rhoTiempo" ) {
+        drawSimpleReferenceBox(g)
+      }
       
       if(graphicAttributes.horizontalLines)
       {
-        drawHorizontalLines(g,lineasHorizontales[graphicAttributes.well], ml, width, mr,y,proportion);
+        drawHorizontalLines(g,lineasHorizontales[graphicAttributes.well], ml, width, mr,y,proportion);//CAMBIO - lineasHorizontales[graphicAttributes.well]
       }
       
       if (graphicAttributes.additionalPoints) {
@@ -238,7 +315,7 @@ function _4(d3, DOM) {
       if (graphicAttributes.additionalRanges) {
         drawRanges(g,rangos,x,y,proportion)
       }
-      
+    
       // Dibujar líneas y area 
       let line = d3.line()
         .x(d => x(d.C))
@@ -248,7 +325,6 @@ function _4(d3, DOM) {
         .x(d => x(d.C))
         .y0(d => y(d.m))
         .y1(d => y(d.m));  // Esto se ajustará según el conjunto de datos del siguiente item.
-
 
         if(graphicAttributes.extraPoligons) // CAMBIO - Todo este IF cambió porque ahora hay varios polígonos
         {
@@ -277,7 +353,7 @@ function _4(d3, DOM) {
 
           const [interpolatedData1, interpolatedData2] = interpolateData(item.datos, nextData);
           if(graphicAttributes.colorMap)
-          drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `secondGradientFor${item.nombre.replace(/\s+/g, '')}`, 'gradientArea' + (index + 1), area);//CAMBIO CHARTS 2
+            drawAreaBetweenLines(g, interpolatedData1, interpolatedData2, `secondGradientFor${item.nombre.replace(/\s+/g, '')}`, 'gradientArea' + (index + 1), area);//CAMBIO - Para poder ver las capas con nombres que tienen espacios
           if(graphicAttributes.fillPatterns)
             texturizeAreaBetweenLines(g, interpolatedData1, interpolatedData2, findPattern(item.nombre), 'textureArea' + (index + 1), area);
         }
@@ -291,13 +367,33 @@ function _4(d3, DOM) {
         });
       }
 
+      //-------------20231221----------------//
+      let horRectGroup;
       if(graphicAttributes.sideReference)
-        createHorizontalRectangle(g, lineasHorizontales[graphicAttributes.well], nombresDeCapas[graphicAttributes.well], coloresDeCapas[graphicAttributes.well], texturasDeCapas[graphicAttributes.well], width, mr, mt, height, mb, y, proportion);//CAMBIO - Varias cosas ahora dependen del # de pozo
+      {
+        horRectGroup = createHorizontalRectangle(g, lineasHorizontales[graphicAttributes.well], nombresAbreviadosDeCapas[graphicAttributes.well], coloresDeCapas[graphicAttributes.well], texturasDeCapas[graphicAttributes.well], width, mr, mt, height, mb, y, proportion);//CAMBIO - Varias cosas ahora dependen del # de pozo
+        horRectGroup
+          .on('click', onMouseOverHorRectGroup)
+          //.on('mouseout', onMouseOut)
+      }
+      ////////////////////////////////////////
 
       if(graphicAttributes.upperReference)
       {
-        let rectGroup1 = createVerticalRectangle(g, lineasVerticales1, nombresDeEras, coloresDeEras, mt *.2,mt, proportion);
-        let rectGroup2 = createVerticalRectangle(g, lineasVerticales2, nombresDeEpocas, coloresDeEpocas, mt *.6,mt, proportion);
+        if(graphicAttributes.well < 1){
+          let rectGroup1 = createVerticalRectangle(g, lineasVerticales1, nombresDeEras, coloresDeEras, mt *.2,mt, proportion);
+          let rectGroup2 = createVerticalRectangle(g, lineasVerticales2, nombresDeEpocas, coloresDeEpocas, mt *.6,mt, proportion);
+        }
+        else if(graphicAttributes.extendedAges)
+        {
+          let rectGroup1 = createVerticalRectangle(g, lineasVerticales5, nombresDeEras, coloresDeEras, mt *.2,mt, proportion);
+          let rectGroup2 = createVerticalRectangle(g, lineasVerticales6, nombresDeEpocas, coloresDeEpocas, mt *.6,mt, proportion);
+        }
+        else
+        {
+          let rectGroup1 = createVerticalRectangle(g, lineasVerticales3, nombresDeEras, coloresDeEras, mt *.2,mt, proportion);
+          let rectGroup2 = createVerticalRectangle(g, lineasVerticales4, nombresDeEpocas, coloresDeEpocas, mt *.6,mt, proportion);
+        }
       }
       // drawCircle(g, dataR, 'circleClass', d => x(d.C), d => y(d.m), 'black');
       // drawCircle(g, dataC, 'circleClass2', d => x(d.C), d => y(d.m), 'blue');
@@ -314,21 +410,13 @@ function _4(d3, DOM) {
       .attr('fill', 'none')
       .attr('stroke', color) // Condición para el color
       .attr('stroke-dasharray', dashed ? '3 3' : 'none') // Condición para el patrón punteado
-      .attr('stroke-width', `${proportion*1}px`)
+      .attr('stroke-width', `${proportion*1.5}px`)
       .attr('d', line)
       .attr("clip-path", "url(#clip)")  // Aplica el clip-path
       .on('mouseover', onMouseOverLine)
-      .on('mouseout', onMouseOut)
-      /*.on('mouseover', function(event,d) {
-        myChart.addEventListener('mouseover', function(event) {
-          const mx = event.clientX
-          const my = event.clientY
-        })
-
-        onMouseOverLine.bind(this)(event, d, mx, my)
-
-      })*/
+      .on('mouseout', onMouseOut);
   }
+
 
 
   function drawAreaBetweenLines(g, data1, data2, gradientId, className, area) {
@@ -418,7 +506,7 @@ function _4(d3, DOM) {
 
       g.selectAll('line.horizontal-plus, line.vertical-plus')
         .on('mouseover', onMouseOverPlus)
-        .on('mouseout', () => d3.select("#tooltip2").style("visibility", "hidden"));
+        .on('mouseout', () => d3.select("#tooltip3").style("visibility", "hidden"));
   }
 
   function drawRanges(g,randos,x,y,proportion) {
@@ -463,7 +551,7 @@ function _4(d3, DOM) {
 
       g.selectAll('line.vertical-r1, line.vertical-r2,line.horizontal-plus')
         .on('mouseover', onMouseOverRange)
-        .on('mouseout', () => d3.select("#tooltip").style("visibility", "hidden"));
+        .on('mouseout', () => d3.select("#tooltip3").style("visibility", "hidden"));
   }
 
   function drawReferenceBox(g)
@@ -473,7 +561,7 @@ function _4(d3, DOM) {
           //.attr('transform', `translate(${-(width-ml-mr)/4}, ${height/2})`); // Ajusta la posición vertical según sea necesario
       
         // Crea un grupo para el rectángulo contenedor
-        const containerWidth = (width-ml-mr)/3; // Ancho del rectángulo contenedor
+        const containerWidth = (width-ml-mr)/2.5; // Ancho del rectángulo contenedor
         const containerHeight =(height-mt-mb)/3; // Altura del rectángulo contenedor
         const containerX=ml+width/50;
         const containerY=height-containerHeight-mb-height/50;
@@ -493,19 +581,18 @@ function _4(d3, DOM) {
         const rectSpacing = containerHeight/30; // Espacio entre cada rectángulo
       
         const refColor = ["#00FF00","#FFFF00","#F0AA23","#FF5F30","#919191"];
-        //const Text = ["Inmaduro","Aceite y Gas","Gas húmedo","Gas seco","Sobremaduro"];
-        const Text = ["Inmaduro [0 - 0.55]","Aceite y Gas [0.55 - 0.8]","Gas húmedo [0.8 - 1]","Gas seco [1 - 2.5]","Sobremaduro [>2.5]"]
+        const Text = ["Inmaduro [0 - 0.55]","Aceite y Gas [0.55 - 0.8]","Gas húmedo [0.8 - 1]","Gas seco [1 - 2.5]","Sobremaduro [>2.5]"];
 
         rectContainer
         .append('text')
         .attr('x', containerX+width/50) // Ajusta la posición x del texto
         .attr('y', containerY + width/70) // Ajusta la posición y para centrar el texto verticalmente
         .attr('fill', 'black') // Color del texto
-        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-size', `${proportion * 12}px`)
         .attr('font-family', 'Arial Black')
         .attr('text-anchor', 'start') // Alineación del texto a la izquierda
         .attr('dominant-baseline', 'middle') // Alineación vertical del texto
-        .text("Reflectancia Vitrinita"); // Cambia el texto según sea necesario
+        .text("Reflectancia Vitrinita (%Ro)"); // Cambia el texto según sea necesario
 
         for (let i = 0; i < 5; i++) {
           rectContainer
@@ -522,13 +609,71 @@ function _4(d3, DOM) {
             .attr('x', containerX+rectWidth+width/25) // Ajusta la posición x del texto
             .attr('y', containerY + height/40 + i * (rectHeight + rectSpacing) + 10 + rectHeight / 2) // Ajusta la posición y para centrar el texto verticalmente
             .attr('fill', 'black') // Color del texto
-            .attr('font-size', `${proportion * 10}px`)
+            .attr('font-size', `${proportion * 12}px`)
             .attr('font-family', 'Arial')
             .attr('text-anchor', 'start') // Alineación del texto a la izquierda
             .attr('dominant-baseline', 'middle') // Alineación vertical del texto
             .text(Text[i]); // Cambia el texto según sea necesario
         }
 
+  }
+
+  function drawSimpleReferenceBox(g) {
+
+    // Define el ancho y la altura del área donde se dibujarán las líneas
+    const areaWidth = (width - ml - mr)/3;
+    const areaHeight = (height - mt - mb)/3;
+    const areaX=ml+width/50;
+    const areaY=height-areaHeight-mb-height/50;
+    
+    // Define las propiedades de las líneas
+    const lineWidth = areaWidth / 4; // Ancho de las líneas
+    const lineHeight = proportion * 2; // Altura de las líneas (puede ser el grosor)
+    const lineSpacing = areaHeight / 12; // Espacio entre líneas
+    
+    let lineData;
+    // Define los colores y textos para cada línea
+    if(graphicAttributes.well == 0)
+    {
+      lineData = [
+        { color: "black", text: "RAYA" },
+        { color: "blue", text: "CHONTA" },
+        { color: "red", text: "POZO SHALE" }
+      ];
+    }
+    else
+    {
+      lineData = [
+        { color: "black", text: "TITONIANO" }
+      ];
+    }
+    
+    
+    // Calcula la posición inicial Y para las líneas
+    let startY = mt + areaHeight / 3 - ((lineData.length - 1) * (lineHeight + lineSpacing)) / 2;
+    
+    // Dibuja las líneas y los textos
+    lineData.forEach((line, index) => {
+      // Dibuja la línea
+      g.append('line')
+        .attr('x1', 1.2*ml)
+        .attr('y1', startY + index * (lineHeight + lineSpacing))
+        .attr('x2', ml + lineWidth)
+        .attr('y2', startY + index * (lineHeight + lineSpacing))
+        .attr('stroke', line.color)
+        .attr('stroke-width', lineHeight);
+      
+      // Añade el texto a la derecha de la línea
+      g.append('text')
+        .attr('x', 1.2*ml + lineWidth) // Ajusta la posición x del texto
+        .attr('y', startY + index * (lineHeight + lineSpacing) + lineHeight / 2) // Ajusta la posición y para centrar el texto verticalmente
+        .attr('fill', 'black') // Color del texto
+        .attr('font-size', `${proportion * 10}px`)
+        .attr('font-family', 'Arial')
+        .attr('text-anchor', 'start') // Alineación del texto a la izquierda
+        .attr('dominant-baseline', 'middle') // Alineación vertical del texto
+        .text(line.text); // Texto de la línea
+    });
   }
   
 
@@ -543,23 +688,51 @@ function _4(d3, DOM) {
     let xValue = xNew.invert(mx);
     let yValue = yNew.invert(my);
 
-    d3.select("#tooltip2")
-      .style("left", (mx + myChart2.offsetLeft - width/10) + "px") //CAMBIO CHART 2
-      .style("top", (my + myChart2.offsetTop - height/30) + "px") //CAMBIO CHART 2
+    d3.select("#tooltip3")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart2.offsetTop - height/30) + "px")
       .style("visibility", "visible")
       .style('background-color', 'white')
       .style('font-size', `${proportion*12}px`)
       .style('font-family', 'Arial')
-      .text("(" + xValue.toFixed(2) + " , " + yValue.toFixed(2)+")");
-      
+      .text("(" + xValue.toFixed(2) + " , " + yValue.toFixed(2)+")");      
   }
+
+  //------------------------------------20231221--------------------------------------//
+  function onMouseOverHorRectGroup(event, d) {
+    // Código a ejecutar cuando el mouse se coloca sobre el grupo de rectángulos
+    // Puedes acceder a 'event' y 'd' si es necesario
+    let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
+
+    let nombresConcatenados = "";
+    for (var i = 0; i < nombresDeCapas[graphicAttributes.well].length-1; i++) {
+      nombresConcatenados += "* " + nombresAbreviadosDeCapas[graphicAttributes.well][i] + ": &nbsp;" + nombresDeCapas[graphicAttributes.well][i]  + "<br>";
+    }
+  
+    d3.select("#tooltip4")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart2.offsetLeft - height/30) + "px")
+      .style("visibility", "visible")
+      .style('background-color', 'white')
+      .style('font-size', `${proportion*12}px`)
+      .style('font-family', 'Arial')
+      .style('width','auto')
+      .style('height', 'auto')//nombresDeCapas[graphicAttributes.well].length*proportion*13 +"px")
+      .style('stroke', 'blue')
+      .style('border', `${proportion*2}px solid blue`)
+      .style('border-radius', `${proportion*5}px`)
+      .html(nombresConcatenados)
+      .on('click',onMouseOut);
+  }
+  /////////////////////////////////////////////////////////////////////////////////////////
+
 
   function onMouseOverPlus(event, d) {
     let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
   
-    d3.select("#tooltip2")
-      .style("left", (mx + myChart1.offsetLeft - width/10) + "px")
-      .style("top", (my + myChart1.offsetTop - height/30) + "px")
+    d3.select("#tooltip3")
+      .style("left", (mx + myChart2.offsetLeft - width/10) + "px")
+      .style("top", (my + myChart2.offsetTop - height/30) + "px")
       .style("visibility", "visible")
       .style('background-color', 'white')
       .style('font-size', `${proportion*12}px`)
@@ -570,7 +743,7 @@ function _4(d3, DOM) {
   function onMouseOverRange(event, d) {
     let [mx, my] = d3.mouse(this);  // Usa d3.pointer en lugar de d3.mouse si estás usando D3 v6 o superior
   
-    d3.select("#tooltip")
+    d3.select("#tooltip3")
       .style("left", (mx - width/10) + "px")
       .style("top", (my - height/30) + "px")
       .style("visibility", "visible")
@@ -581,7 +754,8 @@ function _4(d3, DOM) {
   }
 
   function onMouseOut(event, d) {
-    d3.select("#tooltip2").style("visibility", "hidden");  // Oculta el tooltip2
+    d3.select("#tooltip3").style("visibility", "hidden");  // Oculta el tooltip
+    d3.select("#tooltip4").style("visibility", "hidden");
   }
 
   function onMouseOverCircle(event, d) {
@@ -595,7 +769,7 @@ function _4(d3, DOM) {
     let xValue = x.invert(mx);  // Invierte la escala x para obtener el valor de x
     let yValue = y.invert(my);  // Invierte la escala y para obtener el valor de y
 
-    d3.select("#tooltip2")
+    d3.select("#tooltip3")
       .style("left", (mx - width/10) + "px")
       .style("top", (my - height/30) + "px")
       .style("visibility", "visible")
@@ -607,7 +781,7 @@ function _4(d3, DOM) {
       //.attr('fill', 'blue')  // Cambia el color de vuelta a azul
       .attr('r', '5');
 
-    d3.select("#tooltip2").style("visibility", "hidden");  // Oculta el tooltip2
+    d3.select("#tooltip3").style("visibility", "hidden");  // Oculta el tooltip
   }
 
   if (graphicAttributes.colorMap)
@@ -773,19 +947,11 @@ function define(runtime, observer) {
   main.variable(observer()).define(["d3", "DOM"], _4);
   return main;
 }
+    
 
     
     /////////////////////////////////////////////////////////////////////////////
 
-    //const xPosition = event.clientX
-    
-    //const positionX =  myChart.getBoundingClientRect().x 
-
-    
-    //divStepComments.style.top = stepComment.getBoundingClientRect().y + window.pageYOffset + 'px'
-    
-
-    //console.log(positionX)
-
-    const main2 = runtime.module(define, Inspector.into(myChart2))
+    const main = runtime.module(define, Inspector.into(myChart2))
 })
+

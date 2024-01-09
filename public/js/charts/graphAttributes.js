@@ -3,9 +3,14 @@
 export function createHorizontalRectangle(g, lineasHorizontales, nombresDeCapas, coloresDeCapas, texturasDeCapas, width, mr, mt, height, mb, y, proportion) {
   let rectGroup = g.append('g');
 
-  let rectX = width - mr + mr/20;
+  //  let rectX = width - mr + mr/10;
+  //  let rectY = mt;
+  //  let rectWidth = mr/6;
+  //  let rectHeight = height - mt - mb;
+
+  let rectWidth = width*0.05;
+  let rectX = width*0.88;// - (rectWidth+width*0.05);
   let rectY = mt;
-  let rectWidth = mr/6;
   let rectHeight = height - mt - mb;
 
   rectGroup.append('rect')
@@ -31,7 +36,7 @@ export function createHorizontalRectangle(g, lineasHorizontales, nombresDeCapas,
       return y(media);  // Ajuste vertical si es necesario
     })
     .text(d => d)
-    .attr('font-size', `${proportion * 10}px`)
+    .attr('font-size', `${12}px`)
     .attr('font-family', 'Arial')
     .attr('alignment-baseline', 'middle')  // Alineación vertical
     .attr("clip-path", "url(#clipY)");
@@ -142,7 +147,7 @@ export function createVerticalRectangle(g, lineasVerticales, nombres, colors, re
       let ancho = Math.abs(xNew(lineasVerticales[i]) - xNew(lineasVerticales[i + 1]));
       return ancho < 50 ? "" : d;
     })
-    .attr('font-size', `${proportion * 10}px`)
+    .attr('font-size', `${proportion * 12}px`)
     .attr('font-family', 'Arial')
     .attr('text-anchor', 'middle')
     .attr('alignment-baseline', 'middle')
@@ -169,7 +174,7 @@ export function drawHorizontalLines(g, lineasHorizontales, ml, width, mr, y, pro
 
 export function drawColorScale(svg,ml, mr,mb, height, width, colorPalette, alphaName, proportion) {
   let scaleX = 0 + ml;  // Variable para llevar la cuenta de la posición x del rectángulo actual
-  const scaleY = height - mb + proportion*50;
+  const scaleY = height - height*0.15;
 
    // Calcula el rango completo de la escala
    const fullScaleRange = colorPalette[colorPalette.length - 1].max;
@@ -209,7 +214,7 @@ const xAxisGroup = svg.append('g')
 
 // Cambia el tamaño de la fuente de los ticks del eje X
 xAxisGroup.selectAll('text')
-  .style('font-size', `${proportion * 10}px`);
+  .style('font-size', `${proportion * 12}px`);
   
 // Modifica el grosor de los ticks
 xAxisGroup.selectAll('.tick line')
@@ -225,9 +230,9 @@ xAxisGroup.select('.domain')
   svg.append("text")
     .attr("class", "label")  // Opcional: para estilizar con CSS
     .attr("x", (width - mr + ml) / 2)  // Posición en el eje X (ajustar según necesidad)
-    .attr("y", scaleY+proportion*55)  // Posición en el eje Y (ajustar según necesidad)
+    .attr("y", height*0.95)  // Posición en el eje Y (ajustar según necesidad)
     .style("text-anchor", "middle")  // Centrar texto horizontalmente
     .text(alphaName)
-    .attr('font-size', `${proportion * 10}px`)
+    .attr('font-size', `${proportion * 15}px`)
     .attr('font-family', 'Arial');
 }

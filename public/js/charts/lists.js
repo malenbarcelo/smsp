@@ -3,9 +3,14 @@ export const lineasHorizontales =
     [340, 1411, 1738, 3055, 3176, 3230, 3375, 3872, 4162, 4200, 4220,4450],
     [208,990,1190,1237,1285,1379,1519,2047,2171,2295,3341,3482,4732,6299,7437,7737,7834,7883,7932,8992,9914]
 ]
-    
-export const lineasVerticales1 = [0, 1.8, 23, 65.5, 145.5,200];
-export const lineasVerticales2 = [0, 0.01, 1.8, 5.4, 23, 33.9, 55.8, 65.5, 99.6,145.5,161,175.5,200];
+
+export const lineasVerticales1 = [0, 1.8, 23, 65.5, 100];//20240103
+export const lineasVerticales2 = [0, 0.01, 1.8, 5.4, 23, 33.9, 55.8, 65.5, 99.6,100];//20240103
+export const lineasVerticales3 = [0, 1.8, 23, 65.5, 145.5,183];//20240103
+export const lineasVerticales4 = [0, 0.01, 1.8, 5.4, 23, 33.9, 55.8, 65.5, 99.6,145.5,161,175.5,183];//20240103
+export const lineasVerticales5 = [0, 1.8, 23, 65.5, 145.5,200];//20240103
+export const lineasVerticales6 = [0, 0.01, 1.8, 5.4, 23, 33.9, 55.8, 65.5, 99.6,145.5,161,175.5,200];//20240103
+
 export const nombresDeCapas =
 [
     ['TERCIARIO',
@@ -47,7 +52,46 @@ export const nombresDeCapas =
         'Base Basamento'
     ]
 ]
-    
+
+export const nombresAbreviadosDeCapas =[
+    ['TR',
+    'MR',
+    'PB', 
+    'CH',
+    'PSh',
+    'PSn',
+    'YH',
+    'VV',
+    'CH',
+    'CHs',
+    'AC',
+    'RY',
+    'RYb'
+   ],
+   ['CuS',
+    'CuI',
+    'PlS2',
+    'PlS1',
+    'PlIR',
+    'PlIB',
+    'MiSR',
+    'MiSB',
+    'MiMR',
+    'MiMB',
+    'MiI',
+    'Ol',
+    'OlEo',
+    'EoPa',
+    'CrS',
+    'CrI',
+    'Ti',
+    'Ki',
+    'Ox',
+    'JuM',
+    'Ba',
+    'BaB'
+   ]
+]
 
 export const texturasDeCapas = 
 [

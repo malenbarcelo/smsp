@@ -6,10 +6,11 @@
     fillPatterns: true,
     additionalPoints: true,
     additionalRanges: false,
-    well: 1
+    well: 1,
+    graphType: "rhoProf"
 }
 
-const proportion = 1.05;
+const proportion = 1.1;
 const width = proportion*500;
 const height = proportion*500;
 

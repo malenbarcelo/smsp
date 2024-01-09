@@ -5,10 +5,12 @@
     colorMap: false,
     fillPatterns: true,
     extraPoligons: true,
-    well: 1
+    well: 1,
+    graphType: "rhoSepult",
+    extendedAges: true
 }
 
-const proportion = 0.85;
+const proportion = 0.8;
 const width = proportion*800;
 const height = proportion*500;
 

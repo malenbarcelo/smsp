@@ -5,17 +5,18 @@
     colorMap: false,
     fillPatterns: false,
     additionalPoints: false,
-    well: 1
+    well: 1,
+    graphType: "rhoTiempo"
 }
 
-const proportion = 0.9;
-const width = proportion*800;
+const proportion = 1;
+const width = proportion*600;
 const height = proportion*500;
 
-const ml = width*50/800;
-const mr = width*200/800;
-const mt = height*50/500;
-const mb = height*50/500;
+const ml = width*0.13;
+const mr = width*0.05;
+const mt = height*0.1;
+const mb = height*0.15;
 const alphaName = "Petróleo (%)";
 
 export { proportion,width, height, ml, mr, mt, mb, alphaName };

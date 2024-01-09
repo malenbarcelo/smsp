@@ -1,4 +1,5 @@
-﻿//this chart is equal to tempDepth
+﻿
+//this chart is equal to temp depth
 export const graphicAttributes = {
     upperReference: false,
     sideReference: true,
@@ -6,10 +7,11 @@ export const graphicAttributes = {
     colorMap: false,
     fillPatterns: true,
     additionalPoints: true,
-    well: 1
+    well: 1,
+    graphType: "tempProf"
 }
 
-const proportion = 1.05;
+const proportion = 1;
 const width = proportion*500;
 const height = proportion*500;
 

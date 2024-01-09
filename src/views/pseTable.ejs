@@ -16,6 +16,7 @@
         <form action="/pse-table/<%= data.idWell %>/pse-summary-table" method="POST">
 
             <div class="gridItem1 divCharts divPseTable">
+                
                 <div class="pseTable1">
                     <table class="pseTable">
                         <thead>
@@ -173,9 +174,12 @@
                     </div>
                 </div>
 
-                <button type="submit" class="button3 <%= validation == 'passed' ? 'unabledButton2' : null %>">
-                    Validar
-                </button>
+                
+                <div class="divButtonPse">
+                    <button type="submit" class="button3 <%= validation == 'passed' ? 'unabledButton2' : null %>">
+                        Validar
+                    </button>
+                </div>
 
             </div>
 

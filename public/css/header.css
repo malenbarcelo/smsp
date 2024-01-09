@@ -1,7 +1,9 @@
 :root{
     --color1: #393939;
+    /*--color1: rgb(51,51,51);*/
     --color2: #ffffff;
     --color3: #20344c;
+    /*--color3: rgb(48,76,196);*/
     --color4: #666666;
     --fontSize1: 13px;
     --fontSize2: 11px;
@@ -10,8 +12,8 @@
 
 .gridContainer2{
     display: grid;
-    grid-template-rows: 20vh;
-    grid-template-columns: 22vw 70vw 8vw;
+    grid-template-rows: 11vh;
+    grid-template-columns: 15vw 80vw 5vw;
 }
 
 .divHeaderLogo{
@@ -21,7 +23,8 @@
 }
 
 .headerLogo{
-    height: 80px;
+    height: 35px;
+    margin-top: 10px;
 }
 
 .divHeaderMenu{

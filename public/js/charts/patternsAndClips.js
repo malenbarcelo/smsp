@@ -242,7 +242,7 @@ export function defineClips(svg,ml,mr,mt,mb,width,height) {
         .append("rect")
         .attr("x", 0 - ml)
         .attr("y", mt - 5)
-        .attr("width", width)
+        .attr("width", width*10)
         .attr("height", height - mt - mb + 5);
 
 }
