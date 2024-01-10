@@ -438,8 +438,8 @@ animation: fill-progress 0.5s ease-in-out forwards;
 }
 
 .selectedLi{
-    border-left:var(--color3) solid 4px;
-    /*border-left:var(--color2) solid 4px;*/
+    /*border-left:var(--color3) solid 4px;*/
+    border-left:var(--color2) solid 4px;
 
 }
 
