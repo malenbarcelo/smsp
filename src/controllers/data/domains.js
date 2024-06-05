@@ -4,7 +4,7 @@ const smsp = {
 }
 
 const schemasin = {
-    'dev':'http://localhost:3000/',
+    'dev':'http://localhost:3003/',
     'prd':'https://campus.schemasim.com/',
 }
 

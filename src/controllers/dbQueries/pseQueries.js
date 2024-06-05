@@ -21,6 +21,16 @@ const pseQueries = {
         })
         return pseInputsData
     },
+    pseMCdata: async(idWell,idUser) => {
+        const pseMCData = await db.Pse_momento_critico.findOne({
+            where:{
+                id_wells:idWell,
+                id_users:idUser
+            },
+            raw:true,
+        })
+        return pseMCData
+    },
     pseSaveData: async(idWell,idUser,newData) => {
         
         for (let i = 0; i < newData.length; i++) {
@@ -41,6 +51,20 @@ const pseQueries = {
                     }
                 }
         )}
+    },
+    pseSaveDataMC: async(idWell,idUser,MC) => {
+        
+            await db.Pse_momento_critico.update(
+                {
+                    input_data:MC
+                },
+                {
+                    where:{
+                        id_wells:idWell,
+                        id_users: idUser
+                    }
+                }
+        )
     },
     restablishData: async(idUser,idWell) => {
         
@@ -68,6 +92,26 @@ const pseQueries = {
                 to_is_invalid:inputsData[i].to_is_invalid
             })
         }
+    },
+    restablishDataMomentoCritico: async(idUser,idWell) => {
+        
+        //destroy data if exists
+        await db.Pse_momento_critico.destroy({
+            where:{
+                id_wells:idWell,
+                id_users:idUser
+            }
+        })
+        
+        //create new data
+        const inputsData = pseTablesData.filter(pseData => pseData.idWell == idWell)[0].inputsData
+        
+        await db.Pse_momento_critico.create({
+            id_wells: idWell,
+            id_users: idUser,
+            color:'#FD0100'
+        })
+        
     }
 }
 

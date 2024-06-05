@@ -18,6 +18,20 @@ const apisController = {
       return res.send('Ha ocurrido un error')
     }
   },
+  getDataMC: async(req,res) =>{
+    try{
+      const idWell = req.params.idWell
+      const idUser = userLogged.id_user
+      
+      const pseMCdata = await pseQueries.pseMCdata(idWell,idUser)
+
+      return res.status(200).json(pseMCdata)
+
+    }catch(error){
+      console.log(error)
+      return res.send('Ha ocurrido un error')
+    }
+  },
   postData: async(req,res) =>{
     try{
 
@@ -32,8 +46,7 @@ const apisController = {
 
       req.body.forEach(element => {
 
-        const isInvalid = pseInputsData.filter(data => data.process == element.processName)[0]
-        
+        const isInvalid = pseInputsData.filter(data => data.process == element.processName)[0]        
 
         newData.push({
           input: element.id,
@@ -47,6 +60,28 @@ const apisController = {
       })
 
       await pseQueries.pseSaveData(idWell,idUser,newData)
+
+      const postResult = {
+        'status':'Datos guardados correctamente'
+      }
+
+      return res.status(200).json(postResult)      
+
+    }catch(error){
+      console.log(error)
+      return res.send('Ha ocurrido un error')
+    }
+  },
+  postDataMC: async(req,res) =>{
+    try{
+
+      const idWell = req.params.idWell
+      const idUser = userLogged.id_user
+      const MC = req.body.MC == '' ? null : parseFloat(req.body.MC)
+
+      console.log(req.body)
+
+      await pseQueries.pseSaveDataMC(idWell,idUser,MC)
 
       const postResult = {
         'status':'Datos guardados correctamente'

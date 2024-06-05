@@ -2,7 +2,7 @@ const {schemasimDomain} = require('./domains')
 
 const schemasimData = {
     'apiUrlExercises': schemasimDomain + 'apis/exercises',
-    'apiUrlUsers': schemasimDomain + 'apis/users/', //add user email
+    'apiUrlUsers': schemasimDomain + 'apis/users/find-user/', //add user email
     'simulatorsData':[
         {
             'idWell':1,

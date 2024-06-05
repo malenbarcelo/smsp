@@ -49,7 +49,7 @@
                             <% } else { %>
         
                                 <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %>">
-                                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %> input3" type="text" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : row.cot %>" autocomplete="off">
+                                    <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %> input3" type="number" step="0.01" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : row.cot %>" autocomplete="off">
                                 </th>
 
                         <% } %>

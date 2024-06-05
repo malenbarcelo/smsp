@@ -54,13 +54,13 @@
                         'margin_from':0.08,
                         'margin_to':0,
                     },
-                    {
+                    /*{
                         'processName':'Momento Crítico',
                         'from':0.5,
                         'to':0,
                         'margin_from':0.1,
                         'margin_to':0,
-                    }
+                    }*/
                 ]
             },
             {
@@ -73,13 +73,13 @@
                         'margin_from':3.82,
                         'margin_to':0,
                     },
-                    {
+                    /*{
                         'processName':'Momento Crítico',
                         'from':31,
                         'to':30,
                         'margin_from':6.2,
                         'margin_to':6,
-                    }
+                    }*/
                 ]
             }
         ],

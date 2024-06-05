@@ -76,6 +76,7 @@ const indexController = {
 
       //if process is PSE table, then restablish pse_data_saved data
       await pseQueries.restablishData(userToLogin.id_user,idWell)
+      await pseQueries.restablishDataMomentoCritico(userToLogin.id_user,idWell)
       
       return res.redirect('/' + routeParam + '/' + idWell + continueRoute)
 

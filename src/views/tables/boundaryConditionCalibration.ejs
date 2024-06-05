@@ -23,7 +23,7 @@
                     </th>
                     <% } else { %>
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'pwd_pwd_' + row.id %>" value="<%= locals.oldData ? oldData['pwd_pwd_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('pwd_pwd_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'pwd_pwd_' + row.id %>" value="<%= locals.oldData ? oldData['pwd_pwd_' + row.id] : null %>" autocomplete="off">
                         </th>
                 <% } %>
 
@@ -58,7 +58,7 @@
                     </th>
                     <% } else { %>
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'swit_swit_' + row.id %>" value="<%= locals.oldData ? oldData['swit_swit_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('swit_swit_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'swit_swit_' + row.id %>" value="<%= locals.oldData ? oldData['swit_swit_' + row.id] : null %>" autocomplete="off">
                         </th>
                 <% } %>
                 
@@ -93,7 +93,7 @@
                     </th>
                     <% } else { %>
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hf_hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_hf_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hf_hf_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'hf_hf_' + row.id %>" value="<%= locals.oldData ? oldData['hf_hf_' + row.id] : null %>" autocomplete="off">
                         </th>
                 <% } %>
                 

@@ -3,7 +3,7 @@
     const pseTablesData = [
         {
             'idWell':1,
-            'inputs':4,
+            'inputs':3,
             'pseWidth':810,
             'ma':200,
             'elementsDetailsTop': 39,
@@ -100,8 +100,7 @@
                     'from_value': 0,
                     'to_value': 0,
                     'from_is_invalid':0,
-                    'to_is_invalid':0
-                    
+                    'to_is_invalid':0                    
                 },
                 {
                     'input':2,
@@ -121,7 +120,7 @@
                     'from_is_invalid':0,
                     'to_is_invalid':0
                 },
-                {
+                /*{
                     'input':4,
                     'process': 'Momento Crítico',
                     'color':'#FD0100',
@@ -129,12 +128,12 @@
                     'to_value': 0,
                     'from_is_invalid':0,
                     'to_is_invalid':0
-                }
+                }*/
             ]
         },
         {
             'idWell':2,
-            'inputs':2,
+            'inputs':1,
             'pseWidth':810,
             'ma':200,
             'elementsDetailsTop': 39,
@@ -246,7 +245,7 @@
                     'from_is_invalid':0,
                     'to_is_invalid':0
                 },
-                {
+                /*{
                     'input':2,
                     'process': 'Momento Crítico',
                     'color':'#FF0000',
@@ -254,7 +253,7 @@
                     'to_value': 0,
                     'from_is_invalid':0,
                     'to_is_invalid':0
-                }
+                }*/
             ]
         }
     ]

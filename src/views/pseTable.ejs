@@ -16,7 +16,7 @@
         <form action="/pse-table/<%= data.idWell %>/pse-summary-table" method="POST">
 
             <div class="gridItem1 divCharts divPseTable">
-                
+
                 <div class="pseTable1">
                     <table class="pseTable">
                         <thead>
@@ -53,11 +53,11 @@
                                     </th>
 
                                     <th class="pseTh">
-                                        <input type="text" class="pseInput <%= element.from_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'from_' + element.input %>" id="<%= 'from_' + element.input %>" value="<%= element.from_value %>" autocomplete="off">
+                                        <input type="number" step="0.01" class="pseInput <%= element.from_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'from_' + element.input %>" id="<%= 'from_' + element.input %>" value="<%= element.from_value %>" autocomplete="off">
                                     </th>
 
                                     <th class="pseTh">
-                                        <input type="text" class="pseInput <%= element.to_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'to_' + element.input %>" id="<%= 'to_' + element.input %>" value="<%= element.to_value %>" autocomplete="off">
+                                        <input type="number" step="0.01" class="pseInput <%= element.to_is_invalid == 1 ? 'isInvalidPse' : null %>" name="<%= 'to_' + element.input %>" id="<%= 'to_' + element.input %>" value="<%= element.to_value %>" autocomplete="off">
                                     </th>
 
                                     <th class="pseTh2 pseThColor">
@@ -77,17 +77,35 @@
                                     </th>
                                 </tr>
                             <% }) %>
+
+                            <!---Momento crítico-->
+                            <tr id="momentoCritico">
+                                <th class="pseTh">Proceso</th>
+
+                                <th class="pseTh">
+                                    <input type="text" class="pseInput2" name="process_MC"  id="process_MC" value="Momento crítico" readonly>
+                                </th>
+
+                                <th class="pseTh" colspan="2">
+                                    <input type="number" step="0.01" class="pseInput" name="MC" id="inputMC" autocomplete="off" value="<%= MC %>">
+                                </th>
+
+                                <th class="pseTh2 pseThColor">
+                                    <input type="color" name="color_MC" value="#FD0100" class="pseColor" id="color_MC" disabled>
+                                </th>
+                                
+                            </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="pseTable2">
                     <div class="pseTable3">
-    
-                        <div class="element"style="width: <%= (pseWellData.tableData.length * 17  + pseWellData.tableData.length) + 'px' %>;top: <%= pseWellData.inputsData.length == 4 ? '65px' : '74px' %>;right: <%= pseWellData.tableData.length == 4 ? '-50px' : '-60px' %>">Elemento</div>
-                        
-                        <div class="process"style="width: <%= (pseWellData.inputsData.length * 17  + pseWellData.inputsData.length) + 'px' %>;bottom: <%= pseWellData.inputsData.length == 4 ? '29px' : '11px' %>;right: <%= pseWellData.inputsData.length == 4 ? '-50px' : '-33px' %>">
-                            <%= pseWellData.inputsData.length == 2 ? 'Proc.' : 'Proceso' %>
+
+                        <div class="element"style="width: <%= (pseWellData.tableData.length * 17  + pseWellData.tableData.length) + 'px' %>;top: <%= pseWellData.inputsData.length == 3 ? '65px' : '74px' %>;right: <%= pseWellData.tableData.length == 4 ? '-50px' : '-60px' %>">Elemento</div>
+
+                        <div class="process"style="width: <%= ((pseWellData.inputsData.length+1) * 17  + (pseWellData.inputsData.length+1)) + 'px' %>;bottom: <%= pseWellData.inputsData.length == 3 ? '29px' : '11px' %>;right: <%= pseWellData.inputsData.length == 3 ? '-50px' : '-33px' %>">
+                            <%= pseWellData.inputsData.length == 1 ? 'Proc.' : 'Proceso' %>
                         </div>
 
                         <div class="divElementDetails"style="top: <%= pseWellData.elementsDetailsTop + 'px' %>">
@@ -97,22 +115,24 @@
                                 </div>
                             <% }) %>
                         </div>
-        
+
                         <div class="divProcessDetails"style="top: <%= pseWellData.processDetailsTop + 'px' %>">
                             <% pseWellData.inputsData.forEach(process => { %>
                                 <div class="processDetail <%= process.input == 1 ? 'divDetailsAddBorder' : null %>" id="<%= 'processDetail_' + process.input %>">
                                     <%= process.process %>
                                 </div>
                             <% }) %>
+                            <!---Momento crítico-->
+                            <div class="processDetail" id="processDetail_MC">Momento crítico</div>
                         </div>
-    
+
                         <div class="gridPse">
                             <div class="pseGridRow1 j" style="grid-column: span 3;">Jurásico</div>
                             <div class="pseGridRow1 cr" style="grid-column: span 2;">Cretácico</div>
                             <div class="pseGridRow1 p" style="grid-column: span 3;">Paleógeno</div>
                             <div class="pseGridRow1 n" style="grid-column: span 2;">Neógeno</div>
                             <div class="pseGridRow1 cu" style="grid-column: span 2;">C</div>
-            
+
                             <div class="pseGridRow2 ji">Jur. Inf.</div>
                             <div class="pseGridRow2 jm">Jur. Med.</div>
                             <div class="pseGridRow2 js">Jur. Sup.</div>
@@ -131,7 +151,7 @@
                                     <% element.ranges.forEach(range => { %>
                                         <div class="elementRange"style="width: <%= range.width + 'px' %>;right: <%= range.right + 'px' %>;background-color: <%= element.color %>">
                                         </div>
-                                    <% }) %>                 
+                                    <% }) %>
                                 </div>
                             <% }) %>
 
@@ -140,15 +160,20 @@
                                     <div class="elementRange" id="<%= 'bar_' + element.input %>"></div>
                                 </div>
                             <% }) %>
-    
+
+                            <!---Momento crítico-->
+                            <div class="pseGridRow3" style="grid-column: span 12;">
+                                <div class="elementRange" id="bar_MC"></div>
+                            </div>
+
                             <div class="flexTimeLine" style="grid-column: span 12;">
-    
+
                                 <div class="year1">200</div>
                                 <div class="year2">150</div>
                                 <div class="year3">100</div>
                                 <div class="year4">50</div>
                                 <div class="year5">0</div>
-        
+
                                 <div class="timeLine"></div>
                                 <div class="timeLine"></div>
                                 <div class="timeLine"></div>
@@ -174,7 +199,6 @@
                     </div>
                 </div>
 
-                
                 <div class="divButtonPse">
                     <button type="submit" class="button3 <%= validation == 'passed' ? 'unabledButton2' : null %>">
                         Validar
@@ -190,7 +214,6 @@
 
 </body>
 
-                
 
 <div id="idWell" class="notVisible"><%= data.idWell %></div>
 <div class="notVisible" id="processName"><%= processName %></div>
@@ -206,7 +229,7 @@
 
 
 
- 
+
 
 
 

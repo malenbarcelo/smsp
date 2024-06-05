@@ -7,12 +7,16 @@ window.addEventListener('load',async()=>{
     const idWell = document.getElementById('idWell').innerText    
     const backButton = document.getElementById('pseTable_' + idWell)
     const hrefToChart = document.getElementById('hrefToChart_' + idWell)
-    
+    const inputMC = document.getElementById('inputMC')
+        
     const divWidth = 810
     const years = 200
 
     //get users inputs data
     const inputsData = await (await fetch(dominio + '/apis/' + idWell + '/pse-table')).json()
+
+    //get mc input data
+    const mcInputData = await (await fetch(dominio + '/apis/' + idWell + '/pse-table/momento-critico')).json()
 
     //define processes data
     let processes = []
@@ -56,7 +60,8 @@ window.addEventListener('load',async()=>{
     getAndCompleteProcessDetail(inputsData.length,processes)
     
     //get and create bars
-    getAndCreateBars(inputsData.length,processes)
+    getAndCreateBars(inputsData.length,processes,mcInputData,divWidth,years)
+    
 
     //move up event listener
     moveUps.forEach(moveUp => {
@@ -98,7 +103,7 @@ window.addEventListener('load',async()=>{
                     getAndCompleteProcessDetail(inputsData.length,processes)
 
                     //get and create bars
-                    getAndCreateBars(inputsData.length,processes)
+                    getAndCreateBars(inputsData.length,processes,mcInputData,divWidth,years)
 
                     //change colors
                     changeColors(processes,colors)
@@ -150,7 +155,7 @@ window.addEventListener('load',async()=>{
                     getAndCompleteProcessDetail(inputsData.length,processes)
 
                     //get and create bars
-                    getAndCreateBars(inputsData.length,processes)
+                    getAndCreateBars(inputsData.length,processes,mcInputData,divWidth,years)
 
                     //change colors
                     changeColors(processes,colors)
@@ -171,7 +176,6 @@ window.addEventListener('load',async()=>{
             let right = processes[idProcessToEdit-1].right
 
             if (typeOfInput == 'from') {
-
                 const fromValue = input.value > 200 ? 200 : input.value
                 processes[idProcessToEdit-1].from = input.value
                 width = parseFloat((fromValue - processes[idProcessToEdit-1].to)*divWidth/years,1)  
@@ -184,9 +188,15 @@ window.addEventListener('load',async()=>{
                 processes[idProcessToEdit-1].right = right
             }
 
-            getAndCreateBars(inputsData.length,processes)
+            getAndCreateBars(inputsData.length,processes,mcInputData,divWidth,years)
             
         })
+    })
+
+    inputMC.addEventListener("change",async(e)=>{
+
+        getAndCreateBars(inputsData.length,processes,mcInputData,divWidth,years)
+        
     })
 
     colors.forEach(color => {
@@ -199,15 +209,21 @@ window.addEventListener('load',async()=>{
             processes[idColorEdit-1].color = newColor
 
             //get and create bars
-            getAndCreateBars(inputsData.length,processes)
+            getAndCreateBars(inputsData.length,processes,mcInputData,divWidthyears)
         })
     })
 
     backButton.addEventListener("click",async(e)=>{
+        const MC = {'MC':inputMC.value}
         await fetch(dominio + '/apis/' + idWell + '/pse-table',{
             method:'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(processes)
+        })
+        await fetch(dominio + '/apis/' + idWell + '/pse-table/momento-critico',{
+            method:'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(MC)
         })
     })
 
@@ -218,6 +234,8 @@ window.addEventListener('load',async()=>{
             body: JSON.stringify(processes)
         })
     })
+
+    
 
 })
 

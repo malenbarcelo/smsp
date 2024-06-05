@@ -24,6 +24,8 @@ const pseTableController = {
       const data = await getResumedData(idWell,processName)
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const pseInputsData = await pseQueries.pseInputsData(idWell,idUser)
+      const pseMCdata = await pseQueries.pseMCdata(idWell,idUser)
+      const MC = pseMCdata.input_data == null ? '' : pseMCdata.input_data
       const pseWellData = pseData.filter(data => data.idWell == idWell)[0]
       const stepData = data.processData.exercisesData.steps.filter(step => step.alias == processName)[0]
       const exerciseName = data.processData.exercisesData.exerciseName
@@ -85,7 +87,8 @@ const pseTableController = {
         idWell,
         confirmLogout,
         exerciseName,
-        type
+        type,
+        MC
       })
 
     }catch(error){
@@ -114,6 +117,7 @@ const pseTableController = {
       const routes = await getRoutes(idRoute,idWell,data.processData,routeParam)
       const idExercise = data.processData.exercisesData.idExercise.filter( exercise => exercise.idWells == idWell)[0].idExercises
       let confirmLogout = true
+      const MC = req.body.MC == '' ? null : parseFloat(req.body.MC)
       const type = 'validation'
 
       //add info to data
@@ -172,6 +176,9 @@ const pseTableController = {
       //save data in pse_data_saved
       await pseQueries.pseSaveData(idWell,idUser,body)
 
+      //save data in pse_momento_critico
+      await pseQueries.pseSaveDataMC(idWell,idUser,MC)
+
       //save exercises answers
       await saveAnswers(data,stepData,idUser,errors,idWell,idExercise,observations)
 
@@ -215,7 +222,8 @@ const pseTableController = {
         idWell,
         confirmLogout,
         exerciseName,
-        type
+        type,
+        MC
     })
 
     }catch(error){

@@ -332,7 +332,7 @@ width: 0;
 height: 100%;
 background-color: var(--color3);
 /*animation: fill-progress 8s ease-in-out forwards;*/
-animation: fill-progress 0.5s ease-in-out forwards;
+animation: fill-progress 7s ease-in-out forwards;
 }
 
 @keyframes fill-progress {

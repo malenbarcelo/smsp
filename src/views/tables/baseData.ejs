@@ -41,23 +41,23 @@
                     <% } else { %>
 
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('top_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('top_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'top_' + row.id %>" value="<%= locals.oldData ? oldData['top_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('top_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'top_' + row.id %>" value="<%= locals.oldData ? oldData['top_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('base_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('base_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'base_' + row.id %>" value="<%= locals.oldData ? oldData['base_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('base_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'base_' + row.id %>" value="<%= locals.oldData ? oldData['base_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('thickness_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('thickness_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'thickness_' + row.id %>" value="<%= locals.oldData ? oldData['thickness_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('thickness_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'thickness_' + row.id %>" value="<%= locals.oldData ? oldData['thickness_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('depo_from_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_from_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'depo_from_' + row.id %>" value="<%= locals.oldData ? oldData['depo_from_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_from_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'depo_from_' + row.id %>" value="<%= locals.oldData ? oldData['depo_from_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('depo_until_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_until_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'depo_until_' + row.id %>"value="<%= locals.oldData ? oldData['depo_until_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('depo_until_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'depo_until_' + row.id %>"value="<%= locals.oldData ? oldData['depo_until_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_lithologies_' + row.id) ? 'isInvalid' : null %>">
@@ -79,7 +79,7 @@
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('cot_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'cot_' + row.id %>" value="<%= locals.oldData ? oldData['cot_' + row.id] : null %>" autocomplete="off">
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('id_kinetics_' + row.id) ? 'isInvalid' : null %>">
@@ -92,7 +92,7 @@
                         </th>
         
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'hi_' + row.id %>" value="<%= locals.oldData ? oldData['hi_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('hi_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'hi_' + row.id %>" value="<%= locals.oldData ? oldData['hi_' + row.id] : null %>" autocomplete="off">
                         </th>
                         
                 <% } %>

@@ -25,7 +25,7 @@
 
                     <% } else { %>
                         <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>">
-                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'temp_temperature_' + row.id %>" value="<%= locals.oldData ? oldData['temp_temperature_' + row.id] : null %>" autocomplete="off">
+                            <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('temp_temperature_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'temp_temperature_' + row.id %>" value="<%= locals.oldData ? oldData['temp_temperature_' + row.id] : null %>" autocomplete="off">
                         </th>
                 <% } %>
                 
@@ -70,11 +70,11 @@
                         <% } else { %>
 
                             <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_ro_min_' + row.id) ? 'isInvalid' : null %>">
-                                <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_min_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_ro_min_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_min_' + row.id] : null %>" autocomplete="off">
+                                <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_min_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'ro_ro_min_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_min_' + row.id] : null %>" autocomplete="off">
                             </th>
             
                             <th class="<%= row.id % 2 == 0 ? 'th1' : 'th2' %> <%= locals.errors && errors.includes('ro_ro_max_' + row.id) ? 'isInvalid' : null %>">
-                                <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_max_' + row.id) ? 'isInvalid' : null %>" type="text" name="<%= 'ro_ro_max_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_max_' + row.id] : null %>" autocomplete="off">
+                                <input class="<%= row.id % 2 == 0 ? 'input1' : 'input2' %> <%= locals.errors && errors.includes('ro_ro_max_' + row.id) ? 'isInvalid' : null %>" type="number" step="0.01" name="<%= 'ro_ro_max_' + row.id %>" value="<%= locals.oldData ? oldData['ro_ro_max_' + row.id] : null %>" autocomplete="off">
                             </th>
                      
                     <% } %>
